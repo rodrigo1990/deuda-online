@@ -1,0 +1,251 @@
+<Respuesta>
+
+  <QueryStart>23/05/2018 11:01:41 a.m.</QueryStart>
+
+  <QueryType>Informacion del deudor</QueryType>
+
+  <Resultado>
+
+    <nombre>LANGE ADELINA,</nombre>
+
+    <cant_prod>2</cant_prod>
+
+    <SaldoTotal>25821,76</SaldoTotal>
+
+    <CancelaTotal>25821,76</CancelaTotal>
+
+    <MonTotCtas1>12910,89</MonTotCtas1>
+
+    <MonTotCtas2>8607,26</MonTotCtas2>
+
+    <MonTotCtas3>25821,76</MonTotCtas3>
+
+    <Acreedor nombre="FRANKEL" grupo="COMAFI FIDUCIARIO">
+
+      <pautas>
+
+        <p>
+
+          <pindex>0</pindex>
+
+          <pmonto>s_cancelacion</pmonto>
+
+          <pctas>1</pctas>
+
+          <pant>False</pant>
+
+          <pantporc>0,00</pantporc>
+
+          <pdesc>0,00</pdesc>
+
+          <ptitulo>Cancelación</ptitulo>
+
+        </p>
+
+        <p>
+
+          <pindex>1</pindex>
+
+          <pmonto>s_total</pmonto>
+
+          <pctas>2</pctas>
+
+          <pant>False</pant>
+
+          <pantporc>0,00</pantporc>
+
+          <pdesc>0,00</pdesc>
+
+          <ptitulo>2 ctas</ptitulo>
+
+        </p>
+
+        <p>
+
+          <pindex>2</pindex>
+
+          <pmonto>s_total</pmonto>
+
+          <pctas>3</pctas>
+
+          <pant>False</pant>
+
+          <pantporc>0,00</pantporc>
+
+          <pdesc>0,00</pdesc>
+
+          <ptitulo>3 ctas</ptitulo>
+
+        </p>
+
+        <p>
+
+          <pindex>3</pindex>
+
+          <pmonto>s_total</pmonto>
+
+          <pctas>6</pctas>
+
+          <pant>False</pant>
+
+          <pantporc>0,00</pantporc>
+
+          <pdesc>0,00</pdesc>
+
+          <ptitulo>6 ctas</ptitulo>
+
+        </p>
+
+        <p>
+
+          <pindex>4</pindex>
+
+          <pmonto>s_total</pmonto>
+
+          <pctas>9</pctas>
+
+          <pant>False</pant>
+
+          <pantporc>0,00</pantporc>
+
+          <pdesc>0,00</pdesc>
+
+          <ptitulo>9 ctas</ptitulo>
+
+        </p>
+
+      </pautas>
+
+      <Productos>
+
+        <pr>
+
+          <nombre>TJ</nombre>
+
+          <moneda>$</moneda>
+
+          <saldo>23726,03</saldo>
+
+          <Cancela>23726,03</Cancela>
+
+          <falta>02/05/2017 11:53:00 a.m.</falta>
+
+          <fmora>10/03/2015 12:00:00 a.m.</fmora>
+
+          <lupdated>16/04/2018 04:00:11 p.m.</lupdated>
+
+        </pr>
+
+        <pr>
+
+          <nombre>PR</nombre>
+
+          <moneda>$</moneda>
+
+          <saldo>2095,73</saldo>
+
+          <Cancela>2095,73</Cancela>
+
+          <falta>02/05/2017 11:53:00 a.m.</falta>
+
+          <fmora>04/03/2015 12:00:00 a.m.</fmora>
+
+          <lupdated>16/04/2018 04:00:11 p.m.</lupdated>
+
+        </pr>
+
+      </Productos>
+
+    </Acreedor>
+
+  </Resultado>
+
+  <QueryEnd>23/05/2018 11:01:42 a.m.</QueryEnd>
+
+</Respuesta>
+
+<!--
+
+<pindex> : Indice de la pauta. Todas llegan ordenadas, pero sirve para que ustedes a nivel “objeto” las puedan ordenar.
+
+ 
+
+<pmonto>: Define el monto a utilizar para realizar los cálculos. Como ves, en cada producto se definen dos tipos de montos (saldo y cancela), el saldo vendría a ser el total de totales, mientras que el monto de cancelación es siempre el valor mas cercano al “contado/efectivo” sin ningún tipo de intereses.
+
+ 
+
+<pctas> : Es la cantidad de cuotas en cada caso, siendo 1 cta el monto “contado/efectivo”.
+
+ 
+
+<pant>: Es un bit que indica si se realizará el cálculo de anticipo sobre el saldo (<pmonto>)
+
+ 
+
+<pantporc>: Es el valor en porcentaje del anticipo (Solo cuando es True)
+
+ 
+
+<pdesc>: Es el valor en porcentaje del descuento que se realiza sobre el monto (<pmonto>)
+
+ 
+
+<ptitulo>: Titulo descriptivo de la pauta. Se puede utilizar en caso de querer mostrar un ToolTip o cualquier advertencia o dato adicional.
+
+ 
+
+ 
+
+Te explico cómo se utiliza cada pauta:
+
+ 
+
+Supongamos que el saldo total de productos es de $2000, tanto para saldo como para cancelación.
+
+ 
+
+Ejemplo1:
+
+<pmonto>s_cancelacion</pmonto>
+
+<pdesc>0,00</pdesc>
+
+<pant>True</pant>
+
+<pantporc>10,00</pantporc>
+
+<pctas>1</pctas>
+
+ 
+
+ 
+
+1)      $2000 – 0% = $2000
+
+2)      Si anticipo True => ValorAnticipo= ($2000-10%)=$200 => Saldo = $2000-$200 = $1800
+
+3)      Mostrar Anticipo de $200 + 1cta de $1800 (Si las cuota es 1, entonces se define como contado).
+
+ 
+
+Ejemplo2:
+
+<pmonto>s_cancelacion</pmonto>
+
+<pdesc>15,00</pdesc>
+
+<pant>False</pant>
+
+<pantporc>0,00</pantporc>
+
+<pctas>3</pctas>
+
+ 
+
+1)      $2000 – 15 % = $1700
+
+2)      Anticipo False.
+
+3)      Mostrar contado de $1700  y plan de $1700/3. O sea 3 cuotas de $566,66
+
+-->

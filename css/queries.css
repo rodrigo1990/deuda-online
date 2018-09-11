@@ -1,0 +1,23 @@
+@media screen and (min-width: 780px) and (max-width: 990px) {
+	
+}
+
+@media screen and (min-width: 801px) {
+	
+}
+
+@media screen and (max-width: 769px) {
+	#cssmenu > ul > li > a {
+	  margin: 5px 0px 0px 15px !important;
+	  border-bottom: 0px !important;
+	}
+
+	.current a
+	{
+	  border-bottom: 0px !important;
+	}
+}
+
+@media screen and (max-width: 420px) {
+	
+}
