@@ -16,6 +16,18 @@
 	{
 	  border-bottom: 0px !important;
 	}
+
+	.paso-a-paso{
+		display:none;
+	}
+
+	.mostrar-acep-cont{
+		text-align: center;
+	}
+
+	img.paso-a-paso{
+		display:none;
+	}
 }
 
 @media screen and (max-width: 420px) {

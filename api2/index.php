@@ -63,6 +63,10 @@ a:hover
 }
 .div_33{ width:33%; float:left; text-align:center; color:#333; font-size:13px; font-weight:bold; padding-bottom:5px;}
 .div_33b{ width:33%; float:left; text-align:center; color:#1a9cd6; font-size:13px; font-weight:bold; padding-bottom:5px;}
+.contactorapido_btn {
+    float: none !important; 
+ 
+}
 </style>
 <html>
 	<head>
@@ -74,7 +78,8 @@ a:hover
 	    <meta name="Description" content=""/>
 
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
-	    
+	    <link rel="stylesheet" href="../css/styles.css">
+	    <link rel="stylesheet" href="../css/queries.css">
 	    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
 	</head>
@@ -96,7 +101,29 @@ a:hover
 				 echo '<h1 style="color: red">'.$response->status.'</h1>';
 			}
 			if($response && $response->status == 'OK') :		?>
-            
+
+			<ul class="paso-a-paso center-block text-center">
+            <li class="active">
+          <div class="paso active  active_arrow_box">
+          <p><strong>PASO 1 <br> ELIJA SU PLAN </strong></p>  
+          </div>
+                
+
+              </li>
+              <li >
+                 <div class="paso  arrow_box">
+                    <p><strong>PASO 2 <br> INGRESE  SUS DATOS  <br> </strong></p>  
+                    </div>
+
+              </li>
+              <li>
+                <div class="paso  arrow_box">
+                    <p><strong>PASO 3 <br> CONFIRME EL ACUERDO  DESDE SU E-MAIL </strong></p>  
+                  </div>
+
+              </li>
+            </ul>  
+            <img src="../imagenes/quiero_pagar/pasoApaso.png" class="paso-a-paso">         
             	<div class="col-sm-12"><span class="hf_tabla"><?php  echo $response->nombre; ?></span></div>
 				<div class="col-sm-12 text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>
                 El detalle de su deuda<br />al día de la fecha es el siguiente: </b></div>

@@ -13,7 +13,7 @@ include("api2/clases/Acreedor.php");
 }
 .acuerdo{
 	color:#404041;
-	font-size:15px;
+	font-size:18px;
 	font-weight:bold;
 	
 	
@@ -26,6 +26,48 @@ include("api2/clases/Acreedor.php");
 }
 
 .pago_10dias{ color:#1a9cd6; font-size:20px; }
+
+.modal{
+  background-color: rgba(0,0,0,0.5); 
+}
+
+.modal-body{
+  position: relative !important;
+    padding: 15px !important;
+    text-align:center !important;
+    font-weight:  bolder !important;
+    font-size: 2rem !important;
+}
+
+.modal-header {
+    border-bottom: none !important;
+}
+
+.modal-footer {
+    text-align: center !important;
+    border-top: none !important;
+}
+
+.modal-footer button {
+  font-weight: bolder;
+}
+
+.tilde img{
+  width: 157px;
+  
+}
+
+
+.tilde{
+  text-align: center;
+  
+}
+
+.tilde h3{
+  font-weight: bold;
+}
+
+
 </style>
 
 </<script type="text/javascript" src="<?php echo $base_url ?>js/jquery.mousewheel-3.0.6.pack.js"></script>
@@ -57,6 +99,8 @@ include("api2/clases/Acreedor.php");
 				type:'get',
 				success:function(response){					
 					
+          $('#myModal').modal('show');
+          $("#form-msj").hide();
 					$("#formulario_acuerdo").html(response);
 				}
 				});
@@ -74,7 +118,7 @@ include("api2/clases/Acreedor.php");
 <br /><br />
 
 <div class="container">
- <div class="col-sm-12">
+ <div class="col-sm-12 mostrar-acep-cont">
     
     <div>
     <?php
@@ -87,7 +131,27 @@ $partes=explode(" ", $_POST['pauta']);
 $monto_a_pagar=$partes[4]*1;
 
 ?>
-	
+	<ul class="paso-a-paso center-block text-center">
+            <li >
+          <div class="paso  arrow_box">
+          <p><strong>PASO 1 <br> ELIJA SU PLAN </strong></p>  
+          </div>
+                
+
+              </li>
+              <li class="active">
+                 <div class="paso  active_arrow_box">
+                    <p><strong>PASO 2 <br> INGRESE  SUS DATOS  <br> </strong></p>  
+                    </div>
+
+              </li>
+              <li>
+                <div class="paso  arrow_box">
+                    <p><strong>PASO 3 <br> CONFIRME EL ACUERDO  DESDE SU E-MAIL </strong></p>  
+                  </div>
+
+              </li>
+            </ul>           
     <div class="col-sm-12 nombre_deudor"><?php echo $response->nombre; ?></div>
      <div class="col-sm-12 text-center acuerdo"><strong>Seleccionó el acuerdo:<br/> <?php  echo $_POST['pauta']; ?></strong></div>
       <div class="titulos_pagar">MÉTODOS DE PAGO</div>
@@ -167,7 +231,7 @@ Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
       
       </div><!-- fin col 6 forma de pago-->
       <div class="col-sm-6">
-      	<p><strong>Complete los siguientes datos para recibir por e-mail la confirmación del acuerdo.</strong></p>
+      	<p><strong id='form-msj'>Complete los siguientes datos para recibir por e-mail la confirmación del acuerdo.</strong></p>
         <form id="formulario_acuerdo"> 
           <div class="form-group">
             <label for="email">Email</label>
@@ -192,6 +256,27 @@ Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
       <span style="font-size:14px;">Ante cualquier duda consultá a un referende de Deuda Online al teléfono <b>011 7078-8500</b></span>
 <div class="clear"></div><br />
     </div>
+
+    <div id = "myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>El e-mail con el acuerdo de pago se envio correctamente.<br />Ingrese a su cuenta de email para confirmar el acuerdo</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">¡ENTENDIDO!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
     <div id="pr2_content">
       <div class="text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>CANCELÁ TU DEUDA SIGUIENDO ESTOS 3 SIMPLES PASOS:</b></div>
       <br />
@@ -360,5 +445,6 @@ Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
     
   });
 </script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 <?php include('footer.php'); ?>

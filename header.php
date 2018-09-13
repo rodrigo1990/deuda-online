@@ -6,7 +6,7 @@ error_reporting(0);
 $url_actual = basename($_SERVER['SCRIPT_NAME']);
 $url_actual = str_replace('.php', '', $url_actual);
 //$base_url = "http://localhost:8080/legion/deudaonline/";
-$base_url = "https://www.deudaonline.com.ar/";
+$base_url = "http://www.legioncreativa.com/test/deuda_online/";
 ?>
 
 <!DOCTYPE html>

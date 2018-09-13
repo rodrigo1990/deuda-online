@@ -25,7 +25,13 @@ include("api2/clases/Acreedor.php");
 	
 	
 }
+
+.tarjetas{
+  width: 45px;
+}
 .pago_10dias{ background:#1a9cd6; color:#FFF; font-size:20px; border:1px solid #999; box-shadow:2px 2px 2px #666; padding:7px 5px; border-radius:5px; }
+
+
 </style>
 
 </<script type="text/javascript" src="<?php echo $base_url ?>js/jquery.mousewheel-3.0.6.pack.js"></script>
@@ -69,8 +75,96 @@ include("api2/clases/Acreedor.php");
 </div>
 <br /><br />
 
+<ul class="paso-a-paso center-block text-center">
+            <li>
+          <div class="paso   arrow_box">
+          <p><strong>PASO 1 <br> ELIJA SU PLAN </strong></p>  
+          </div>
+                
+
+              </li>
+              <li >
+                 <div class="paso  arrow_box">
+                    <p><strong>PASO 2 <br> INGRESE  SUS DATOS  <br> </strong></p>  
+                    </div>
+
+              </li>
+              <li  class="active">
+                <div class="paso  active_arrow_box">
+                    <p><strong>PASO 3 <br> CONFIRME EL ACUERDO  DESDE SU E-MAIL </strong></p>  
+                  </div>
+
+              </li>
+            </ul>           
+
 <div class="container">
- <div class="col-sm-12">
+ <div class="col-sm-6">
+
+    <?php
+        switch($_GET['acree']){
+            
+            case "TARSHOP":{
+        ?>
+                  <a><img class='center-block' src="imagenes/quiero_pagar/7.png" alt="" /></a>
+       <p class="leyenda_ts text-center">Debe dirigirse a cualquier PAGO FÁCIL o RAPIPAGO.
+Indicarle al cajero que hace un PAGO SIN FACTURA A LA ENTIDAD <strong>TARJETA SHOPPING saldo deudor con su nro de DNI.</strong></p>
+         <a class="fancybox tarjetas" href="#medio_111"><img class="tarjetas" src="imagenes/quiero_pagar/1.png" alt="" /></a>
+           
+              <a class="fancybox" href="#tarjeta_american"><img class="tarjetas" src="imagenes/quiero_pagar/t1.png" alt="" /></a>
+              <a class="fancybox" href="#tarjeta_master"><img class="tarjetas" src="imagenes/quiero_pagar/t2.png" alt="" /></a>
+              <a class="fancybox" href="#tarjeta_visa"><img class="tarjetas" src="imagenes/quiero_pagar/t3.png" alt="" /></a>
+              
+             
+              <a class="fancybox" href="#medio_4"><img class="tarjetas" src="imagenes/quiero_pagar/4.png" alt="" /></a>
+               <a class="fancybox" href="#medio_2"><img class="tarjetas" src="imagenes/quiero_pagar/2.png" alt="" /></a>
+              <a class="fancybox" href="#medio_3"><img class="tarjetas" src="imagenes/quiero_pagar/3.png" alt="" /></a>
+              <a class="fancybox" href="#medio_5"><img class="tarjetas" src="imagenes/quiero_pagar/5.png" alt="" /></a>
+              <a class="fancybox" href="#medio_6"><img class="tarjetas" src="imagenes/quiero_pagar/6.png" alt="" /></a>       
+                <?php
+            }
+            break;
+            case "COMAFI":{
+        ?>
+           <a><img src="imagenes/quiero_pagar/1.png" alt="" CLASS="center-block" /></a>
+       <p class="leyenda_ts text-center">Debe dirigirse a cualquier PAGO FÁCIL.<br />
+Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
+<span class="">PLAN VÁLIDO SOLO POR 10 DÍAS CORRIDOS</span></strong></p>
+           
+             <?php
+            }
+            break;
+            case "SANTANDER":{
+             ?>
+             <a class="fancybox"><img src="imagenes/quiero_pagar/1.png" class='center-block' alt="" /></a>
+              <br>
+              <p class='text-center'>
+              Indicar al cajero <span><b>PAGO ABIERTO SIN FACTURA</b></span> <br> a nombre del <span><b>ESTUDIO JURIDICO PALMERO</b></span>
+              <br><br>
+              Rubro: <b>GESTION DE DEUDA</b>
+              <br>
+              Entidad: <b>0420</b>
+              <br>
+              Nro de referencia de pago:<b><?php echo $_GET['dni']; ?></b>
+              </p>
+
+             <?php   
+            }
+            break;
+            default:{
+        ?>
+              
+                
+                <?php
+            }
+            break;
+        }
+        ?>
+
+
+
+  </div>
+
+ <div class="col-sm-6">
     
     <div>
     <?php
@@ -115,7 +209,7 @@ $email=$_GET['email'];
       <!-- SI EL ACREEDER ES SANTANDER.. -->
       <?php if($_GET['acree']=='SANTANDER'){?>
        <br>
-        <div class="pago_10dias text-center center-block" style="width:53%">EL PAGO DEBE REALIZARSE DENTRO DE LAS  PRÓXIMAS 72 HS <br> PARA DARLE VIGENCIA A LA OPCIÓN  ELEGIDA</div>
+        <div class="pago_10dias text-center center-block" style="width:100%">EL PAGO DEBE REALIZARSE DENTRO DE LAS  PRÓXIMAS 72 HS <br> PARA DARLE VIGENCIA A LA OPCIÓN  ELEGIDA</div>
 
       <?php
       } ?>
@@ -131,9 +225,8 @@ $email=$_GET['email'];
 	  
 	  <div class="col-sm-6 col-md-offset-3" style="text-align:center;">
       
-       <a><img src="imagenes/quiero_pagar/7.png" alt="" /></a>
-       <p class="leyenda_ts">Debe dirigirse a cualquier PAGO FÁCIL o RAPIPAGO.
-Indicarle al cajero que hace un PAGO SIN FACTURA A LA ENTIDAD <strong>TARJETA SHOPPING saldo deudor con su nro de DNI.<br /><div class="pago_10dias">TIENE TIEMPO HASTA EL 29 DEL MES CORRIENTE PARA ABONAR</div></strong></strong></p>
+  <br>
+  <div class="pago_10dias"><strong>TIENE TIEMPO HASTA EL 29 DEL MES CORRIENTE PARA ABONAR</strong></div>
       </div>
       
     
@@ -171,8 +264,8 @@ Indicarle al cajero que hace un PAGO SIN FACTURA A LA ENTIDAD <strong>TARJETA SH
     </div>
 
   </div>
-
 </div>
+
 
 <!-- POPUP -->
 <div id="tarjeta_american" style="width:100%; max-width: 450px;display: none; padding: 20px;">
