@@ -100,30 +100,10 @@ a:hover
 			if($response && $response->status != 'OK') {
 				 echo '<h1 style="color: red">'.$response->status.'</h1>';
 			}
-			if($response && $response->status == 'OK') :		?>
-
-			<ul class="paso-a-paso center-block text-center">
-            <li class="active">
-          <div class="paso active  active_arrow_box">
-          <p><strong>PASO 1 <br> ELIJA SU PLAN </strong></p>  
-          </div>
-                
-
-              </li>
-              <li >
-                 <div class="paso  arrow_box">
-                    <p><strong>PASO 2 <br> INGRESE  SUS DATOS  <br> </strong></p>  
-                    </div>
-
-              </li>
-              <li>
-                <div class="paso  arrow_box">
-                    <p><strong>PASO 3 <br> CONFIRME EL ACUERDO  DESDE SU E-MAIL </strong></p>  
-                  </div>
-
-              </li>
-            </ul>  
-            <img src="../imagenes/quiero_pagar/pasoApaso.png" class="paso-a-paso">         
+			if($response && $response->status == 'OK') :		?> 
+	            <img src="../imagenes/quiero_pagar/pasoApaso2.png" class="paso-a-paso center-block" style='width:800px;padding-bottom:30px'>
+	            <img src="../imagenes/quiero_pagar/pasoApaso3.png" class="paso-a-paso center-block" style='width:800px;padding-bottom:30px'>
+	            <img src="../imagenes/quiero_pagar/pasoApaso5.png" class="paso-a-paso center-block" style='width:800px;padding-bottom:30px'>         
             	<div class="col-sm-12"><span class="hf_tabla"><?php  echo $response->nombre; ?></span></div>
 				<div class="col-sm-12 text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>
                 El detalle de su deuda<br />al día de la fecha es el siguiente: </b></div>

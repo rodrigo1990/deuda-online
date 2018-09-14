@@ -194,7 +194,7 @@ $email=$_GET['email'];
       $mail->From = "info@c1250353.ferozo.com";
       $mail->FromName = "Deuda Online";
       $mail->Subject = "Confirmacion de acuerdo de deuda";
-      $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+      $mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
 	 //$mail->AddAddress("rominacodarin@gmail.com","Deuda Online");
       $mail->Body = $cuerpo;
       $mail->AltBody = "";

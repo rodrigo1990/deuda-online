@@ -13,9 +13,13 @@ $nombre=$_GET['nombre'];
       $mail = new PHPMailer();
       $mail->Host = "localhost";
       $mail->IsHTML(true);
-        
-      $cuerpo  = "
-      <table style='background-color: #f3f3ff;border: 5px solid #909090;font-size:1rem;margin-left: auto;margin-right: auto;'>
+      
+      $cuerpo =   "<img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
+  <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>ACTIVASTE TU ACUERDO DE PAGO <br> ".strtoupper($pauta)."</h2>";
+
+
+      $cuerpo  .= "
+      <table style='font-size:1rem;margin-left: auto;margin-right: auto;font-family:arial;border-radius:10px;background-color: #f3f3ff;border:30px solid #f3f3ff '>
       <tr>
       <td style='text-align: center;'>
       ";
@@ -30,7 +34,7 @@ $nombre=$_GET['nombre'];
                     <br>
                     Entidad: <b>0420</b>
                     <br>
-                    Nro de referencia de pago:<b>".$acree."</b>
+                    Nro de referencia de pago:<b>".$dni."</b>
                     <br>
                     <br>
                     ";
@@ -41,17 +45,16 @@ $nombre=$_GET['nombre'];
 
                   $cuerpo  .= "
                   <tr>
-                  <td style='text-align: center;border-top: 1px solid #a5a2a2;'>
+                  <td style='text-align: center;'>
                   ";
 
                   $cuerpo .="
                   <br>
-                  Los datos de su acuerdo de pago son: <br /> <br />    
-                  <b>Nombre y Apellido:</b> " . $nombre . "<br><br />
-                  <b>DNI:</b> " . $dni . "<br><br />
-                  <b>Teléfono:</b> " . $telefono . "<br><br />
+                  <b>Nombre y Apellido:</b> " . $nombre . "<br>
+                  <b>DNI:</b> " . $dni . "<br>
+                  <b>Telefono:</b> " . $telefono . "<br>
                   <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
-                  <b>DEBE PRESIONAR EL BOTON CONFIRMAR PARA FINALIZAR LA VALIDACIÓN DEL ACUERDO:</b><br/><br/>";
+                  ";
 
                   $cuerpo .= '<b><span style="display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;"><a style="color:#FFF; text-decoration:none;" href="http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni='.$dni.'&nombre='.$nombre.'&pauta='.$pauta.'&acree='.$acree.'&tel='.$telefono.'&email='.$email.'">HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>';
                  
@@ -67,6 +70,12 @@ $nombre=$_GET['nombre'];
 
                   $cuerpo .="
                   </table>";
+
+
+                  $cuerpo .="<div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
+        text-align: center;font-family:verdana'>
+        EL PAGO DEBE REALIZARSE DENTRO DE LAS  PROXIMAS 72 HS <br> PARA DARLE VIGENCIA A LA OPCION  ELEGIDA
+      </div>";
                   break;
 
 
@@ -75,7 +84,6 @@ $nombre=$_GET['nombre'];
                   <a><img src="https://www.deudaonline.com.ar/imagenes/quiero_pagar/1.png" alt="" style="margin-left: auto;margin-right: auto;display: block;" /></a>
                   <p style=" text-align: center;"class="leyenda_ts">Debe dirigirse a cualquier PAGO FÁCIL.<br />
                   Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
-                  <span class="pago_10dias">PLAN VÁLIDO SOLO POR 10 DÍAS CORRIDOS</span></strong></p>
                   <a class="fancybox" href="#medio_111"><img src="imagenes/quiero_pagar/1.png" alt="" /></a>
                        
                  ';
@@ -87,16 +95,14 @@ $nombre=$_GET['nombre'];
 
                   $cuerpo .= "
                   <tr>
-                  <td style='text-align: center;border-top: 1px solid #a5a2a2;'>";
+                  <td style='text-align: center;'>";
 
                   $cuerpo .="
                   <br>
-                  Los datos de su acuerdo de pago son: <br /><br>     
-                  <b>Nombre y Apellido:</b> " . $nombre . "<br><br>
-                  <b>DNI:</b> " . $dni . "<br><br>
-                  <b>Teléfono:</b> " . $telefono . "<br><br>
+                  <b>Nombre y Apellido:</b> " . $nombre . "<br>
+                  <b>DNI:</b> " . $dni . "<br>
+                  <b>Teléfono:</b> " . $telefono . "<br>
                   <b>Acuerdo de pago:</b> " . $pauta . "<br><br>
-                  <b>DEBE PRESIONAR EL BOTON CONFIRMAR PARA FINALIZAR LA VALIDACIÓN DEL ACUERDO:</b><br><br>
                   <b><span style='display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;'><a style='color:#FFF; text-decoration:none;' href='http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni=".$dni."&nombre=".$nombre."&pauta=".$pauta."&acree=".$acree."&tel=".$telefono."&email=".$email."'>HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>
                   ";
                  
@@ -105,12 +111,17 @@ $nombre=$_GET['nombre'];
                   </td>
                   </tr>";
 
-                
+                  
 
 
                   $cuerpo .="
                   </tr>
                   </table>";
+
+                  $cuerpo .="<div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
+                  text-align: center;font-family:verdana'>
+                  PLAN VALIDO SOLO POR 10 DÍAS CORRIDOS
+                </div>";
 
 
                   break;
@@ -128,13 +139,11 @@ $nombre=$_GET['nombre'];
                   </td>
                   </tr>
                   <tr style='text-align:center'>
-                  <td style='border-top: 1px solid #cecece;padding: 20px;'>
-                  Los datos de su acuerdo de pago son: <br /><br />      
-                  <b>Nombre y Apellido:</b> " . $nombre . "<br><br /> 
-                  <b>DNI:</b> " . $dni . "<br><br /> 
-                  <b>Teléfono:</b> " . $telefono . "<br><br /> 
-                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br /> 
-                  <b>DEBE PRESIONAR EL BOTON CONFIRMAR PARA FINALIZAR LA VALIDACIÓN DEL ACUERDO:</b><br/><br/><br/>
+                  <td style='padding: 20px;'>
+                  <b>Nombre y Apellido:</b> " . $nombre . "<br> 
+                  <b>DNI:</b> " . $dni . "<br>
+                  <b>Teléfono:</b> " . $telefono . "<br>
+                  <b>Acuerdo de pago:</b> " . $pauta . "<br> <br>
                   <b><span style='display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;'><a style='color:#FFF; text-decoration:none;' href='http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni=".$dni."&nombre=".$nombre."&pauta=".$pauta."&acree=".$acree."&tel=".$telefono."&email=".$email."'>HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>
 
                   ";
@@ -149,6 +158,12 @@ $nombre=$_GET['nombre'];
                   $cuerpo .="
             
                   </table>";
+
+
+                   $cuerpo .="<div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
+                  text-align: center;font-family:verdana'>
+                  TIENE TIEMPO HASTA EL 29 DEL MES CORRIENTE PARA ABONAR
+                </div>";
 
 
                   break;

@@ -131,28 +131,9 @@ $partes=explode(" ", $_POST['pauta']);
 $monto_a_pagar=$partes[4]*1;
 
 ?>
-	<ul class="paso-a-paso center-block text-center">
-            <li >
-          <div class="paso  arrow_box">
-          <p><strong>PASO 1 <br> ELIJA SU PLAN </strong></p>  
-          </div>
-                
-
-              </li>
-              <li class="active">
-                 <div class="paso  active_arrow_box">
-                    <p><strong>PASO 2 <br> INGRESE  SUS DATOS  <br> </strong></p>  
-                    </div>
-
-              </li>
-              <li>
-                <div class="paso  arrow_box">
-                    <p><strong>PASO 3 <br> CONFIRME EL ACUERDO  DESDE SU E-MAIL </strong></p>  
-                  </div>
-
-              </li>
-            </ul>           
-    <div class="col-sm-12 nombre_deudor"><?php echo $response->nombre; ?></div>
+	            <img src="imagenes/quiero_pagar/pasoApaso2.png" class="paso-a-paso center-block" style='width:800px;padding-bottom:30px'>         
+         
+    <div class="col-sm-12 nombre_deudor"><?php ?></div>
      <div class="col-sm-12 text-center acuerdo"><strong>Seleccionó el acuerdo:<br/> <?php  echo $_POST['pauta']; ?></strong></div>
       <div class="titulos_pagar">MÉTODOS DE PAGO</div>
       
@@ -160,7 +141,18 @@ $monto_a_pagar=$partes[4]*1;
       
      
 		<?php
-        switch($acreedor->mostrarAcreedor($_POST['posicion'])){
+    echo "<div class='nombre_deudor'>
+    <h2>
+    ";
+    echo $response->nombre; 
+    
+    echo "
+    </h2>
+    </div>
+    ";
+
+    echo "<h2><strong>Seleccionó el acuerdo: <br/>".$_POST['pauta']."</strong></h2>";
+     /*   switch($acreedor->mostrarAcreedor($_POST['posicion'])){
             
             case "TARSHOP":{
 				?>
@@ -225,7 +217,7 @@ Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
                 <?php
             }
             break;
-        }
+        }*/
         ?>
   
       
