@@ -101,7 +101,11 @@ a:hover
 				 echo '<h1 style="color: red">'.$response->status.'</h1>';
 			}
 			if($response && $response->status == 'OK') :		?> 
-	            <img src="../imagenes/quiero_pagar/pasoApaso5.png" class="paso-a-paso center-block" style='width:800px;padding-bottom:30px'>         
+			<div class="center-block" style="width: 76%;height: 119px;">
+	            <img src="../imagenes/quiero_pagar/paso-1.png" class="paso-a-paso" style='float:left;width:300px'>
+	            <img src="../imagenes/quiero_pagar/paso-inactive-2.png" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>
+	            <img src="../imagenes/quiero_pagar/paso-inactive-3.png" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>
+	        </div>
             	<div class="col-sm-12"><span class="hf_tabla"><?php  echo $response->nombre; ?></span></div>
 				<div class="col-sm-12 text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>
                 El detalle de su deuda<br />al día de la fecha es el siguiente: </b></div>

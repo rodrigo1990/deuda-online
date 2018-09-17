@@ -100,6 +100,8 @@ include("api2/clases/Acreedor.php");
 				success:function(response){					
 					
           $('#myModal').modal('show');
+          $("#paso-2").attr('src','imagenes/quiero_pagar/paso-inactive-2.png');
+          $("#paso-3").attr('src','imagenes/quiero_pagar/paso-3.png');
           $("#form-msj").hide();
 					$("#formulario_acuerdo").html(response);
 				}
@@ -131,7 +133,11 @@ $partes=explode(" ", $_POST['pauta']);
 $monto_a_pagar=$partes[4]*1;
 
 ?>
-	            <img src="imagenes/quiero_pagar/pasoApaso5.png" class="paso-a-paso center-block" style='width:800px;padding-bottom:30px'>         
+            <div class="center-block" style="width: 76%;height: 119px;padding-bottom:13%;">
+              <img src="imagenes/quiero_pagar/paso-inactive-1.png" class="paso-a-paso" style='float:left;width:300px'>
+              <img src="imagenes/quiero_pagar/paso-2.png" id="paso-2" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>
+              <img src="imagenes/quiero_pagar/paso-inactive-3.png" id="paso-3" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>
+          </div>        
          
     <div class="col-sm-12 nombre_deudor"><?php ?></div>
       <div class="titulos_pagar">MÉTODOS DE PAGO</div>
