@@ -131,10 +131,9 @@ $partes=explode(" ", $_POST['pauta']);
 $monto_a_pagar=$partes[4]*1;
 
 ?>
-	            <img src="imagenes/quiero_pagar/pasoApaso2.png" class="paso-a-paso center-block" style='width:800px;padding-bottom:30px'>         
+	            <img src="imagenes/quiero_pagar/pasoApaso5.png" class="paso-a-paso center-block" style='width:800px;padding-bottom:30px'>         
          
     <div class="col-sm-12 nombre_deudor"><?php ?></div>
-     <div class="col-sm-12 text-center acuerdo"><strong>Seleccionó el acuerdo:<br/> <?php  echo $_POST['pauta']; ?></strong></div>
       <div class="titulos_pagar">MÉTODOS DE PAGO</div>
       
       <div class="col-sm-6 text-center ">
@@ -144,7 +143,7 @@ $monto_a_pagar=$partes[4]*1;
     echo "<div class='nombre_deudor'>
     <h2>
     ";
-    echo $response->nombre; 
+    echo utf8_encode($response->nombre); 
     
     echo "
     </h2>

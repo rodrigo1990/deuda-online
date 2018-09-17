@@ -14,12 +14,22 @@ $nombre=$_GET['nombre'];
       $mail->Host = "localhost";
       $mail->IsHTML(true);
       
-      $cuerpo =   "<img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
-  <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>ACTIVASTE TU ACUERDO DE PAGO <br> ".strtoupper($pauta)."</h2>";
+      $cuerpo =   "";
 
 
       $cuerpo  .= "
       <table style='font-size:1rem;margin-left: auto;margin-right: auto;font-family:arial;border-radius:10px;background-color: #f3f3ff;border:30px solid #f3f3ff '>
+        <tr>
+          <td>
+          <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>ACTIVASTE TU ACUERDO DE PAGO <br> ".strtoupper($pauta)."</h2>
+          </td>
+        </tr>
+
       <tr>
       <td style='text-align: center;'>
       ";
@@ -53,15 +63,28 @@ $nombre=$_GET['nombre'];
                   <b>Nombre y Apellido:</b> " . $nombre . "<br>
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Telefono:</b> " . $telefono . "<br>
+                  <b>Email:</b> " . $email . "<br>
                   <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
                   ";
 
-                  $cuerpo .= '<b><span style="display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;"><a style="color:#FFF; text-decoration:none;" href="http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni='.$dni.'&nombre='.$nombre.'&pauta='.$pauta.'&acree='.$acree.'&tel='.$telefono.'&email='.$email.'">HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>';
+                 // $cuerpo .= '<b><span style="display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;"><a style="color:#FFF; text-decoration:none;" href="http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni='.$dni.'&nombre='.$nombre.'&pauta='.$pauta.'&acree='.$acree.'&tel='.$telefono.'&email='.$email.'">HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>';
                  
                  
                   $cuerpo .= "
                   </td>
                   </tr>";
+
+                  $cuerpo .="
+                  <tr>
+                    <td>
+                      <div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
+                      text-align: center;font-family:verdana'>
+                      EL PAGO DEBE REALIZARSE DENTRO DE LAS  PROXIMAS 72 HS <br> PARA DARLE VIGENCIA A LA OPCION  ELEGIDA
+                    </div>
+                    </td>
+                  </tr>
+
+                  ";
 
                 
 
@@ -71,11 +94,6 @@ $nombre=$_GET['nombre'];
                   $cuerpo .="
                   </table>";
 
-
-                  $cuerpo .="<div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
-        text-align: center;font-family:verdana'>
-        EL PAGO DEBE REALIZARSE DENTRO DE LAS  PROXIMAS 72 HS <br> PARA DARLE VIGENCIA A LA OPCION  ELEGIDA
-      </div>";
                   break;
 
 
@@ -102,9 +120,11 @@ $nombre=$_GET['nombre'];
                   <b>Nombre y Apellido:</b> " . $nombre . "<br>
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Teléfono:</b> " . $telefono . "<br>
+                  <b>Email:</b> " . $email . "<br>
                   <b>Acuerdo de pago:</b> " . $pauta . "<br><br>
-                  <b><span style='display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;'><a style='color:#FFF; text-decoration:none;' href='http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni=".$dni."&nombre=".$nombre."&pauta=".$pauta."&acree=".$acree."&tel=".$telefono."&email=".$email."'>HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>
                   ";
+
+                  //$cuerpo .= "<b><span style='display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;'><a style='color:#FFF; text-decoration:none;' href='http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni=".$dni."&nombre=".$nombre."&pauta=".$pauta."&acree=".$acree."&tel=".$telefono."&email=".$email."'>HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>";
                  
                  
                   $cuerpo .= "
@@ -116,12 +136,16 @@ $nombre=$_GET['nombre'];
 
                   $cuerpo .="
                   </tr>
+                  <tr>
+                    <td>
+                      <div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
+                      text-align: center;font-family:verdana'>
+                      PLAN VALIDO SOLO POR 10 DÍAS CORRIDOS
+                    </div>
+                    </td>
+                  </tr>
                   </table>";
 
-                  $cuerpo .="<div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
-                  text-align: center;font-family:verdana'>
-                  PLAN VALIDO SOLO POR 10 DÍAS CORRIDOS
-                </div>";
 
 
                   break;
@@ -143,15 +167,29 @@ $nombre=$_GET['nombre'];
                   <b>Nombre y Apellido:</b> " . $nombre . "<br> 
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Teléfono:</b> " . $telefono . "<br>
+                  <b>Email:</b> " . $email . "<br>
                   <b>Acuerdo de pago:</b> " . $pauta . "<br> <br>
-                  <b><span style='display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;'><a style='color:#FFF; text-decoration:none;' href='http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni=".$dni."&nombre=".$nombre."&pauta=".$pauta."&acree=".$acree."&tel=".$telefono."&email=".$email."'>HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>
 
                   ";
                  
+                 //$cuerpo .="b><span style='display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;'><a style='color:#FFF; text-decoration:none;' href='http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni=".$dni."&nombre=".$nombre."&pauta=".$pauta."&acree=".$acree."&tel=".$telefono."&email=".$email."'>HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>";
                  
                   $cuerpo .= "
                   <td>
                   </tr>";
+
+                  $cuerpo .="
+                  <tr>
+                    <td>
+                      <div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
+                    text-align: center;font-family:verdana'>
+                    TIENE TIEMPO HASTA EL 29 DEL MES CORRIENTE PARA ABONAR
+                  </div>
+                    </td>
+                  </tr>
+
+
+                  ";
 
             
 
@@ -160,10 +198,7 @@ $nombre=$_GET['nombre'];
                   </table>";
 
 
-                   $cuerpo .="<div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
-                  text-align: center;font-family:verdana'>
-                  TIENE TIEMPO HASTA EL 29 DEL MES CORRIENTE PARA ABONAR
-                </div>";
+                   $cuerpo .="";
 
 
                   break;
@@ -195,5 +230,20 @@ $nombre=$_GET['nombre'];
           <h3>¡ACUERDO ENVIADO!</h3>
           </div>
       ';
+
+
+      $cuerpo  = "Confirmación de acuerdo de pago: <br />";  
+      $cuerpo .= "<b>Nombre y Apellido:</b> " . $nombre . "<br>";
+      $cuerpo .= "<b>DNI:</b> " . $dni . "<br>";
+      $cuerpo .= "<b>Teléfono:</b> " . $telefono . "<br>";
+      $cuerpo .= "<b>Acreedor:</b> " . $acree . "<br>";
+      $cuerpo .= "<b>Acuerdo de pago:</b> " . $pauta . "<br>";
+      $mail->FromName = "Deuda Online";
+      $mail->Subject = "Confirmacion de acuerdo de deuda - EPB";
+      $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+      //$mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
+      $mail->Body = $cuerpo;
+      $mail->AltBody = "";
+      $mail->Send();
     
 ?>
