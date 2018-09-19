@@ -101,10 +101,10 @@ a:hover
 				 echo '<h1 style="color: red">'.$response->status.'</h1>';
 			}
 			if($response && $response->status == 'OK') :		?> 
-			<div class="center-block" style="width: 76%;height: 119px;">
-	            <img src="../imagenes/quiero_pagar/paso-1.png" class="paso-a-paso" style='float:left;width:300px'>
-	            <img src="../imagenes/quiero_pagar/paso-inactive-2.png" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>
-	            <img src="../imagenes/quiero_pagar/paso-inactive-3.png" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>
+			<div class="center-block paso-a-paso-cont"  style="width: 76%;height: 119px;">
+	            <img src="../imagenes/quiero_pagar/paso-1.png" class="paso-a-paso" style='float:left;'>
+	            <img src="../imagenes/quiero_pagar/paso-inactive-2.png" class="paso-a-paso" style='float:left;margin-lefT:-44px'>
+	            <img src="../imagenes/quiero_pagar/paso-inactive-3.png" class="paso-a-paso" style='float:left;margin-lefT:-44px'>
 	        </div>
             	<div class="col-sm-12"><span class="hf_tabla"><?php  echo $response->nombre; ?></span></div>
 				<div class="col-sm-12 text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>

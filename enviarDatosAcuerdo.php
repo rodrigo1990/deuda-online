@@ -230,16 +230,7 @@ $nombre=$_GET['nombre'];
           <h3>¡ACUERDO ENVIADO!</h3>
           </div>
       ';
-
-
-      $cuerpo  = "Confirmación de acuerdo de pago: <br />";  
-      $cuerpo .= "<b>Nombre y Apellido:</b> " . $nombre . "<br>";
-      $cuerpo .= "<b>DNI:</b> " . $dni . "<br>";
-      $cuerpo .= "<b>Teléfono:</b> " . $telefono . "<br>";
-      $cuerpo .= "<b>Acreedor:</b> " . $acree . "<br>";
-      $cuerpo .= "<b>Acuerdo de pago:</b> " . $pauta . "<br>";
-      $mail->FromName = "Deuda Online";
-      $mail->Subject = "Confirmacion de acuerdo de deuda - EPB";
+      $mail->Subject = "ADMINISTRACION";
       $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
       //$mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
       $mail->Body = $cuerpo;

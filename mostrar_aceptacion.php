@@ -133,7 +133,7 @@ $partes=explode(" ", $_POST['pauta']);
 $monto_a_pagar=$partes[4]*1;
 
 ?>
-            <div class="center-block" style="width: 76%;height: 119px;padding-bottom:13%;">
+            <div class="center-block" class="paso-a-paso-cont" style="width: 76%;height: 119px;padding-bottom:13%;">
               <img src="imagenes/quiero_pagar/paso-inactive-1.png" class="paso-a-paso" style='float:left;width:300px'>
               <img src="imagenes/quiero_pagar/paso-2.png" id="paso-2" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>
               <img src="imagenes/quiero_pagar/paso-inactive-3.png" id="paso-3" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>

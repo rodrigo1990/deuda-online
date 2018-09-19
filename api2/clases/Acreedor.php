@@ -42,19 +42,12 @@ class Acreedor{
 					$monto=($acree->saldo);
 				
 				}
-
-				$monto-=($monto*($pauta->pdesc)/100);
 				
 				$opcion="";
 
 				if($pauta->pant=="True" && $pauta->pantporc!="0,00"){
 					$anticipo=($monto*($pauta->pantporc)/100);
-					
-					//Si el cliente es santander restamos el anticipo despues del calculo de descuento y honorario
-					if($acreedor != 'SANTANDER'){
-						$monto=$monto-$anticipo;
-					}
-					
+
 					$opcion.="Anticipo de $".$anticipo." y ";
 				}
 				
@@ -77,7 +70,7 @@ class Acreedor{
 
 				}
 
-				$opcion.=$pauta->pctas.$cta." de $ ".$cuotas;
+				//$opcion.=$pauta->pctas.$cta." de $ ".$cuotas;
 				
 				
 				if($pauta->pmonto=="s_cancelacion" && $acree->cancela!='0,00'){
@@ -99,31 +92,22 @@ class Acreedor{
 
 				}
 
+
 				
-				//si el acreedor es SANTANDER RIO se van a aplicar los montos y opciones de la manera que las reglas de negocio
-				//para santander rio indican
-				if($acreedor == 'SANTANDER'){
+						
 				
-						$opcion=$pauta->pctas.$cta." de $ ".number_format((($monto-($monto*($pauta->pdesc)/100))  * $honorario - $anticipo)/$pauta->pctas, 2, ',', '.');
+						$opcion.=$pauta->pctas.$cta." de $ ".number_format(((($monto - ($monto*($pauta->pdesc)/100))*$honorario)-$anticipo)/$pauta->pctas, 2, ',', '.');
 						echo '<tr>';
 						echo '<td>'.$opcion.'</td>';
 						echo '<td>'.$pauta->pdesc.'%</td>';
 						echo '
-						<td><strong>$'.number_format(($monto-($monto*($pauta->pdesc)/100))  * $honorario - $anticipo, 2, ',', '.').'</strong></td>
+						<td><strong>$'.number_format(($monto-($monto*($pauta->pdesc)/100))*$honorario, 2, ',', '.').'</strong></td>
 						<td><input type="radio" name="pauta" '.$checked.' value="'.$opcion.'"  /></td>
 						</tr>';
 
-				//sino de otra manera para los clientes del resto de las carteras
-				}else{
-					echo '<tr>';
-					echo '<td>'.$opcion.'</td>';
-					echo '<td>'.$pauta->pdesc.'%</td>';
-					echo '
-					<td><strong>$'.number_format(($monto-($monto*($pauta->pdesc)/100)), 2, ',', '.').'</strong></td>
-					<td><input type="radio" name="pauta" '.$checked.' value="'.$opcion.'"  /></td>
-					</tr>';
+		
 
-				}
+			
 
 			$i++;
 			

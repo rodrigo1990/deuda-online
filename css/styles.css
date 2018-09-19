@@ -540,3 +540,26 @@ footer
   border-width:  38px;
   margin-top: -38px;
 }
+
+img.paso-a-paso{
+  width:300px;
+}
+
+.right{
+  float:right;
+}
+.ayuda-xs {
+  height:48px;
+}
+.ayuda-xs a {
+  font-weight: bolder;
+  font-size: 2rem;
+  color:grey;
+  transition: color 0.5s;
+}
+
+
+.ayuda-xs a:hover {
+  color:#1a9cd6;
+  transition:color 0.5s;
+}
