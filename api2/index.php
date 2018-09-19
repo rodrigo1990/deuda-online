@@ -25,49 +25,6 @@
 	
 	print_r($response);*/
 ?>
-
-<style type="text/css">
-body
-{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 13px;
-  color: #6d6e70;
-  background: #ffffff;
-}
-
-.contactorapido_btn
-{
-  margin-top: 20px;
-  background: #1a9cd6;
-  color: #ffffff;
-  border: 0px;
-  padding: 5px 15px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-a:hover
-{
-  text-decoration: none;
-  color: #ffffff;
-}
-.hf_tabla {
-    color: #1a9cd6;
-    text-align: center;
-    padding-bottom: 5px;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: bold;
-    padding-top: 5px;
-}
-.div_33{ width:33%; float:left; text-align:center; color:#333; font-size:13px; font-weight:bold; padding-bottom:5px;}
-.div_33b{ width:33%; float:left; text-align:center; color:#1a9cd6; font-size:13px; font-weight:bold; padding-bottom:5px;}
-.contactorapido_btn {
-    float: none !important; 
- 
-}
-</style>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -94,6 +51,10 @@ a:hover
 			<!-- <input type="text" name="culture" placeholder="Culture" value=""  /> -->
 			<input type="submit" name="submit" value="ACEPTAR" class="contactorapido_btn" />
 		</form>
+
+
+      
+
 		<?php } ?>
 		
 		<?php
@@ -101,10 +62,10 @@ a:hover
 				 echo '<h1 style="color: red">'.$response->status.'</h1>';
 			}
 			if($response && $response->status == 'OK') :		?> 
-			<div class="center-block paso-a-paso-cont"  style="width: 76%;height: 119px;">
-	            <img src="../imagenes/quiero_pagar/paso-1.png" class="paso-a-paso" style='float:left;'>
-	            <img src="../imagenes/quiero_pagar/paso-inactive-2.png" class="paso-a-paso" style='float:left;margin-lefT:-44px'>
-	            <img src="../imagenes/quiero_pagar/paso-inactive-3.png" class="paso-a-paso" style='float:left;margin-lefT:-44px'>
+			<div class="center-block paso-a-paso-cont"  style="">
+	            <img src="../imagenes/quiero_pagar/paso-1.png" class="paso-a-paso">
+	            <img src="../imagenes/quiero_pagar/paso-inactive-2.png" class="paso-a-paso" >
+	            <img src="../imagenes/quiero_pagar/paso-inactive-3.png" class="paso-a-paso">
 	        </div>
             	<div class="col-sm-12"><span class="hf_tabla"><?php  echo $response->nombre; ?></span></div>
 				<div class="col-sm-12 text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>
@@ -294,9 +255,12 @@ a:hover
             
             <a class="contactorapido_btn" target="_parent" href="../metodos_pago.php">QUIERO PAGAR</a>-->
 		<?php }  ?>
-        
+
+		
+
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 		<script src="js/bootstrap.js"></script>
+		 
 	</body>
 </html>
 

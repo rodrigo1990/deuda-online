@@ -1,118 +1,13 @@
 <?php include('header.php'); ?>
 <?php
 include("api2/clases/Acreedor.php");
+$response=unserialize($_POST['response']);
+$acreedor=new Acreedor($response);
+//echo $_POST['dni'].'<br>';
+$acreedor->mostrarAcreedor($_POST['posicion']);
+$partes=explode(" ", $_POST['pauta']);
+$monto_a_pagar=$partes[4]*1;
 ?>
-<style type="text/css">
-.nombre_deudor{
-	
-	color:#1a9cd6;
-	text-align:center;
-	font-size:15px;
-	font-weight:bold;	
-
-}
-.acuerdo{
-	color:#404041;
-	font-size:18px;
-	font-weight:bold;
-	
-	
-}
-.leyenda_ts{
-	font-size:14px;
-	
-	margin-top:20px;
-	color:##6d6e70;	
-}
-
-.pago_10dias{ color:#1a9cd6; font-size:20px; }
-
-.modal{
-  background-color: rgba(0,0,0,0.5); 
-}
-
-.modal-body{
-  position: relative !important;
-    padding: 15px !important;
-    text-align:center !important;
-    font-weight:  bolder !important;
-    font-size: 2rem !important;
-}
-
-.modal-header {
-    border-bottom: none !important;
-}
-
-.modal-footer {
-    text-align: center !important;
-    border-top: none !important;
-}
-
-.modal-footer button {
-  font-weight: bolder;
-}
-
-.tilde img{
-  width: 157px;
-  
-}
-
-
-.tilde{
-  text-align: center;
-  
-}
-
-.tilde h3{
-  font-weight: bold;
-}
-
-
-</style>
-
-</<script type="text/javascript" src="<?php echo $base_url ?>js/jquery.mousewheel-3.0.6.pack.js"></script>
-<script type="text/javascript" src="<?php echo $base_url ?>js/jquery.fancybox.js?v=2.1.5"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo $base_url ?>css/fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.fancybox').fancybox();
-  });
- function enviarDatosAcuerdo(){
-	
-	
-	email=document.getElementById("email").value;
-	telefono=document.getElementById("telefono").value;
-	acree=document.getElementById("acree").value;
-	pauta=document.getElementById("pauta").value;
-	dni=document.getElementById("dni").value;
-	nombre=document.getElementById("nombre").value;
-	
-	if(email.length==0){
-	alert("Debe completar el E-mail:");
-	return false;	
-	}
-	
-	$.ajax({
-				data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre,
-				url:'enviarDatosAcuerdo.php',
-				type:'get',
-				success:function(response){					
-					
-          $('#myModal').modal('show');
-          $("#paso-2").attr('src','imagenes/quiero_pagar/paso-inactive-2.png');
-          $("#paso-3").attr('src','imagenes/quiero_pagar/paso-3.png');
-          $("#form-msj").hide();
-					$("#formulario_acuerdo").html(response);
-				}
-				});
-
- }
-</script>
-
-<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_american.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_master.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_visa.js"></script>
 
 <div class="cabecera_160" id="c_quiero_pagar">
    QUIERO PAGAR
@@ -123,107 +18,28 @@ include("api2/clases/Acreedor.php");
  <div class="col-sm-12 mostrar-acep-cont">
     
     <div>
-    <?php
 
-$response=unserialize($_POST['response']);
-$acreedor=new Acreedor($response);
-//echo $_POST['dni'].'<br>';
-$acreedor->mostrarAcreedor($_POST['posicion']);
-$partes=explode(" ", $_POST['pauta']);
-$monto_a_pagar=$partes[4]*1;
-
-?>
-            <div class="center-block" class="paso-a-paso-cont" style="width: 76%;height: 119px;padding-bottom:13%;">
-              <img src="imagenes/quiero_pagar/paso-inactive-1.png" class="paso-a-paso" style='float:left;width:300px'>
-              <img src="imagenes/quiero_pagar/paso-2.png" id="paso-2" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>
-              <img src="imagenes/quiero_pagar/paso-inactive-3.png" id="paso-3" class="paso-a-paso" style='float:left;width:300px;margin-lefT:-44px'>
-          </div>        
+            <div class="center-block paso-a-paso-cont"  style="">
+              <img src="imagenes/quiero_pagar/paso-inactive-1.png" class="paso-a-paso" style='float:left;margin-left:0px !important'>
+              <img src="imagenes/quiero_pagar/paso-2.png" id="paso-2" class="paso-a-paso" style=''>
+              <img src="imagenes/quiero_pagar/paso-inactive-3.png" id="paso-3" class="paso-a-paso" style=''>
+          </div>   
          
     <div class="col-sm-12 nombre_deudor"><?php ?></div>
       <div class="titulos_pagar">MÉTODOS DE PAGO</div>
       
       <div class="col-sm-6 text-center ">
       
-     
-		<?php
-    echo "<div class='nombre_deudor'>
-    <h2>
-    ";
-    echo utf8_encode($response->nombre); 
-    
-    echo "
-    </h2>
-    </div>
-    ";
+     <div class="nombre_deudor">
+       <h2>
+         <?php echo utf8_encode($response->nombre); ?>
+       </h2>
+     </div>
 
-    echo "<h2><strong>Seleccionó el acuerdo: <br/>".$_POST['pauta']."</strong></h2>";
-     /*   switch($acreedor->mostrarAcreedor($_POST['posicion'])){
-            
-            case "TARSHOP":{
-				?>
-                  <a><img src="imagenes/quiero_pagar/7.png" alt="" /></a>
-       <p class="leyenda_ts">Debe dirigirse a cualquier PAGO FÁCIL o RAPIPAGO.
-Indicarle al cajero que hace un PAGO SIN FACTURA A LA ENTIDAD <strong>TARJETA SHOPPING saldo deudor con su nro de DNI.</strong></p>
-         <a class="fancybox" href="#medio_111"><img src="imagenes/quiero_pagar/1.png" alt="" /></a>
-           
-              <a class="fancybox" href="#tarjeta_american"><img src="imagenes/quiero_pagar/t1.png" alt="" /></a>
-              <a class="fancybox" href="#tarjeta_master"><img src="imagenes/quiero_pagar/t2.png" alt="" /></a>
-              <a class="fancybox" href="#tarjeta_visa"><img src="imagenes/quiero_pagar/t3.png" alt="" /></a>
-              
-             
-              <a class="fancybox" href="#medio_4"><img src="imagenes/quiero_pagar/4.png" alt="" /></a>
-               <a class="fancybox" href="#medio_2"><img src="imagenes/quiero_pagar/2.png" alt="" /></a>
-              <a class="fancybox" href="#medio_3"><img src="imagenes/quiero_pagar/3.png" alt="" /></a>
-              <a class="fancybox" href="#medio_5"><img src="imagenes/quiero_pagar/5.png" alt="" /></a>
-              <a class="fancybox" href="#medio_6"><img src="imagenes/quiero_pagar/6.png" alt="" /></a>        
-                <?php
-            }
-            break;
-            case "COMAFI":{
-				?>
-           <a><img src="imagenes/quiero_pagar/1.png" alt="" /></a>
-       <p class="leyenda_ts">Debe dirigirse a cualquier PAGO FÁCIL.<br />
-Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
-<span class="pago_10dias">PLAN VÁLIDO SOLO POR 10 DÍAS CORRIDOS</span></strong></p>
-<a class="fancybox" href="#medio_111"><img src="imagenes/quiero_pagar/1.png" alt="" /></a>
-           
-              <a class="fancybox" href="#tarjeta_american"><img src="imagenes/quiero_pagar/t1.png" alt="" /></a>
-              <a class="fancybox" href="#tarjeta_master"><img src="imagenes/quiero_pagar/t2.png" alt="" /></a>
-              <a class="fancybox" href="#tarjeta_visa"><img src="imagenes/quiero_pagar/t3.png" alt="" /></a>
-              
-             
-              <a class="fancybox" href="#medio_4"><img src="imagenes/quiero_pagar/4.png" alt="" /></a>
-               <a class="fancybox" href="#medio_2"><img src="imagenes/quiero_pagar/2.png" alt="" /></a>
-              <a class="fancybox" href="#medio_3"><img src="imagenes/quiero_pagar/3.png" alt="" /></a>
-              <a class="fancybox" href="#medio_5"><img src="imagenes/quiero_pagar/5.png" alt="" /></a>
-              <a class="fancybox" href="#medio_6"><img src="imagenes/quiero_pagar/6.png" alt="" /></a> 
-             <?php
-            }
-            break;
-            case "SANTANDER":{
-             ?>
-             <a class="fancybox"><img src="imagenes/quiero_pagar/1.png" alt="" /></a>
-              <br>
-              Indicar al cajero <span><b>PAGO ABIERTO SIN FACTURA</b></span> <br> a nombre del <span><b>ESTUDIO JURIDICO PALMERO</b></span>
-              <br><br>
-              Rubro: <b>GESTION DE DEUDA</b>
-              <br>
-              Entidad: <b>0420</b>
-              <br>
-              Nro de referencia de pago:<b><?php echo $acreedor->response->documento; ?></b>
 
-             <?php   
-            }
-            break;
-            default:{
-				?>
-              
-                
-                <?php
-            }
-            break;
-        }*/
-        ?>
+    <h2><strong>Seleccionó el acuerdo: <br/><?php echo $_POST['pauta']?></strong></h2>
+
+      
   
       
       </div><!-- fin col 6 forma de pago-->
@@ -415,6 +231,7 @@ Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
   En las oficinas de EPB&A (Reconquista 660, CABA) de lunes a viernes de 8 a 19 hs y sábados de 8 a 12 hs.
 </div>
 <!-- FIN POPUP -->
+<?php include('ayuda-xs.php') ?>
 
 <script type="text/javascript">
   $(function()
@@ -443,5 +260,49 @@ Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
   });
 </script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+</<script type="text/javascript" src="<?php echo $base_url ?>js/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="<?php echo $base_url ?>js/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $base_url ?>css/fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.fancybox').fancybox();
+  });
+ function enviarDatosAcuerdo(){
+  
+  
+  email=document.getElementById("email").value;
+  telefono=document.getElementById("telefono").value;
+  acree=document.getElementById("acree").value;
+  pauta=document.getElementById("pauta").value;
+  dni=document.getElementById("dni").value;
+  nombre=document.getElementById("nombre").value;
+  
+  if(email.length==0){
+  alert("Debe completar el E-mail:");
+  return false; 
+  }
+  
+  $.ajax({
+        data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre,
+        url:'enviarDatosAcuerdo.php',
+        type:'get',
+        success:function(response){         
+          
+          $('#myModal').modal('show');
+          $("#paso-2").attr('src','imagenes/quiero_pagar/paso-inactive-2.png');
+          $("#paso-3").attr('src','imagenes/quiero_pagar/paso-3.png');
+          $("#form-msj").hide();
+          $("#formulario_acuerdo").html(response);
+        }
+        });
+
+ }
+</script>
+
+<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_american.js"></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_master.js"></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_visa.js"></script>
+ <script src="js/mostrarAyudaModal.js"></script>
 
 <?php include('footer.php'); ?>

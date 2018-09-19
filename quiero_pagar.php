@@ -6,7 +6,8 @@
 <br /><br />
 
 <div class="container">
-  <iframe src="https://www.deudaonline.com.ar/api2/" style="width: 100%; height: 640px; border: 0px; overflow: hidden;"></iframe>
+  <iframe src="api2/" style=""></iframe>
 </div>
+ <?php include('ayuda-xs.php'); ?>
+ <script src="js/mostrarAyudaModal.js"></script>
 
-<?php include('footer.php'); ?>

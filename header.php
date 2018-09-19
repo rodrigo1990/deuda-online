@@ -5,8 +5,8 @@ error_reporting(0);
 
 $url_actual = basename($_SERVER['SCRIPT_NAME']);
 $url_actual = str_replace('.php', '', $url_actual);
-//$base_url = "http://localhost:8080/legion/deudaonline/";
-$base_url = "https://www.deudaonline.com.ar/";
+$base_url = "http://localhost/repolegioncreativa/deuda-online/";
+//$base_url = "http://www.deudaonline.com.ar/";
 ?>
 
 <!DOCTYPE html>
@@ -23,20 +23,20 @@ $base_url = "https://www.deudaonline.com.ar/";
     <link rel="icon" type="image/png" href="imagenes/favicon-16x16.png" sizes="16x16" />
 
     <!-- CSS -->
-    <link href="<?php echo $base_url ?>css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo $base_url ?>css/styles.css" rel="stylesheet">
-    <link href="<?php echo $base_url ?>css/queries.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/queries.css" rel="stylesheet">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="<?php echo $base_url ?>css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 
     <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="https://s3.amazonaws.com/menumaker/menumaker.min.js" type="text/javascript"></script>
-    <script src="<?php echo $base_url ?>js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-    <script src="<?php echo $base_url ?>js/menu.js"></script>
+    <script src="js/menu.js"></script>
     <!-- Código de instalación Cliengo para  www.deudaonline.com.ar/index/ -->
 <script type="text/javascript">(function(){var ldk=document.createElement('script');ldk.type='text/javascript';ldk.async=true;ldk.src='https://s.cliengo.com/weboptimizer/5ab2de19e4b0b795c557873c/5ac3e72be4b09ccb2aaa44a5.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ldk, s);})();</script>
     <link rel="stylesheet" href="<?php echo $base_url ?>css/menu.css">

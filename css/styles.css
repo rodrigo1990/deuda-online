@@ -447,6 +447,9 @@ footer
   font-weight: 500;
 }
 
+.paso-a-paso-cont{
+  width: 693px;height: 119px;
+}
 
 .paso-a-paso{
   list-style: none;
@@ -542,7 +545,9 @@ footer
 }
 
 img.paso-a-paso{
-  width:300px;
+  width:250px;
+  float:left;
+  margin-left: -30px;
 }
 
 .right{
@@ -562,4 +567,164 @@ img.paso-a-paso{
 .ayuda-xs a:hover {
   color:#1a9cd6;
   transition:color 0.5s;
+}
+
+.nombre_deudor{
+  
+  color:#1a9cd6;
+  text-align:center;
+  font-size:15px;
+  font-weight:bold; 
+
+}
+.acuerdo{
+  color:#404041;
+  font-size:18px;
+  font-weight:bold;
+  
+  
+}
+.leyenda_ts{
+  font-size:14px;
+  
+  margin-top:20px;
+  color:##6d6e70; 
+}
+
+.pago_10dias{ color:#1a9cd6; font-size:20px; }
+
+.modal{
+  background-color: rgba(0,0,0,0.5); 
+}
+
+.modal-body{
+  position: relative !important;
+    padding: 15px !important;
+    text-align:center !important;
+    font-weight:  bolder !important;
+    font-size: 2rem !important;
+}
+
+.modal-header {
+    border-bottom: none !important;
+}
+
+.modal-footer {
+    text-align: center !important;
+    border-top: none !important;
+}
+
+.modal-footer button {
+  font-weight: bolder;
+}
+
+.tilde img{
+  width: 157px;
+  
+}
+
+
+.tilde{
+  text-align: center;
+  
+}
+
+.tilde h3{
+  font-weight: bold;
+}
+
+@media screen and (min-width: 770px) and (max-width: 1030px) {
+  .paso-a-paso-cont{
+    display:block;
+
+  }
+  img.paso-a-paso{
+    width:250px !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+.contactorapido_btn
+{
+  margin-top: 20px;
+  background: #1a9cd6;
+  color: #ffffff;
+  border: 0px;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+a:hover
+{
+  text-decoration: none;
+  color: #ffffff;
+}
+.hf_tabla {
+    color: #1a9cd6;
+    text-align: center;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+.div_33{ width:33%; float:left; text-align:center; color:#333; font-size:13px; font-weight:bold; padding-bottom:5px;}
+.div_33b{ width:33%; float:left; text-align:center; color:#1a9cd6; font-size:13px; font-weight:bold; padding-bottom:5px;}
+.contactorapido_btn {
+    float: none !important; 
+ 
+}
+
+.ayuda-xs-btn{
+  display:none;
+    position: fixed;
+    cursor:pointer;
+    left: 22px;
+    color:white;
+    bottom: 12px;
+    background-color:grey ;
+    z-index:50;
+    padding: 12px;
+    border-radius: 50%;
+    width: 55px;
+    transition: background-color 1s;
+    -webkit-box-shadow: -4px 10px 26px -8px rgba(0,0,0,0.75);
+-moz-box-shadow: -4px 10px 26px -8px rgba(0,0,0,0.75);
+box-shadow: -4px 10px 26px -8px rgba(0,0,0,0.75);
+text-decoration: none;
+}
+
+.ayuda-xs-btn:hover{
+  background-color: #3cabdc;
+  transition:background-color 1s;
+  color:white;
+}
+
+
+.ayuda-xs-btn h2{
+  margin:0;
+}
+
+.ayuda-xs-btn b{
+      margin-left: 8px;
+}
+
+iframe{
+  width: 100%; height: 640px; border: 0px; overflow: hidden;z-index: -50px
+}
+
+.paso-a-paso-xs{
+  display: block;
+    width: 66%;
+    margin-top: 4%;
+
 }

@@ -1,9 +1,9 @@
-@media screen and (min-width: 769px) and (max-width: 1030px) {
+@media screen and (min-width: 770px) and (max-width: 1030px) {
 	.paso-a-paso-cont{
 		display:block;
 
 	}
-	.paso-a-paso{
+	img.paso-a-paso{
 		width:250px !important;
 	}
 }
@@ -31,6 +31,11 @@
 
 	img.paso-a-paso{
 		display:none;
+	}
+
+	.ayuda-xs-btn{
+	  display:block;
+ 
 	}
 }
 
