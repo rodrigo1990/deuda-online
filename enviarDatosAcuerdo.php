@@ -202,6 +202,67 @@ $nombre=$_GET['nombre'];
 
 
                   break;
+
+                   case 'HIPOTECARIO':
+                  $cuerpo .= "
+                  <a class='fancybox'><img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/1.png' style='margin-left: auto;margin-right: auto;display: block;'/></a>
+                    Indicar al cajero <span><b>PAGO ABIERTO SIN FACTURA</b></span> <br> a nombre del <span><b>ESTUDIO JURIDICO PALMERO</b></span>
+                    <br><br>
+                    Rubro: <b>GESTION DE DEUDA</b>
+                    <br>
+                    Entidad: <b>0420</b>
+                    <br>
+                    Nro de referencia de pago:<b>".$dni."</b>
+                    <br>
+                    <br>
+                    ";
+
+                  $cuerpo .= "
+                  </td>
+                  </tr>";
+
+                  $cuerpo  .= "
+                  <tr>
+                  <td style='text-align: center;'>
+                  ";
+
+                  $cuerpo .="
+                  <br>
+                  <b>Nombre y Apellido:</b> " . $nombre . "<br>
+                  <b>DNI:</b> " . $dni . "<br>
+                  <b>Telefono:</b> " . $telefono . "<br>
+                  <b>Email:</b> " . $email . "<br>
+                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
+                  ";
+
+            
+                 
+                 
+                  $cuerpo .= "
+                  </td>
+                  </tr>";
+
+                  $cuerpo .="
+                  <tr>
+                    <td>
+                      <div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
+                      text-align: center;font-family:verdana'>
+                     LO DEBES ABONAR EN LOS PROXIMOS 4 DIAS, SINO DEBEMOS ACTUALIZAR TU SALDO A PAGAR
+                    </div>
+                    </td>
+                  </tr>
+
+                  ";
+
+                
+
+                  
+
+
+                  $cuerpo .="
+                  </table>";
+
+                  break;
             
             
       }
@@ -220,21 +281,18 @@ $nombre=$_GET['nombre'];
       $mail->FromName = "Deuda Online";
       $mail->Subject = "Confirmacion de acuerdo de deuda";
       $mail->AddAddress($email,"Deuda Online");
+    $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+
       $mail->Body = $cuerpo;
       $mail->AltBody = "";
-      $mail->Send();
-    
+
       echo '
           <div class="tilde">
           <img src="imagenes/quiero_pagar/tilde.png" class="center-block">
           <h3>¡ACUERDO ENVIADO!</h3>
           </div>
       ';
-      $mail->Subject = "ADMINISTRACION";
-      $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
-      //$mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
-      $mail->Body = $cuerpo;
-      $mail->AltBody = "";
+  
       $mail->Send();
     
 ?>
