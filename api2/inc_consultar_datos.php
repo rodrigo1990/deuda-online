@@ -146,6 +146,10 @@
 			$pauta->ptitulo = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->ptitulo) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->ptitulo)) : '';
 			$pauta->phono = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->phono) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->phono)) : '';
 			$acreedor->pautas[$i] = $pauta;
+
+
+			echo "<br>";
+			echo $simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->pmonto;
 		}
 			
 		/*termina pauta, empieza productos*/	

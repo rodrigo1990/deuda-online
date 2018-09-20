@@ -74,7 +74,7 @@
                 <?php
 				if(count($response->acreedores)==1){
 				?>
-				<?php //var_dump($response->acreedores) ?>
+				<?php var_dump($response->acreedores) ?>
 				<table style="width: 100%; max-width: 700px; margin: auto; margin-bottom:30px; font-weight: 400;  text-align:center;">
 					<thead style="border-bottom: 1px solid #1a9cd6; height: 50px;">
 						<tr>
@@ -142,7 +142,7 @@
 
 								<?php if($acreedor->obtenerPmonto(0)=="s_total"): ?>
 								
-									<th style="text-align:center;">$hpasd</th>
+									<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->saldo*$honorario),2); ?></th>
 								
 								<?php elseif($acreedor->obtenerPmonto(0)=="s_cancelacion"): ?>
 
@@ -224,9 +224,9 @@
 
 							<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta($i))  ?>
 
-							<?php if($acreedor->obtenerPmonto(0)=="s_cancelacion"): ?>
+							<?php if($acreedor->obtenerPmonto($i)=="s_cancelacion"): ?>
 								
-                    			$<?php if($acree->saldo!=0){ echo number_format($acree->cancela*$honorario, 2, ',', '.');} ?>
+                    			$<?php if($acree->cancela!=0){ echo number_format($acree->cancela*$honorario, 2, ',', '.');} ?>
 							
 							
 							<?php else: ?>
