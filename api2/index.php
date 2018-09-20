@@ -140,9 +140,15 @@
 
 								<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta(0))  ?>
 
+								<?php if($acreedor->obtenerPmonto(0)=="s_total"): ?>
+								
+									<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->saldo*$honorario),2); ?></th>
+								
+								<?php elseif($acreedor->obtenerPmonto(0)=="s_cancelacion"): ?>
 
-								<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->saldo*$honorario),2); ?></th>
-							
+										<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->cancela*$honorario),2); ?></th>
+
+								<?php endif; ?>
 							
 							</tr>
                             <?php
@@ -158,8 +164,16 @@
                         	<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta(0))  ?>
 
 
+                        	<?php if($acreedor->obtenerPmonto(0)=="s_total"): ?>
+								
+                        		<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->saldo*$honorario!=0){ echo number_format($acree->saldo*$honorario*1, 2, ',', '.');} ?></td>
+								
+							<?php elseif($acreedor->obtenerPmonto(0)=="s_cancelacion"): ?>
 
-                        	<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->saldo*$honorario!=0){ echo number_format($acree->saldo*$honorario*1, 2, ',', '.');} ?></td>
+                    			<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->cancela*$honorario!=0){ echo number_format($acree->cancela*$honorario*1, 2, ',', '.');} ?></td>
+
+							<?php endif; ?>
+
 
                           
 

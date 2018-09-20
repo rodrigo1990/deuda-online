@@ -5,7 +5,7 @@ error_reporting(0);
 
 $url_actual = basename($_SERVER['SCRIPT_NAME']);
 $url_actual = str_replace('.php', '', $url_actual);
-$base_url = "http://localhost/repolegioncreativa/deuda-online/";
+$base_url = "http://localhost/gitrepo/deuda-online/";
 //$base_url = "http://www.deudaonline.com.ar/";
 ?>
 
@@ -24,6 +24,7 @@ $base_url = "http://localhost/repolegioncreativa/deuda-online/";
 
     <!-- CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/menu.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/queries.css" rel="stylesheet">
     
