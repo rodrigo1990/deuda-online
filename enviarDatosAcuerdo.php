@@ -64,7 +64,9 @@ $nombre=$_GET['nombre'];
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Telefono:</b> " . $telefono . "<br>
                   <b>Email:</b> " . $email . "<br>
+                  <b>Cartera:</b> " . $acree . "<br>
                   <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
+                  
                   ";
 
                  // $cuerpo .= '<b><span style="display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;"><a style="color:#FFF; text-decoration:none;" href="http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni='.$dni.'&nombre='.$nombre.'&pauta='.$pauta.'&acree='.$acree.'&tel='.$telefono.'&email='.$email.'">HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>';
@@ -121,7 +123,8 @@ $nombre=$_GET['nombre'];
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Teléfono:</b> " . $telefono . "<br>
                   <b>Email:</b> " . $email . "<br>
-                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br>
+                  <b>Cartera:</b> " . $acree . "<br>
+                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
                   ";
 
                   //$cuerpo .= "<b><span style='display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;'><a style='color:#FFF; text-decoration:none;' href='http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni=".$dni."&nombre=".$nombre."&pauta=".$pauta."&acree=".$acree."&tel=".$telefono."&email=".$email."'>HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>";
@@ -168,7 +171,8 @@ $nombre=$_GET['nombre'];
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Teléfono:</b> " . $telefono . "<br>
                   <b>Email:</b> " . $email . "<br>
-                  <b>Acuerdo de pago:</b> " . $pauta . "<br> <br>
+                  <b>Cartera:</b> " . $acree . "<br>
+                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
 
                   ";
                  
@@ -232,6 +236,7 @@ $nombre=$_GET['nombre'];
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Telefono:</b> " . $telefono . "<br>
                   <b>Email:</b> " . $email . "<br>
+                  <b>Cartera:</b> " . $acree . "<br>
                   <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
                   ";
 
@@ -281,8 +286,8 @@ $nombre=$_GET['nombre'];
       $mail->FromName = "Deuda Online";
       $mail->Subject = "Confirmacion de acuerdo de deuda";
       $mail->AddAddress($email,"Deuda Online");
-    $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
-
+    $mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
+ //$mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
       $mail->Body = $cuerpo;
       $mail->AltBody = "";
 
