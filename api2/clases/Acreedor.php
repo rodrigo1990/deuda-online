@@ -33,7 +33,7 @@ class Acreedor{
 				$acreedor = $this->mostrarAcreedor($posicion);
 
 
-				if($pauta->pmonto=="s_cancelacion" && $acree->cancela!='0,00'){
+				if($pauta->pmonto=="s_cancelacion"){
 
 					$monto=($acree->cancela);	
 				
@@ -73,15 +73,6 @@ class Acreedor{
 				//$opcion.=$pauta->pctas.$cta." de $ ".$cuotas;
 				
 				
-				if($pauta->pmonto=="s_cancelacion" && $acree->cancela!='0,00'){
-
-					$monto=($acree->cancela);	
-
-				}else{
-
-					$monto=($acree->saldo);
-
-				}
 				if($i==1){
 
 					$checked=" checked ";	
@@ -140,6 +131,8 @@ class Acreedor{
 			$acreedor="COMAFI";	
 			}else if($this->response->acreedores[$posicion]->nombre=="SANTANDER RIO"){
 			$acreedor="SANTANDER";
+			}else if($this->response->acreedores[$posicion]->nombre=="BANCO HIPOTECARIO"){
+			$acreedor="HIPOTECARIO";
 			}
 			else{
 			$acreedor="OTROS";	
@@ -156,6 +149,20 @@ class Acreedor{
 		foreach($acree->pautas as $pauta){
 			
 			return $pauta->phono;	
+			
+		}//fin del for
+
+	}//function
+
+
+	function obtenerPmonto($posicion){
+
+		$acree=$this->response->acreedores[$posicion];
+
+
+		foreach($acree->pautas as $pauta){
+			
+			return $pauta->pmonto;	
 			
 		}//fin del for
 

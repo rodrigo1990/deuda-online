@@ -74,6 +74,7 @@
                 <?php
 				if(count($response->acreedores)==1){
 				?>
+				<?php var_dump($response->acreedores) ?>
 				<table style="width: 100%; max-width: 700px; margin: auto; margin-bottom:30px; font-weight: 400;  text-align:center;">
 					<thead style="border-bottom: 1px solid #1a9cd6; height: 50px;">
 						<tr>
@@ -86,10 +87,11 @@
 					</thead>
 					<tbody>
 						<?php foreach($response->acreedores as $acree) :  ?>
-                        	
+                        	<?php ?>
 							<?php
 							
 								foreach($acree->productos as $producto){ 
+	
 								$fecha_deuda =time();
 								$fecha_deuda = substr($fecha_deuda, 0, 10);
 
