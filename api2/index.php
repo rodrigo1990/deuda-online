@@ -74,7 +74,7 @@
                 <?php
 				if(count($response->acreedores)==1){
 				?>
-				<?php var_dump($response->acreedores) ?>
+				<?php //var_dump($response->acreedores) ?>
 				<table style="width: 100%; max-width: 700px; margin: auto; margin-bottom:30px; font-weight: 400;  text-align:center;">
 					<thead style="border-bottom: 1px solid #1a9cd6; height: 50px;">
 						<tr>
@@ -142,7 +142,7 @@
 
 								<?php if($acreedor->obtenerPmonto(0)=="s_total"): ?>
 								
-									<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->saldo*$honorario),2); ?></th>
+									<th style="text-align:center;">$hpasd</th>
 								
 								<?php elseif($acreedor->obtenerPmonto(0)=="s_cancelacion"): ?>
 
@@ -164,13 +164,13 @@
                         	<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta(0))  ?>
 
 
-                        	<?php if($acreedor->obtenerPmonto(0)=="s_total"): ?>
+                        	<?php if($acreedor->obtenerPmonto(0)=="s_cancelacion"): ?>
 								
-                        		<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->saldo*$honorario!=0){ echo number_format($acree->saldo*$honorario*1, 2, ',', '.');} ?></td>
+                        		<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->cancela*$honorario!=0){ echo number_format($acree->cancela*$honorario*1, 2, ',', '.');} ?></td>
 								
-							<?php elseif($acreedor->obtenerPmonto(0)=="s_cancelacion"): ?>
+							<?php else: ?>
 
-                    			<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->cancela*$honorario!=0){ echo number_format($acree->cancela*$honorario*1, 2, ',', '.');} ?></td>
+                    			<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->saldo*$honorario!=0){ echo number_format($acree->saldo*$honorario*1, 2, ',', '.');} ?></td>
 
 							<?php endif; ?>
 
@@ -223,7 +223,19 @@
                           <div class="div_33">
 
 							<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta($i))  ?>
-                         	$<?php if($acree->saldo!=0){ echo number_format($acree->saldo*$honorario, 2, ',', '.');} ?>
+
+							<?php if($acreedor->obtenerPmonto(0)=="s_cancelacion"): ?>
+								
+                    			$<?php if($acree->saldo!=0){ echo number_format($acree->cancela*$honorario, 2, ',', '.');} ?>
+							
+							
+							<?php else: ?>
+								$<?php if($acree->saldo!=0){ echo number_format($acree->saldo*$honorario, 2, ',', '.');} ?>	
+
+
+							<?php endif; ?>
+
+
 
                          
 								
