@@ -33,7 +33,7 @@ class Acreedor{
 				$acreedor = $this->mostrarAcreedor($posicion);
 
 
-				if($pauta->pmonto=="s_cancelacion"){
+				if($pauta->pmonto=="s_cancelacion" && $acree->cancela!='0,00'){
 
 					$monto=($acree->cancela);	
 				
