@@ -5,7 +5,7 @@
 		$useCurl	= false;
 	
 		if($debug) {
-			error_reporting(E_ALL);
+			error_reporting(0);
 		}
 		
 		
@@ -148,7 +148,8 @@
 			$acreedor->pautas[$i] = $pauta;
 
 
-	
+			/*echo "<br>";
+			echo $simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->pmonto;*/
 		}
 			
 		/*termina pauta, empieza productos*/	
@@ -163,15 +164,17 @@
 			$producto->moneda = isset($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->moneda) ? trim(strval($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->moneda)) : '';
 			$producto->moneda 	= isset($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->moneda) ? trim(strval($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->moneda)) : '';
 			$producto->saldo = isset($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->saldo) ? trim(strval($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->saldo)) : '';
-			$producto->cancela = isset($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->Cancela) ? trim(strval($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->Cancela)) : '';
-			
+			$producto->cancela = isset($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->cancela) ? trim(strval($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->cancela)) : '';
 			$acreedor->productos[$i] = $producto;
-			
 			$tot_saldo+=isset($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->saldo) ? trim(strval($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->saldo)) : 0;;
-
 			$tot_cancela+=isset($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->cancela) ? trim(strval($simplexml->Resultado->Acreedor[$j]->Productos->pr[$i]->cancela)) : 0;
 				
+
+
+
 		}//fin de productos
+
+
 		
 		$acreedor->saldo=$tot_saldo;
 		$acreedor->cancela=$tot_cancela;

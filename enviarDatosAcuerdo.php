@@ -18,25 +18,30 @@ $nombre=$_GET['nombre'];
 
 
       $cuerpo  .= "
-      <table style='font-size:1rem;margin-left: auto;margin-right: auto;font-family:arial;border-radius:10px;background-color: #f3f3ff;border:30px solid #f3f3ff '>
-        <tr>
-          <td>
-          <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
-          </td>
-        </tr>
-        <tr>
-          <td>
-              <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>ACTIVASTE TU ACUERDO DE PAGO <br> ".strtoupper($pauta)."</h2>
-          </td>
-        </tr>
-
-      <tr>
-      <td style='text-align: center;'>
+      <table style='font-size:1rem;margin-left: auto;margin-right: auto;font-family:arial;border-radius:10px;background-color: #f3f3ff;border:30px solid #f3f3ff;text-align:center; '>
+       
       ";
 
       switch ($acree) {
             case 'SANTANDER':
                   $cuerpo .= "
+                  
+                   <tr>
+                      <td>
+                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>ACTIVASTE TU ACUERDO DE PAGO CON <b>BANCO SANTANDER RIO</b> <br> ".strtoupper($pauta)."</h2>
+                      </td>
+                    </tr>
+            
+                  <tr>
+                  <td style='text-align: center;'>
+                  
+                  
+                  
                   <a class='fancybox'><img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/1.png' style='margin-left: auto;margin-right: auto;display: block;'/></a>
                     Indicar al cajero <span><b>PAGO ABIERTO SIN FACTURA</b></span> <br> a nombre del <span><b>ESTUDIO JURIDICO PALMERO</b></span>
                     <br><br>
@@ -64,9 +69,7 @@ $nombre=$_GET['nombre'];
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Telefono:</b> " . $telefono . "<br>
                   <b>Email:</b> " . $email . "<br>
-                  <b>Cartera:</b> " . $acree . "<br>
                   <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
-                  
                   ";
 
                  // $cuerpo .= '<b><span style="display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;"><a style="color:#FFF; text-decoration:none;" href="http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni='.$dni.'&nombre='.$nombre.'&pauta='.$pauta.'&acree='.$acree.'&tel='.$telefono.'&email='.$email.'">HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>';
@@ -101,10 +104,25 @@ $nombre=$_GET['nombre'];
 
             case 'COMAFI':
                   $cuerpo .= '
+                  
+                   <tr>
+                      <td>
+                      <img src="http://www.deudaonline.com.ar/imagenes/logo.png" style="width:300px;margin-left:auto;margin-right:auto;display:block">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <h2 style="text-align:center;font-family:verdana;color:grey;font-weight: 100;">ACTIVASTE TU ACUERDO DE PAGO CON <b>BANCO COMAFI</b> <br> '.strtoupper($pauta).'</h2>
+                      </td>
+                    </tr>
+                  
+                  
                   <a><img src="https://www.deudaonline.com.ar/imagenes/quiero_pagar/1.png" alt="" style="margin-left: auto;margin-right: auto;display: block;" /></a>
-                  <p style=" text-align: center;"class="leyenda_ts">Debe dirigirse a cualquier PAGO FÁCIL.<br />
-                  Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 <br/>
+                  <p style=" text-align: center;"class="leyenda_ts">Debe dirigirse a cualquier PAGO FACIL.<br />
+                  Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 con su numero de referencia de pago</strong> <br/>
+                 <b> DNI: '.$dni.'</b>
                   <a class="fancybox" href="#medio_111"><img src="imagenes/quiero_pagar/1.png" alt="" /></a>
+                 
                        
                  ';
 
@@ -121,10 +139,9 @@ $nombre=$_GET['nombre'];
                   <br>
                   <b>Nombre y Apellido:</b> " . $nombre . "<br>
                   <b>DNI:</b> " . $dni . "<br>
-                  <b>Teléfono:</b> " . $telefono . "<br>
+                  <b>Telefono:</b> " . $telefono . "<br>
                   <b>Email:</b> " . $email . "<br>
-                  <b>Cartera:</b> " . $acree . "<br>
-                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
+                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br>
                   ";
 
                   //$cuerpo .= "<b><span style='display:inline-block; background:#1a9cd6; border-radius:3px; color:#FFF; padding:10px 15px;'><a style='color:#FFF; text-decoration:none;' href='http://www.legioncreativa.com/test/deuda_online/confirmar_acuerdo.php?dni=".$dni."&nombre=".$nombre."&pauta=".$pauta."&acree=".$acree."&tel=".$telefono."&email=".$email."'>HAGA CLICK AQUI PARA CONFIRMAR SU ACUERDO</a></span></b><br>";
@@ -143,7 +160,8 @@ $nombre=$_GET['nombre'];
                     <td>
                       <div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
                       text-align: center;font-family:verdana'>
-                      PLAN VALIDO SOLO POR 10 DÍAS CORRIDOS
+                      REALIZAR EL PAGO EN LAS PROXIMAS 72HS
+
                     </div>
                     </td>
                   </tr>
@@ -156,9 +174,28 @@ $nombre=$_GET['nombre'];
 
             case 'TARSHOP':
                   $cuerpo .= '
+                  
+                  
+                  <tr>
+                      <td>
+                      <img src="http://www.deudaonline.com.ar/imagenes/logo.png" style="width:300px;margin-left:auto;margin-right:auto;display:block">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <h2 style="text-align:center;font-family:verdana;color:grey;font-weight: 100;">ACTIVASTE TU ACUERDO DE PAGO CON <b>TARJETA SHOPPING</b> <br> '.strtoupper($pauta).'</h2>
+                      </td>
+                    </tr>
+                  
+                  
+                  
                   <a><img src="https://www.deudaonline.com.ar/imagenes/quiero_pagar/7.png" alt="" style="margin-left: auto;margin-right: auto;display: block;" /></a>
                   <p style="text-align:center"class="leyenda_ts">Debe dirigirse a cualquier PAGO FÁCIL o RAPIPAGO.<br>
-                  Indicarle al cajero que hace un PAGO SIN FACTURA A LA ENTIDAD <br> <strong>TARJETA SHOPPING saldo deudor con su nro de DNI.</strong></p>';
+                  Indicarle al cajero que hace un PAGO SIN FACTURA A LA ENTIDAD <br> <strong>TARJETA SHOPPING saldo deudor con su nro de DNI.</strong></p>
+ 
+                  ';
+                  
+                  
                  
 
 
@@ -169,10 +206,9 @@ $nombre=$_GET['nombre'];
                   <td style='padding: 20px;'>
                   <b>Nombre y Apellido:</b> " . $nombre . "<br> 
                   <b>DNI:</b> " . $dni . "<br>
-                  <b>Teléfono:</b> " . $telefono . "<br>
+                  <b>Telefono:</b> " . $telefono . "<br>
                   <b>Email:</b> " . $email . "<br>
-                  <b>Cartera:</b> " . $acree . "<br>
-                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
+                  <b>Acuerdo de pago:</b> " . $pauta . "<br> <br>
 
                   ";
                  
@@ -209,6 +245,20 @@ $nombre=$_GET['nombre'];
 
                    case 'HIPOTECARIO':
                   $cuerpo .= "
+                  
+                   <tr>
+                      <td>
+                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>ACTIVASTE TU ACUERDO DE PAGO CON <b>BANCO HIPOTECARIO</b> <br> ".strtoupper($pauta)."</h2>
+                      </td>
+                    </tr>
+                  
+                  
+                  
                   <a class='fancybox'><img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/1.png' style='margin-left: auto;margin-right: auto;display: block;'/></a>
                     Indicar al cajero <span><b>PAGO ABIERTO SIN FACTURA</b></span> <br> a nombre del <span><b>ESTUDIO JURIDICO PALMERO</b></span>
                     <br><br>
@@ -236,7 +286,6 @@ $nombre=$_GET['nombre'];
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Telefono:</b> " . $telefono . "<br>
                   <b>Email:</b> " . $email . "<br>
-                  <b>Cartera:</b> " . $acree . "<br>
                   <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
                   ";
 
@@ -252,7 +301,7 @@ $nombre=$_GET['nombre'];
                     <td>
                       <div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
                       text-align: center;font-family:verdana'>
-                     LO DEBES ABONAR EN LOS PROXIMOS 4 DIAS, SINO DEBEMOS ACTUALIZAR TU SALDO A PAGAR
+                      LO DEBES ABONAR EN LOS PROXIMOS 4 DIAS, SINO DEBEMOS ACTUALIZAR TU SALDO A PAGAR.
                     </div>
                     </td>
                   </tr>
@@ -286,8 +335,9 @@ $nombre=$_GET['nombre'];
       $mail->FromName = "Deuda Online";
       $mail->Subject = "Confirmacion de acuerdo de deuda";
       $mail->AddAddress($email,"Deuda Online");
-    $mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
- //$mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+    $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+   // $mail->AddAddress("rodrigo@legioncreativa.com","Deuda Online");
+
       $mail->Body = $cuerpo;
       $mail->AltBody = "";
 

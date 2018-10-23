@@ -74,6 +74,7 @@
                 <?php
 				if(count($response->acreedores)==1){
 				?>
+				<?php //var_dump($response->acreedores) ?>
 				<table style="width: 100%; max-width: 700px; margin: auto; margin-bottom:30px; font-weight: 400;  text-align:center;">
 					<thead style="border-bottom: 1px solid #1a9cd6; height: 50px;">
 						<tr>
@@ -85,11 +86,18 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php
+
+						 $i=0;
+						 $k=0;
+
+						 ?>
 						<?php foreach($response->acreedores as $acree) :  ?>
-                        	
+                        	<?php ?>
 							<?php
 							
-								foreach($acree->productos as $producto){ 
+								foreach($acree->productos as $producto):
+	
 								$fecha_deuda =time();
 								$fecha_deuda = substr($fecha_deuda, 0, 10);
 
@@ -131,22 +139,38 @@
 								{
 									$producto_nombre = $producto->nombre;
 								}
+								 /*$k++;
+								echo "k=".$k."";*/
 							?>
 							<tr style="border-bottom: 1px solid #6d6e70; font-size: 13px; height: 30px; text-align:center;">
 								<th style="text-align:center;"><?php echo $producto_nombre; ?></th>
 								<th style="text-align:center;"><?php  echo $acree->nombre." ".$acree->grupo; ?></th>
 
-								<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta(0))  ?>
+								<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta($i))  ?>
 
+								<?php if($acreedor->obtenerPmonto($i)=="s_cancelacion" && $producto->cancela != 0.00): ?>
+								
+									<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->cancela*$honorario),2); ?></th>
+								
+								<?php else: ?>
 
-								<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->saldo*$honorario),2); ?></th>
-							
+										<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->saldo*$honorario),2); ?></th>
+
+								<?php endif; ?>
 							
 							</tr>
                             <?php
-								}
+								endforeach
 							?>
-						<?php endforeach; ?>
+						<?php 
+
+						$i++;
+
+						//echo "i=".$i."";
+						endforeach;
+
+
+						 ?>
                         <tr>
                         	<td style="text-align:center; font-weight:bold; font-size: 13px; height: 30px; color:#1a9cd6">TOTAL</td>
                             <td></td>
@@ -156,8 +180,16 @@
                         	<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta(0))  ?>
 
 
+                        	<?php if($acreedor->obtenerPmonto(0)=="s_cancelacion" && $producto->cancela != 0.00): ?>
+								
+                        		<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->cancela*$honorario!=0){ echo number_format($acree->cancela*$honorario*1, 2, ',', '.');} ?></td>
+								
+							<?php else: ?>
 
-                        	<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->saldo*$honorario!=0){ echo number_format($acree->saldo*$honorario*1, 2, ',', '.');} ?></td>
+                    			<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->saldo*$honorario!=0){ echo number_format($acree->saldo*$honorario*1, 2, ',', '.');} ?></td>
+
+							<?php endif; ?>
+
 
                           
 
@@ -197,7 +229,19 @@
 				   $i=0;
 				  // var_dump($response->acreedores);
 				    foreach($response->acreedores as $acree){  ?>
-                   
+                   <?php
+                   /* echo $i;
+                    echo $acreedor->obtenerPmonto($i);
+                    echo "<br>";
+                    $honorario =  str_replace(',','.',$acreedor->obtenerPauta($i));
+                    echo "<br>";
+                    echo "honorario:".$honorario."";
+                    echo "<br>";
+                    echo "cancela".$acree->cancela*$honorario."";
+                    echo "<br>";
+                    echo "saldo".$acree->saldo*$honorario."";*/
+
+                    ?>
                     <div class="panel-heading" role="tab" id="headingOne" style="background:none; border:0; border-bottom:1px solid #1a9cd6; border-color:none; ">
                       <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $i; ?>" aria-expanded="true" aria-controls="collapseOne" style="height:20px;">
@@ -207,7 +251,24 @@
                           <div class="div_33">
 
 							<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta($i))  ?>
-                         	$<?php if($acree->saldo!=0){ echo number_format($acree->saldo*$honorario, 2, ',', '.');} ?>
+
+							<?php if($acreedor->obtenerPmonto($i)=="s_cancelacion" && $acree->cancela!=0.00): ?>
+								
+                    			$<?php 
+                    			 echo number_format($acree->cancela*$honorario, 2, ',', '.');
+                    			?>
+							
+							
+							<?php else: ?>
+								$<?php 
+
+								 echo number_format($acree->saldo*$honorario, 2, ',', '.');
+								 ?>	
+
+
+							<?php endif; ?>
+
+
 
                          
 								

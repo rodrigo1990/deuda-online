@@ -1,13 +1,68 @@
 <?php include('header.php'); ?>
 <?php
 include("api2/clases/Acreedor.php");
-$response=unserialize($_POST['response']);
-$acreedor=new Acreedor($response);
-//echo $_POST['dni'].'<br>';
-$acreedor->mostrarAcreedor($_POST['posicion']);
-$partes=explode(" ", $_POST['pauta']);
-$monto_a_pagar=$partes[4]*1;
 ?>
+<style type="text/css">
+.nombre_deudor{
+	
+	color:#1a9cd6;
+	text-align:center;
+	font-size:15px;
+	font-weight:bold;	
+
+}
+.acuerdo{
+	color:#404041;
+	font-size:15px;
+	font-weight:bold;
+	
+	
+}
+.leyenda_ts{
+	font-size:14px;	
+	margin-top:20px;
+	color:#6d6e70;	
+	
+	
+}
+.pago_10dias{ background:#1a9cd6; color:#FFF; font-size:20px; border:1px solid #999; box-shadow:2px 2px 2px #666; padding:7px 5px; border-radius:5px; }
+</style>
+
+</<script type="text/javascript" src="<?php echo $base_url ?>js/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="<?php echo $base_url ?>js/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $base_url ?>css/fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.fancybox').fancybox();
+  });
+ function enviarDatosAcuerdo(){
+	
+	
+	email=document.getElementById("email").value;
+	telefono=document.getElementById("telefono").value;
+	acree=document.getElementById("acree").value;
+	pauta=document.getElementById("pauta").value;
+	dni=document.getElementById("dni").value;
+	nombre=document.getElementById("nombre").value;
+	
+	
+	$.ajax({
+				data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre,
+				url:'enviarDatosAcuerdo.php',
+				type:'get',
+				success:function(response){					
+					
+					$("#formulario_acuerdo").html(response);
+				}
+				});
+
+ }
+</script>
+
+<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_american.js"></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_master.js"></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_visa.js"></script>
 
 <div class="cabecera_160" id="c_quiero_pagar">
    QUIERO PAGAR
@@ -15,116 +70,81 @@ $monto_a_pagar=$partes[4]*1;
 <br /><br />
 
 <div class="container">
- <div class="col-sm-12 mostrar-acep-cont">
+ <div class="col-sm-12">
     
     <div>
+    <?php
 
-            <div class="center-block paso-a-paso-cont"  style="">
-              <img src="imagenes/quiero_pagar/paso-inactive-1.png" class="paso-a-paso" style='float:left;margin-left:0px !important'>
-              <img src="imagenes/quiero_pagar/paso-2.png" id="paso-2" class="paso-a-paso" style=''>
-              <img src="imagenes/quiero_pagar/paso-inactive-3.png" id="paso-3" class="paso-a-paso" style=''>
-          </div>   
-         
-    <div class="col-sm-12 nombre_deudor"><?php ?></div>
-      <div class="titulos_pagar">MÉTODOS DE PAGO</div>
-      
-      <div class="col-sm-6 text-center ">
-      
-     <div class="nombre_deudor">
-       <h2>
-         <?php echo utf8_encode($response->nombre); ?>
-       </h2>
-     </div>
+$nombre=$_GET['nombre'];
+$dni=$_GET['dni'];
+$pauta=$_GET['pauta'];
+$acree=$_GET['acree'];
+$telefono=$_GET['tel'];
+$email=$_GET['email'];
 
-
-    <h2><strong>Seleccionó el acuerdo: <br/><?php echo $_POST['pauta']?></strong></h2>
-
-      
-  
-      
-      </div><!-- fin col 6 forma de pago-->
-      <div class="col-sm-6">
-      	<p><strong id='form-msj'>Complete los siguientes datos para recibir por </strong> <form id="formulario_acuerdo"> 
+ require("class.phpmailer.php");
+      $mail = new PHPMailer();
+      $mail->Host = "localhost";
+      $mail->IsHTML(true);
         
-        
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="Email" >
-            
-            <div id="email-error" class="form-error">Ingrese un email valido</div>
-         
-          </div>
-          
-          <div class="form-group">
-              
-            <label for="telefono">Teléfono</label>
-            <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Teléfono" >
-            
-            <div id="tel-error" class="form-error">Ingrese un numero de telefono valido sin guiones ni espacios</div>
-            
-            
-            <input type="hidden" name="acree" id="acree" value="<?php echo $acreedor->mostrarAcreedor($_POST['posicion']); ?>" />
-            <input type="hidden" id="pauta" name="pauta" value="<?php  echo $_POST['pauta']; ?>" />
-            <input type="hidden" name="dni" id="dni" value="<?php echo $acreedor->response->documento; ?>" />
-            <input type="hidden" name="nombre" id="nombre" value="<?php echo $acreedor->response->nombre; ?>" />  
-           </div>         
-          
-          <div  class="btn btn-primary" onClick="enviarDatosAcuerdo()">Enviar Datos de Acuerdo</div>
-        </form>
+	  $cuerpo  = "Confirmación de acuerdo de pago: <br />";	
+      $cuerpo .= "<b>Nombre y Apellido:</b> " . $nombre . "<br>";
+      $cuerpo .= "<b>DNI:</b> " . $dni . "<br>";
+      $cuerpo .= "<b>Teléfono:</b> " . $telefono . "<br>";
+	  $cuerpo .= "<b>Acreedor:</b> " . $acree . "<br>";
+      $cuerpo .= "<b>Acuerdo de pago:</b> " . $pauta . "<br>";
+	
+     
+     
+                      
+      $mail->From = "info@c1250353.ferozo.com";
+      $mail->FromName = "Deuda Online";
+      $mail->Subject = "Confirmacion de acuerdo de deuda";
+      $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+	 //$mail->AddAddress("rominacodarin@gmail.com","Deuda Online");
+      $mail->Body = $cuerpo;
+      $mail->AltBody = "";
+      $mail->Send();
+
+
+?>
+	
+    <div class="col-sm-12 nombre_deudor"><?php echo $nombre; ?></div>
+     <div class="col-sm-12 text-center acuerdo"><strong>Acuerdo:<br/> <?php  echo $pauta; ?></strong></div>
+      <div class="nombre_deudor text-center" style="padding-top:50px;">LA CONFIRMACIÓN DEL ACUERDO DE PAGO SE REALIZÓ CON ÉXITO</div>
+       <!-- SI EL ACREEDER ES SANTANDER.. -->
+      <?php if($_GET['acree']=='SANTANDER'){?>
+       <br>
+        <div class="pago_10dias text-center center-block" style="width:53%">EL PAGO DEBE REALIZARSE DENTRO DE LAS  PRÓXIMAS 72 HS <br> PARA DARLE VIGENCIA A LA OPCIÓN  ELEGIDA</div>
+
+      <?php
+      } ?>
+      <?php
+	  $pos = strpos($_GET['acree'], "TARSHOP");
+	  if($pos===false){
+		  
+	  }else{
+	  ?>
+	  
+	  <div class="col-sm-6 col-md-offset-3" style="text-align:center;">
+      
+       <a><img src="imagenes/quiero_pagar/7.png" alt="" /></a>
+       <p class="leyenda_ts">Debe dirigirse a cualquier PAGO FÁCIL o RAPIPAGO.
+Indicarle al cajero que hace un PAGO SIN FACTURA A LA ENTIDAD <strong>TARJETA SHOPPING saldo deudor con su nro de DNI.<br /><div class="pago_10dias">TIENE TIEMPO HASTA EL 29 DEL MES CORRIENTE PARA ABONAR</div></strong></strong></p>
       </div>
-      <div class="clear"></div><br />
-      <div class="clear"></div><br />
+      
+    
+     
+	<?php
+	  }
+	?>
+      
+      <div class="clear"></div><br /><br /><br />
 
     
-      <span style="font-size:14px;">
-        Ante cualquier duda consultá a un referente de Deuda Online al teléfono <a id="click2call_callbtn" class="pointer green"><i class="fas fa-phone"></i> <b>011 7078-8500</a></b><br>
-        O envianos un WhatsApp a <a href="https://api.whatsapp.com/send?phone=541126531118&text=¡Hola!%20Queria%20hacer%20una%20consulta%20acerca%20de%20los%20servicios%20brindados%20en%20www.deudaonline.com.ar"target="_blank" class="green"><i class="fab fa-whatsapp fa-lg"></i> <b>+54 9 11 2653 1118</b></a>
-      </span>
+      <span style="font-size:14px;">Ante cualquier duda consultá a un referente de Deuda Online al teléfono <b>011 7078-8500</b></span>
 
-
-      <div id="click2call" align="center">
-        
-        
-         
-        
-        <div id="click2call_msgdiv"></div>
-         
-        <div style="visibility: hidden; display: none;">
-          <input id="click2call_user" value="web">
-          <input id="click2call_domain" value="locutorios.voipi.com.ar">
-          <input id="click2call_password" value="123456">
-          <input id="click2call_number" value="1008">
-          <input id="click2call_host" value="wss://webrtc.anura.com.ar:9084">
-        </div>
-         
-        <div id="media" style="visibility: hidden; display: none;">
-          <video width=800 id="webcam" autoplay="autoplay" hidden="true"></video>
-        </div>
-      </div>
-
-<div class="clear"></div><br />
     </div>
-
-    <div id = "myModal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>El e-mail con el acuerdo de pago se envio correctamente.<br />Ingrese a su cuenta de email para confirmar el acuerdo</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">¡ENTENDIDO!</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
     <div id="pr2_content">
       <div class="text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>CANCELÁ TU DEUDA SIGUIENDO ESTOS 3 SIMPLES PASOS:</b></div>
       <br />
@@ -198,13 +218,12 @@ $monto_a_pagar=$partes[4]*1;
       <div id="resultadoTarjeta3" class="estilo_resultado"></div>
 </div>
 <!-- FIN POPUP -->
-<?php include('ayuda-xs.php'); ?>
 
 <!-- POPUP -->
 <div id="medio_111" class="popup_medio_pago">
   <img src="imagenes/logos_pagos/1.jpg" alt="" /><br />
   <div class="titulos_popup_medio">PAGO FÁCIL</div>
- <a target="_blank" href="generar_cupon.php?ac=<?php echo $acreedor->mostrarAcreedor($_POST['posicion']); ?>&dni=<?php echo $acreedor->response->documento; ?>" style="text-align:center;">GENERAR CUPÓN DE PAGO<br/>CLICK AQUÍ</a>
+ <a href="generar_cupon.php?ac=<?php echo $acreedor->mostrarAcreedor() ?>&dni=<?php echo $acreedor->response->documento; ?>" style="text-align:center;">GENERAR CUPÓN DE PAGO<br/>CLICK AQUÍ</a>
 </div>
 <div id="medio_1" class="popup_medio_pago">
   <img src="imagenes/logos_pagos/1.jpg" alt="" /><br />
@@ -266,18 +285,8 @@ $monto_a_pagar=$partes[4]*1;
   <div class="titulos_popup_medio">PERSONALMENTE (efectivo, débito o crédito)</div>
   En las oficinas de EPB&A (Reconquista 660, CABA) de lunes a viernes de 8 a 19 hs y sábados de 8 a 12 hs.
 </div>
-
-
-
-<div class="callBkground">
-    <a id="click2call_hupbtn" class="pointer">
-          <img src="https://webrtc.anura.com.ar/click2call/img/phone_hang.png" class="picar">
-    </a>
-
-</div>
-
 <!-- FIN POPUP -->
-<?php include('footer.php'); ?>
+
 <script type="text/javascript">
   $(function()
   {
@@ -304,67 +313,5 @@ $monto_a_pagar=$partes[4]*1;
     
   });
 </script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-</<script type="text/javascript" src="js/jquery.mousewheel-3.0.6.pack.js"></script>
-<script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
-<link rel="stylesheet" type="text/css" href="css/fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.fancybox').fancybox();
-  });
- function enviarDatosAcuerdo(){
-     
-  	var emailValido=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  	var soloNumeros=/^[0-9]*$/;
-
-  
-  email=document.getElementById("email").value;
-  telefono=document.getElementById("telefono").value;
-  acree=document.getElementById("acree").value;
-  pauta=document.getElementById("pauta").value;
-  dni=document.getElementById("dni").value;
-  nombre=document.getElementById("nombre").value;
-  
-      if(email.length==0 || email.search(emailValido)){
-          $("#tel-error").fadeOut();
-      $("#email-error").fadeIn();
-      }else if(telefono.length>13 || telefono.length==0 || telefono.search(soloNumeros)){
-      $("#email-error").fadeOut();
-      $("#tel-error").fadeIn();
-      }else{
-      
-          $.ajax({
-                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre,
-                url:'enviarDatosAcuerdo.php',
-                type:'get',
-                success:function(response){         
-                  
-                  $('#myModal').modal('show');
-                  $("#paso-2").attr('src','imagenes/quiero_pagar/paso-inactive-2.png');
-                  $("#paso-3").attr('src','imagenes/quiero_pagar/paso-3.png');
-                  $("#form-msj").hide();
-                  $("#formulario_acuerdo").html(response);
-                }
-                });
-    }
-
- }
-</script>
-
-<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_american.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_master.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_visa.js"></script>
-<script language="JavaScript" type="text/javascript" src="js/mostrarAyudaModal.js"></script>
-<script type="text/javascript" 
-    src="https://webrtc.anura.com.ar/click2call/js/jquery.json-2.4.min.js">
-</script>
-<script type="text/javascript" 
-    src="https://webrtc.anura.com.ar/click2call/js/jquery.cookie.js">
-</script>
-<script type="text/javascript" 
-    src="https://webrtc.anura.com.ar/click2call/js/verto-min.js">
-</script>
-<script type="text/javascript" 
-    src="js/click2call.js">
-</script>
+<?php include('footer.php'); ?>

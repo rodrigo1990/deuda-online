@@ -73,15 +73,6 @@ class Acreedor{
 				//$opcion.=$pauta->pctas.$cta." de $ ".$cuotas;
 				
 				
-				if($pauta->pmonto=="s_cancelacion" && $acree->cancela!='0,00'){
-
-					$monto=($acree->cancela);	
-
-				}else{
-
-					$monto=($acree->saldo);
-
-				}
 				if($i==1){
 
 					$checked=" checked ";	
@@ -158,6 +149,20 @@ class Acreedor{
 		foreach($acree->pautas as $pauta){
 			
 			return $pauta->phono;	
+			
+		}//fin del for
+
+	}//function
+
+
+	function obtenerPmonto($posicion){
+
+		$acree=$this->response->acreedores[$posicion];
+
+
+		foreach($acree->pautas as $pauta){
+			
+			return $pauta->pmonto;	
 			
 		}//fin del for
 

@@ -1,3 +1,5 @@
+
+
 body
 {
   font-family: 'Open Sans', sans-serif;
@@ -727,4 +729,62 @@ iframe{
     width: 66%;
     margin-top: 4%;
 
+}
+
+.form-error{
+    display:none;
+    color:red;
+}
+.callBkground{
+ width: 100%;
+    position: absolute;
+    height: 120%;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    z-index: 1000;
+    display:none;
+}
+
+
+.callBkground img{
+  position:absolute; /*it can be fixed too*/
+  left:0; right:0;
+  top:-20%; bottom:0;
+  margin:auto;
+ width: 24%;
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+}
+
+.pointer{
+  cursor:pointer;
+}
+
+.picar {
+  animation: bounce 1s infinite;
+}
+
+.green{
+    color:green;
+  transition:color 0.5s;  
+}
+
+.green:hover{
+  color:#1a9cd6;
+  transition:color 0.5s;
 }
