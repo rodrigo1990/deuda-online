@@ -1,5 +1,5 @@
+<?php include('head.php'); ?>
 <?php include('header.php'); ?>
-
 <script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/form_contacto.js"></script>
 
 <div class="cabecera_160" id="c_contacto">

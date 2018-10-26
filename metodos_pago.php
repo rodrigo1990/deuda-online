@@ -1,5 +1,5 @@
+<?php include('head.php'); ?>
 <?php include('header.php'); ?>
-
 <script type="text/javascript" src="<?php echo $base_url ?>js/jquery.mousewheel-3.0.6.pack.js"></script>
 <script type="text/javascript" src="<?php echo $base_url ?>js/jquery.fancybox.js?v=2.1.5"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $base_url ?>css/fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />

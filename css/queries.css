@@ -51,6 +51,10 @@
 	.cabecera_160 {
     	padding: 12px 0px;
 	}
+
+	.a-footer{
+		display:block !important;
+	}
 }
 
 @media screen and (max-width: 420px) {

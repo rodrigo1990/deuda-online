@@ -86,10 +86,8 @@ var callbacks = {
 function online(b){
 	online_visible=b;
 	if(online_visible) {
-		display("Listo para hacer llamadas");
 		displayReady2Call();
 	} else {
-		display("No se puedo conectar al servidor. Intentando nuevamente. Aguarde ...");
 		displayNoConnection();
 	}
 }
@@ -190,6 +188,9 @@ function init() {
     });
     
     $("#click2call_hupbtn").click(function() {
+
+    	$(".callBkground").fadeOut();
+    	$("body").css("overflow-y","scroll");
     	if(cur_call != null) {
 	        verto.hangup();
 	        cur_call = null;

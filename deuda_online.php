@@ -1,3 +1,4 @@
+<?php include('head.php'); ?>
 <?php include('header.php'); ?>
 
 <img src="imagenes/deuda_online/cabecera.jpg" alt="" class="img_full" /><br /><br /><br /><br /><br />

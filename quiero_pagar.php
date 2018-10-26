@@ -1,3 +1,4 @@
+<?php include('head.php'); ?>
 <?php include('header.php'); ?>
 
 <div class="cabecera_160" id="c_quiero_pagar">

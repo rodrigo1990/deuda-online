@@ -735,23 +735,30 @@ iframe{
     display:none;
     color:red;
 }
+
+
+
 .callBkground{
- width: 100%;
-    position: absolute;
-    height: 120%;
-    background-color: rgba(0,0,0,0.5);
-    top: 0;
-    z-index: 1000;
-    display:none;
+   width: 100%;
+  position: absolute;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  top: 0;
+  z-index: 1000;
+  display:none;
 }
 
+.a-footer{
+  display:inline-block;
+}
 
 .callBkground img{
   position:absolute; /*it can be fixed too*/
   left:0; right:0;
-  top:-20%; bottom:0;
+  top:0%; bottom:0;
   margin:auto;
  width: 24%;
+ transform:rotate(50deg);
 }
 
 @keyframes bounce {
@@ -787,4 +794,9 @@ iframe{
 .green:hover{
   color:#1a9cd6;
   transition:color 0.5s;
+}
+
+
+body>.main{
+  position:relative;
 }

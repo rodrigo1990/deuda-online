@@ -1,3 +1,4 @@
+<?php include('head.php'); ?>
 <?php include('header.php'); ?>
 <?php
 include("api2/clases/Acreedor.php");

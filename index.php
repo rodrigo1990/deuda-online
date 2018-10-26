@@ -1,3 +1,4 @@
+<?php include('head.php'); ?>
 <?php include('header.php'); ?>
 
 <div id="fondo_home">
