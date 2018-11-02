@@ -107,14 +107,20 @@ class Acreedor{
 			
 			
 			echo '<tr><td colspan="4"><input class="contactorapido_btn center-block" type="submit" value="QUIERO PAGAR" />
+
 					
 					
 					<input type="hidden" name="response" value="'.htmlspecialchars(serialize($this->response)).'" />
 					<input type="hidden" name="posicion" value="'.$posicion.'" />
-					</td></tr>';
+					</td></tr>
+
+
+					';
 					
 			
 		echo "</table></form>";
+
+		echo "";
 		
 		}//fin del if hay monto
 		

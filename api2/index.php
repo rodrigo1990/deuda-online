@@ -19,6 +19,8 @@
 			$acreedor=new Acreedor($response);
 		}
 	}
+
+	
 	
 	/*
 	$documentoUsuario 	= '10061484';
@@ -95,8 +97,10 @@
 						<?php foreach($response->acreedores as $acree) :  ?>
                         	<?php ?>
 							<?php
-							
+								
 								foreach($acree->productos as $producto):
+
+								$nombreBanco  = 
 	
 								$fecha_deuda =time();
 								$fecha_deuda = substr($fecha_deuda, 0, 10);
@@ -201,9 +205,15 @@
 				
 				$acreedor->mostrarPautas(0);
 				
-				
+				?>
+			
+				<a class='contactorapido_btn_transparent center-block text-center' href="quiero_mas_cuotas.php?documento=<?php echo $documento ?>&nombre=<?php echo str_replace(' ','%20',$response->nombre) ?>&banco=<?php echo $acreedor->mostrarAcreedor(0)?>">QUIERO MAS CUOTAS</a>
+
+				<?php 
 				}// fin del if es un solo acreedor
 				?>
+				
+				
                 
                 <?php
 				if(count($response->acreedores)>1){
@@ -287,6 +297,8 @@
                        <?php
 						$acreedor->mostrarPautas($i);
 					   ?>
+					   <a class='contactorapido_btn_transparent center-block text-center' href="quiero_mas_cuotas.php?documento=<?php echo $documento ?>&nombre=<?php echo str_replace(' ','%20',$response->nombre) ?>&banco=<?php echo $acreedor->mostrarAcreedor($i)?>">QUIERO MAS CUOTAS</a>
+
                       </div>
                     </div>
                   </div>

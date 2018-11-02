@@ -1,0 +1,7 @@
+function enviarMailCuotas(){
+alert("holaa");
+
+
+
+
+}

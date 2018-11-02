@@ -403,9 +403,33 @@ footer
   border: 0px;
   padding: 5px 15px;
   cursor: pointer;
-  float: right;
   font-size: 14px;
 }
+
+
+.contactorapido_btn_transparent
+{
+  margin-top: 20px;
+  background: transparent;
+  color: grey;
+  border: solid 1px grey;
+  padding: 5px 15px;
+  cursor: pointer;
+  width: 185px;
+  font-size: 14px;
+  transition:background 0.5s,color 0.5s;
+}
+
+
+.contactorapido_btn_transparent:hover
+{
+  margin-top: 20px;
+  background: #1a9cd6;
+  border-color:#1a9cd6;
+  color: white;
+  
+}
+
 
 .estilo_resultado
 {
@@ -799,4 +823,46 @@ iframe{
 
 body>.main{
   position:relative;
+}
+
+input[name=cant-cuotas]{
+  width: 40%;
+}
+
+/* Preloader */
+
+#preloader {
+       position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d6d6d6;
+    z-index: 10043;
+    height: 100vh;
+    opacity: 0.96;
+}
+
+#status {
+ position: relative;
+    /* left: 50%; */
+    /* top: 50%; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16%;
+}
+
+.spinner-sm {
+   border: 5px solid grey;
+    border-top: 5px solid rgb(26, 156, 214);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
