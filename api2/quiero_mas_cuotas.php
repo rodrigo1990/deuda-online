@@ -1,6 +1,6 @@
 <html>
-	<head>
-		<meta charset="utf-8">
+	<head><meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+		
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <title>Deuda Online</title>
@@ -16,9 +16,32 @@
 	<body style="text-align:center;">
 		<form >
 			<h2>Enviaremos un email con sus datos y su peticion de cuotas adicionales</h2>
+			
+			<label for="email" class="">Ingrese su email</label>
+			
+			<input type="email" name="email" id="email" class="form-control center-block cuotas-input" >
+			
+			<div class="form-error" id="email-error">Ingrese un email valido</div>
+			
+			<label for="telefono" class="">Ingrese su numero de telefono</label>
+			
+			<input type="text"  name="telefono" id="telefono" class="form-control center-block cuotas-input" >
+			
+			<div class="form-error" id="telefono-error">Ingrese un telefono valido</div>
+			
 			<label for="cant-cuotas" class="">¿Cuantas cuotas desea?</label>
+			<input type="number" min="7" name="cant-cuotas" id="cant-cuotas" class="form-control center-block cuotas-input" >
+			<div class="form-error" id="cuotas-error">Ingrese una cantidad de cuotas</div>
 
-			<input type="number" min="7" name="cant-cuotas" id="cant-cuotas" class="form-control center-block">
+
+			<label for="franja-horaria" class="">¿En que franja horario podemos comunicarnos?</label>
+			<select name="franja-horaria" id="franja-horaria" class="form-control center-block cuotas-input text-center">
+				<option value="0">Seleccione una franja horaria</option>
+				<option value="08:00 a 12:00 HS">08:00 a 12:00 HS</option>
+				<option value="12:00 a 16:00 HS">12:00 a 16:00 HS</option>
+				<option value="16:00  a 20:00 HS">16:00  a 20:00 HS</option>
+			</select>
+			<div class="form-error" id="franja-horaria-error">Ingrese una franja horaria</div>
 
 			<input type="hidden" value="<?php echo $_GET['documento'] ?>" name="documento" id="documento">
 			<input type="hidden" value="<?php echo $_GET['nombre'] ?>" name="nombre" id="nombre">

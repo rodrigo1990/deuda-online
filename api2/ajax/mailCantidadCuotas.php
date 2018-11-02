@@ -5,6 +5,9 @@
 	$documento = $_POST['documento'];
 	$cuotas = $_POST['cuotas'];
   $banco = $_POST['banco'];
+  $email = $_POST['email'];
+  $telefono = $_POST['telefono'];
+  $franjaHoraria = $_POST['franjaHoraria'];
 
 	$cuerpo = "";
 	$mail = new PHPMailer();
@@ -26,6 +29,9 @@
         $cuerpo .= "<b>Documento</b>: ".$documento."<br>";
         $cuerpo .= "<b>Banco</b>: ".$banco."<br>";
         $cuerpo.= "<b>Cantidad de cuotas:</b> ".$cuotas."<br>";
+        $cuerpo.= "<b>Telefono:</b> ".$telefono."<br>";
+        $cuerpo.= "<b>Email:</b> ".$email."<br>";
+        $cuerpo.= "<b>franja horaria:</b> ".$franjaHoraria."<br>";
       $cuerpo .="</td>";
     $cuerpo .="</tr>";
   
@@ -35,7 +41,8 @@
   $mail->From = "info@c1250353.ferozo.com";
   	$mail->FromName = "Deuda Online";
 	 $mail->Subject = "Solicitud de aumento de cantidad de cuotas";
-    $mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
+    $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+    $mail->AddAddress("calidad@epb.com.ar","Deuda Online");
     $mail->Body = $cuerpo;
      $mail->AltBody = "";
      $mail->Send();
