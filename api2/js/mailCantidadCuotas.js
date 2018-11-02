@@ -1,6 +1,6 @@
  function enviarMailCuotas(){
      
-    var cuotas = $("#cant-cuotas").val();
+    var mensaje = $("#mensaje").val();
 	var nombre = $("#nombre").val();
 	var documento = $("#documento").val();
 	var banco = $("#banco").val();
@@ -16,17 +16,17 @@
 	}else if(telefono.length>13 || telefono.length==0 || telefono.search(soloNumeros)){
 	    $("#email-error").fadeOut();
 	    $("#telefono-error").fadeIn();
-	}else if(cuotas.length==0){
+	}else if(mensaje.length==0){
 	    $("#telefono-error").fadeOut();
-	    $("#cuotas-error").fadeIn();
+	    $("#mensaje-error").fadeIn();
 	}else if(franjaHoraria==0){
-		$("#cuotas-error").fadeOut();
+		$("#mensaje-error").fadeOut();
 	    $("#franja-horaria-error").fadeIn();
 
 	}else{
         $("#email-error").fadeOut();
         $("#telefono-error").fadeOut();
-        $("#cuotas-error").fadeOut();
+        $("#mensaje-error").fadeOut();
     
         
     	$( "body" ).prepend( '<div id="preloader"><div class="spinner-sm spinner-sm-1" id="status"> </div><h2 style="color: #1a9cd6;font-style: italic;" class="text-center">Estamos procesando<br>su consulta</h2></div>' );
@@ -36,7 +36,7 @@
     	
     
     	$.ajax({
-    			data:{cuotas:cuotas,nombre:nombre,documento:documento,banco:banco,telefono:telefono,email:email,franjaHoraria:franjaHoraria},
+    			data:{mensaje:mensaje,nombre:nombre,documento:documento,banco:banco,telefono:telefono,email:email,franjaHoraria:franjaHoraria},
     
     			url:'ajax/mailCantidadCuotas.php',
     

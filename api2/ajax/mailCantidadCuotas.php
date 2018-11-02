@@ -3,7 +3,7 @@
 
 	$nombre = $_POST['nombre'];
 	$documento = $_POST['documento'];
-	$cuotas = $_POST['cuotas'];
+	$mensaje = $_POST['mensaje'];
   $banco = $_POST['banco'];
   $email = $_POST['email'];
   $telefono = $_POST['telefono'];
@@ -23,12 +23,13 @@
               </td>
             </tr>";
 
+   
     $cuerpo .="<tr>";
-      $cuerpo .="<td>";
+      $cuerpo .="<td style='text-align:center'>";
         $cuerpo .= "<b>Nombre</b>: ".$nombre."<br>";
         $cuerpo .= "<b>Documento</b>: ".$documento."<br>";
         $cuerpo .= "<b>Banco</b>: ".$banco."<br>";
-        $cuerpo.= "<b>Cantidad de cuotas:</b> ".$cuotas."<br>";
+        $cuerpo.= "<b>Mensaje:</b><br> ".$mensaje."<br>";
         $cuerpo.= "<b>Telefono:</b> ".$telefono."<br>";
         $cuerpo.= "<b>Email:</b> ".$email."<br>";
         $cuerpo.= "<b>franja horaria:</b> ".$franjaHoraria."<br>";

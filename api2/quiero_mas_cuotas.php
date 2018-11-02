@@ -29,9 +29,9 @@
 			
 			<div class="form-error" id="telefono-error">Ingrese un telefono valido</div>
 			
-			<label for="cant-cuotas" class="">¿Cuantas cuotas desea?</label>
-			<input type="number" min="7" name="cant-cuotas" id="cant-cuotas" class="form-control center-block cuotas-input" >
-			<div class="form-error" id="cuotas-error">Ingrese una cantidad de cuotas</div>
+			<label for="mensaje" class="">Dejanos un comentario que nos ayude a confeccionar el plan</label>
+			<input type="text" name="mensaje" id="mensaje" class="form-control center-block cuotas-input" >
+			<div class="form-error" id="mensaje-error">Ingrese un comentario</div>
 
 
 			<label for="franja-horaria" class="">¿En que franja horario podemos comunicarnos?</label>
