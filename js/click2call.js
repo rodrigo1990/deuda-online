@@ -40,7 +40,6 @@ var callbacks = {
 	            break;
 	        case $.verto.enum.state.trying:
 	        case $.verto.enum.state.early:
-	             display("Llamando");
 	             displayCalling();
 	             break;
 	        case $.verto.enum.state.active:

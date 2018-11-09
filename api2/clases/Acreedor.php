@@ -139,6 +139,8 @@ class Acreedor{
 			$acreedor="SANTANDER";
 			}else if($this->response->acreedores[$posicion]->nombre=="BANCO HIPOTECARIO"){
 			$acreedor="HIPOTECARIO";
+			}else if($this->response->acreedores[$posicion]->nombre=="GALICIA"){
+				$acreedor="GALICIA";
 			}
 			else{
 			$acreedor="OTROS";	

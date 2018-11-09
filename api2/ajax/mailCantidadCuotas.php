@@ -42,8 +42,9 @@
   $mail->From = "info@c1250353.ferozo.com";
   	$mail->FromName = "Deuda Online";
 	 $mail->Subject = "Solicitud de aumento de cantidad de cuotas";
-    $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
-    $mail->AddAddress("calidad@epb.com.ar","Deuda Online");
+   // $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+    //$mail->AddAddress("calidad@epb.com.ar","Deuda Online");
+    $mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
     $mail->Body = $cuerpo;
      $mail->AltBody = "";
      $mail->Send();

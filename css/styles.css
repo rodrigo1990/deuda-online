@@ -1,5 +1,8 @@
-
-
+* { padding: 0; margin: 0; }
+html, body, .callBkground {
+    min-height: 100% !important;
+    height: 100%;
+}
 body
 {
   font-family: 'Open Sans', sans-serif;
@@ -743,7 +746,11 @@ text-decoration: none;
 }
 
 iframe{
-  width: 100%; height: 640px; border: 0px; overflow: hidden;z-index: -50px
+  width: 100%;
+  height: 540px;
+  border: 0px;
+  overflow: hidden;
+  z-index: -50px
 }
 
 .paso-a-paso-xs{
@@ -760,7 +767,7 @@ iframe{
 .callBkground{
  width: 100%;
     position: absolute;
-    height: 100%;
+    /*height: 100%;*/
     background-color: rgba(0,0,0,0.5);
     top: 0;
     z-index: 1000;
