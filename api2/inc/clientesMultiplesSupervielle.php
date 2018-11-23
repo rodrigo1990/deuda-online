@@ -40,7 +40,7 @@
 		                    </div>
 		                    <div id="collapse<?php echo $i; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?php echo $i; ?>">
 		                      <div class="panel-body">
-		                      	<?php include("clientesGalicia.php") ?>
+		                      	<?php include("clientesSupervielle.php") ?>
 		                      </div>
 		                    </div>
 		                  </div>

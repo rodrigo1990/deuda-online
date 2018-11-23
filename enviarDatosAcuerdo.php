@@ -52,10 +52,27 @@ $nombre=$_GET['nombre'];
                     Nro de referencia de pago:<b>".$dni."</b>
                     <br>
                     <br>
+                    <a class='fancybox'><img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/pmc.png' style='margin-left: auto;margin-right: auto;display: block;width:130px'/></a>
+                        Buscar por nombre:<br><b>ESTUDIO PALMERO</b><br>
+                        <b>Coloca el importe elegido y tu DNI.</b>
                     ";
 
                   $cuerpo .= "
                   </td>
+                  </tr>";
+
+
+                $cuerpo.="
+                  <tr>
+                    <td style='text-align: center;'>
+                    
+                    
+                    
+                    
+                      ";
+
+                    $cuerpo .= "
+                    </td>
                   </tr>";
 
                   $cuerpo  .= "
@@ -64,6 +81,10 @@ $nombre=$_GET['nombre'];
                   ";
 
                   $cuerpo .="
+                  <br>
+                  <hr style='margin-left:auto;margin-right:auto;display:block;width:50px;height:3px;background-color:grey;'>
+                  <br>
+                  <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;margin:0'>Estos son tus <b>datos personales</b> <br> </h2>
                   <br>
                   <b>Nombre y Apellido:</b> " . $nombre . "<br>
                   <b>DNI:</b> " . $dni . "<br>
@@ -108,6 +129,7 @@ $nombre=$_GET['nombre'];
                    <tr>
                       <td>
                       <img src="http://www.deudaonline.com.ar/imagenes/logo.png" style="width:300px;margin-left:auto;margin-right:auto;display:block">
+                      
                       </td>
                     </tr>
                     <tr>
@@ -122,6 +144,7 @@ $nombre=$_GET['nombre'];
                   Indicarle al cajero que hace un <strong>PAGO A EPBCOM2050 con su numero de referencia de pago</strong> <br/>
                  <b> DNI: '.$dni.'</b>
                   <a class="fancybox" href="#medio_111"><img src="imagenes/quiero_pagar/1.png" alt="" /></a>
+
                  
                        
                  ';
@@ -192,6 +215,12 @@ $nombre=$_GET['nombre'];
                   <a><img src="https://www.deudaonline.com.ar/imagenes/quiero_pagar/7.png" alt="" style="margin-left: auto;margin-right: auto;display: block;" /></a>
                   <p style="text-align:center"class="leyenda_ts">Debe dirigirse a cualquier PAGO FÁCIL o RAPIPAGO.<br>
                   Indicarle al cajero que hace un PAGO SIN FACTURA A LA ENTIDAD <br> <strong>TARJETA SHOPPING saldo deudor con su nro de DNI.</strong></p>
+                   <br>
+                    <br>
+                    <a class="fancybox"><img src="https://www.deudaonline.com.ar/imagenes/quiero_pagar/pmc.png" style="margin-left: auto;margin-right: auto;display: block;width:130px"/></a>
+                        Buscar por nombre:<br><b>ESTUDIO PALMERO</b><br>
+                        <b>Coloca el importe elegido y tu DNI.</b>
+
  
                   ';
                   
@@ -204,6 +233,11 @@ $nombre=$_GET['nombre'];
                   </tr>
                   <tr style='text-align:center'>
                   <td style='padding: 20px;'>
+                  <br>
+                  <hr style='margin-left:auto;margin-right:auto;display:block;width:50px;height:3px;background-color:grey;'>
+                  <br>
+                  <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;margin:0'>Estos son tus <b>datos personales</b> <br> </h2>
+                  <br>
                   <b>Nombre y Apellido:</b> " . $nombre . "<br> 
                   <b>DNI:</b> " . $dni . "<br>
                   <b>Telefono:</b> " . $telefono . "<br>
@@ -267,8 +301,11 @@ $nombre=$_GET['nombre'];
                     Entidad: <b>0420</b>
                     <br>
                     Nro de referencia de pago:<b>".$dni."</b>
+                     <br>
                     <br>
-                    <br>
+                    <a class='fancybox'><img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/pmc.png' style='margin-left: auto;margin-right: auto;display: block;width:130px'/></a>
+                        Buscar por nombre:<br><b>ESTUDIO PALMERO</b><br>
+                        <b>Coloca el importe elegido y tu DNI.</b>
                     ";
 
                   $cuerpo .= "
@@ -281,6 +318,10 @@ $nombre=$_GET['nombre'];
                   ";
 
                   $cuerpo .="
+                   <br>
+                  <hr style='margin-left:auto;margin-right:auto;display:block;width:50px;height:3px;background-color:grey;'>
+                  <br>
+                  <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;margin:0'>Estos son tus <b>datos personales</b> <br> </h2>
                   <br>
                   <b>Nombre y Apellido:</b> " . $nombre . "<br>
                   <b>DNI:</b> " . $dni . "<br>

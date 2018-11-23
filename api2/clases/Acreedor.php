@@ -141,11 +141,14 @@ class Acreedor{
 			$acreedor="HIPOTECARIO";
 			}else if($this->response->acreedores[$posicion]->nombre=="GALICIA"){
 				$acreedor="GALICIA";
+			}else if($this->response->acreedores[$posicion]->nombre=="SUPERVIELLE"){
+				$acreedor="SUPERVIELLE";
 			}
 			else{
 			$acreedor="OTROS";	
 			}
-		return $acreedor;	
+
+		return $acreedor;
 		
 	}//fin mostrarAcreedor
 

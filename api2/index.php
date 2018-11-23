@@ -73,13 +73,18 @@
 				if(count($response->acreedores)==1){
 				?>
 
-				<?php if($acreedor->mostrarAcreedor(0)!="GALICIA"): ?>
-
-					<?php include("inc/clientesNoGalicia.php") ?>
-
-				<?php else: ?>
+				<?php if($acreedor->mostrarAcreedor(0)=="GALICIA"): ?>
 
 					<?php include("inc/clientesGalicia.php") ?>
+
+				<?php elseif($acreedor->mostrarAcreedor(0)=="SUPERVIELLE"): ?>
+					
+					<?php include("inc/clientesSupervielle.php") ?>
+					
+					
+				<?php else:  ?>
+
+					<?php include("inc/clientesNoGalicia.php") ?>
 
 				<?php endif; ?>
 				<?php 
@@ -121,10 +126,18 @@
                    <?php
 				   $i=0;
 				    foreach($response->acreedores as $acree){  ?>
-				    	<?php if($acreedor->mostrarAcreedor($i)!="GALICIA"): ?>
-		                   <?php include("inc/clientesMultiplesNoGalicia.php") ?>
+				    	<?php if($acreedor->mostrarAcreedor($i)=="GALICIA"): ?>
+		                   
+							<?php include("inc/clientesMultiplesGalicia.php") ?>
+
+						<?php elseif($acreedor->mostrarAcreedor($i)=="SUPERVIELLE"): ?>
+							
+								<?php include("inc/clientesMultiplesSupervielle.php") ?>
+
 		                <?php else: ?>
-		                	<?php include("inc/clientesMultiplesGalicia.php") ?>
+
+		                	<?php include("inc/clientesMultiplesNoGalicia.php") ?>
+		                
 		                <?php endif; ?>
                   <?php
 				  
