@@ -91,9 +91,21 @@ class Acreedor{
 						echo '<tr>';
 						echo '<td>'.$opcion.'</td>';
 						echo '<td>'.$pauta->pdesc.'%</td>';
+						$total = number_format(($monto-($monto*($pauta->pdesc)/100))*$honorario, 2, ',', '.');
 						echo '
-						<td><strong>$'.number_format(($monto-($monto*($pauta->pdesc)/100))*$honorario, 2, ',', '.').'</strong></td>
+						<td><strong>$'.$total.'</strong></td>
 						<td><input type="radio" name="pauta" '.$checked.' value="'.$opcion.'"  /></td>
+						<input type="hidden" name="cant_cuotas" value="'.$pauta->pctas.'">
+						<input type="hidden" name="total" value="'.$total.'">
+						<input type="hidden" name="idPlan" value="'.$_SESSION['idPlan'] .'">
+						<input type="hidden" name="nombreAcreedor" value="'.$acreedor .'">
+						<input type="hidden" name="idContacto" value="'.$this->response->idContacto .'">
+						<input type="hidden" name="idConsulta" value="'.$this->response->queryId .'">
+						
+						
+
+
+
 						</tr>';
 
 		
@@ -112,6 +124,7 @@ class Acreedor{
 					
 					<input type="hidden" name="response" value="'.htmlspecialchars(serialize($this->response)).'" />
 					<input type="hidden" name="posicion" value="'.$posicion.'" />
+
 					</td></tr>
 
 

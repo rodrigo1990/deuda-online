@@ -1,5 +1,5 @@
 <?php
-
+require_once("Clases/Api.php");
 $email=$_GET['email'];
 $telefono=$_GET['telefono'];
 $acree=$_GET['acree'];
@@ -7,6 +7,16 @@ $pauta=$_GET['pauta'];
 $dni=$_GET['dni'];
 $nombre=$_GET['nombre'];
 
+$idCon = $_GET['idCon'];
+$nombreAcreedor = $_GET['nombreAcreedor'];
+$IdPlan = $_GET['idPlan'];
+$total = $_GET['total'];
+$cantCuotas = $_GET['cantCuotas'];
+$idConsulta = $_GET['idConsulta'];
+
+$api = new Api();
+
+$resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idCon,$idConsulta,$cantCuotas,$nombreAcreedor,$total,$telefono,$email);
 
 
       require("class.phpmailer.php");

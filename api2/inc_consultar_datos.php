@@ -1,5 +1,9 @@
 <?php
 	
+	
+
+
+
 	function httpConsultarDocumento($url, $user, $pwd, $documento = '', $telefono = '', $mail = '', $culture = '') {
 		$debug  	= true;
 		$useCurl	= false;
@@ -62,24 +66,14 @@
 				false,
 				$context);
 
+
 		}
 	
 		
 
 		$response =  new StdClass();
 		
-		//var_dump($result);
-		
-	
-		/*
-		
-		
-		if($response!="D|No hay datos de deudor para mostrar."){
-			
-			
-		}
-		
-		*/
+
 		
 		if(!$result) {
 			$response->status = 'ERROR DE COMUNICACION'; 
@@ -90,7 +84,7 @@
 		
 		$loadXML = @$dom->loadXML($result);
 		
-		//var_dump($dom);
+
 		if(!$loadXML) {
 			$response->status = 'ERROR NO ES UN XML';
 			if($debug) {
@@ -100,15 +94,20 @@
 		}
 
 		$response->status = 'OK';
+		
 			
  
 
 
 		$simplexml 	= simplexml_import_dom($dom);
+		//var_dump($simplexml);
 		$response->queryStart 	= isset($simplexml->QueryStart) ? trim(strval($simplexml->QueryStart)) : '';
 		$response->queryType 	= isset($simplexml->QueryType) ? trim(strval($simplexml->QueryType)) : '';
 		$response->queryEnd 	= isset($simplexml->QueryEnd) ? trim(strval($simplexml->QueryEnd)) : '';
 		$response->documento 	=$documento;
+		$response->idContacto = isset($simplexml->Resultado->idcontacto) ? trim(strval($simplexml->Resultado->idcontacto)) : '';
+
+		$response->queryId = isset($simplexml->query_id) ? trim(strval($simplexml->query_id)) : ''; 
 	
 		$response->nombre 		= isset($simplexml->Resultado->nombre) ? trim(strval($simplexml->Resultado->nombre)) : '';
 		$response->cantProd		= isset($simplexml->Resultado->cant_prod) ? trim(strval($simplexml->Resultado->cant_prod)) : '';
@@ -188,6 +187,14 @@
 	
 		return $response;
 	}
+
+	
+
+
+
+
+
+	
 			
 
 

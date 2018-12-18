@@ -1,6 +1,7 @@
 <?php header('Content-Type: text/html; charset=utf-8'); ?>
 <?php
 	include("clases/Acreedor.php");
+	require_once("../Clases/Api.php");
 	include 'inc_consultar_datos.php';
 	$url	= 'http://190.111.231.172:8106';//puerto 8106 -> API TEST
 	$user	= 'lcreativa';
@@ -45,6 +46,7 @@
 	<body style="text-align:center;">
 		<?php
 		if($_SERVER['REQUEST_METHOD'] != 'POST') { ?>
+
 		<div class="col-sm-12 text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>Ingrese su número de DNI<br />para conocer el saldo de su deuda</b></div>
 		<form action="index.php" method="post">
 			<input type="text" name="documento" required style="border: 0px; border-bottom: 3px solid #1a9cd6; width: 100%; max-width: 480px;" /><br />
@@ -55,6 +57,7 @@
 		</form>
 
 
+
       
 
 		<?php } ?>
@@ -63,11 +66,17 @@
 			if($response && $response->status != 'OK') {
 				 echo '<h1 style="color: red">'.$response->status.'</h1>';
 			}
-			if($response && $response->status == 'OK') :		?> 
-
-
+			if($response && $response->status == 'OK') :		?>
 			
-				
+			<?php session_start(); ?>
+
+			<?php $api = new Api(); ?>
+
+			 
+					
+
+			<?php $_SESSION['idPlan'] =  $api->nuevoPlanYRetornarIdPLan($response->idContacto,$response->queryId,"20181213",$documento); ?>
+
 				
                 <?php
 				if(count($response->acreedores)==1){

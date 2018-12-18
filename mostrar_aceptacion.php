@@ -1,13 +1,34 @@
-<?php include("head.php") ?>
 <?php
-
+ include("head.php");
 include("api2/clases/Acreedor.php");
+require_once("Clases/Api.php");
+
+  ?>
+<?php
+$idContacto=$_POST['idContacto'];
+$nombreAcreedor=$_POST['nombreAcreedor'];
+$idPlan=$_POST['idPlan'];
+$total=$_POST['total'];
+$cantCuotas = $_POST['cant_cuotas'] ;
+$idConsulta=$_POST['idConsulta'];
+
+$api = new Api();
+
 $response=unserialize($_POST['response']);
 $acreedor=new Acreedor($response);
 //echo $_POST['dni'].'<br>';
 $acreedor->mostrarAcreedor($_POST['posicion']);
 $partes=explode(" ", $_POST['pauta']);
 $monto_a_pagar=$partes[4]*1;
+
+
+
+$res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantCuotas,$nombreAcreedor,$total);
+
+
+var_dump($res);
+
+
 ?>
 
 <div class="main">
@@ -71,7 +92,14 @@ $monto_a_pagar=$partes[4]*1;
               <input type="hidden" name="acree" id="acree" value="<?php echo $acreedor->mostrarAcreedor($_POST['posicion']); ?>" />
               <input type="hidden" id="pauta" name="pauta" value="<?php  echo $_POST['pauta']; ?>" />
               <input type="hidden" name="dni" id="dni" value="<?php echo $acreedor->response->documento; ?>" />
-              <input type="hidden" name="nombre" id="nombre" value="<?php echo $acreedor->response->nombre; ?>" />  
+              <input type="hidden" name="nombre" id="nombre" value="<?php echo $acreedor->response->nombre; ?>" />
+
+              <input type="hidden" name="idCon" id="idCon" value="<?php echo $idContacto; ?>" />
+              <input type="hidden" name="nombreAcreedor" id="nombreAcreedor" value="<?php echo $nombreAcreedor; ?>" />
+              <input type="hidden" name="idPlan" id="idPlan" value="<?php echo $idPlan; ?>" />
+              <input type="hidden" name="total" id="total" value="<?php echo $total; ?>" />
+              <input type="hidden" name="cantCuotas" id="cantCuotas" value="<?php echo $cantCuotas; ?>" />
+              <input type="hidden" name="idConsulta" id="idConsulta" value="<?php echo $idConsulta; ?>" />  
              </div>         
             
             <div  class="btn btn-primary" onClick="enviarDatosAcuerdo()">Enviar Datos de Acuerdo</div>
@@ -310,6 +338,14 @@ $monto_a_pagar=$partes[4]*1;
   pauta=document.getElementById("pauta").value;
   dni=document.getElementById("dni").value;
   nombre=document.getElementById("nombre").value;
+
+  idCon = document.getElementById("idCon").value;
+  nombreAcreedor=document.getElementById("nombreAcreedor").value;
+  idPlan=document.getElementById("idPlan").value;
+  total=document.getElementById("total").value;
+  cantCuotas=document.getElementById("cantCuotas").value;
+  idConsulta=document.getElementById("idConsulta").value;
+
   
       if(email.length==0 || email.search(emailValido)){
           $("#tel-error").fadeOut();
@@ -318,10 +354,10 @@ $monto_a_pagar=$partes[4]*1;
       $("#email-error").fadeOut();
       $("#tel-error").fadeIn();
       }else{
-      
+        alert(total);
           $.ajax({
-                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre,
-                url:'enviarDatosAcuerdo.php',
+                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idCon="+idCon+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta,
+                url:'enviarDatosAcuerdoYActualizarActividadApi.php',
                 type:'get',
                 success:function(response){         
                   
