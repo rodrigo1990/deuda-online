@@ -7,7 +7,7 @@ $pauta=$_GET['pauta'];
 $dni=$_GET['dni'];
 $nombre=$_GET['nombre'];
 
-$idCon = $_GET['idCon'];
+$idContacto = $_GET['idContacto'];
 $nombreAcreedor = $_GET['nombreAcreedor'];
 $IdPlan = $_GET['idPlan'];
 $total = $_GET['total'];
@@ -16,7 +16,7 @@ $idConsulta = $_GET['idConsulta'];
 
 $api = new Api();
 
-$resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idCon,$idConsulta,$cantCuotas,$nombreAcreedor,$total,$telefono,$email);
+$resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$idConsulta,$cantCuotas,$nombreAcreedor,$total,$telefono,$email);
 
 
       require("class.phpmailer.php");
@@ -392,13 +392,17 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idCon,$idConsu
       $mail->Body = $cuerpo;
       $mail->AltBody = "";
 
-      echo '
-          <div class="tilde">
-          <img src="imagenes/quiero_pagar/tilde.png" class="center-block">
-          <h3>¡ACUERDO ENVIADO!</h3>
-          </div>
-      ';
+     /* echo '
+         
+      ';*/
+
+
+
   
       $mail->Send();
+
+
+
+       echo $resp2;
     
 ?>

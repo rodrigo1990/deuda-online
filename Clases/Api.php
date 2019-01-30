@@ -140,11 +140,53 @@ class Api{
 		$loadXML = @$dom->loadXML($datos);
 		$simplexml 	= simplexml_import_dom($dom);
 
-		//$respuesta=$simplexml->Resultado->idplan;
+		$respuesta=$simplexml->Resultado->mensaje;
 	
-		return $simplexml;;
+		return $respuesta;
 	}
 
+
+
+	function confirmarPlan($email,$telefono,$IdPlan,$idConsulta) {
+		
+		$fields = array();
+		$fields['op']="CLOSEPLN";
+		$fields['planid']=$IdPlan;
+		$fields['consuid']=$idConsulta;
+		$fields['tel']=$telefono;
+		$fields['mail']=$email;
+		$fields['user']=$this->user;
+		$fields['pwd']=$this->pass;
+				
+		$fields_string = http_build_query ($fields);
+		
+		$contextData = array ( 
+			'method' => 'POST',
+			'header' => "Content-type: application/x-www-form-urlencoded\r\n" . "Connection: close\r\n".
+			"Content-Length: ".strlen($fields_string)."\r\n",
+			'content'=> $fields_string );
+
+		$context = stream_context_create (array ( 'http' => $contextData ));
+		
+		$datos =  file_get_contents (
+			$this->url,  
+			false,
+			$context);
+
+
+
+	
+
+		//$resp=json_encode($datos);
+		
+		$dom = new DomDocument();
+		$loadXML = @$dom->loadXML($datos);
+		$simplexml 	= simplexml_import_dom($dom);
+
+		$respuesta=$simplexml->Resultado->mensaje;
+	
+		return $respuesta;
+	}
 
 
 	

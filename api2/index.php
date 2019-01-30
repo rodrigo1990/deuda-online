@@ -76,7 +76,13 @@
 					
 
 			<?php $_SESSION['idPlan'] =  $api->nuevoPlanYRetornarIdPLan($response->idContacto,$response->queryId,"20181213",$documento); ?>
+			<?php 
+			echo $response->queryId;
+			echo "<br>";
+			echo $_SESSION['idPlan'];
 
+
+			 ?>
 				
                 <?php
 				if(count($response->acreedores)==1){
@@ -93,7 +99,7 @@
 					
 				<?php else:  ?>
 
-					<?php include("inc/clientesNoGalicia.php") ?>
+					<?php include("inc/clientesConPlanesDisponibles.php") ?>
 
 				<?php endif; ?>
 				<?php 
@@ -145,7 +151,7 @@
 
 		                <?php else: ?>
 
-		                	<?php include("inc/clientesMultiplesNoGalicia.php") ?>
+		                	<?php include("inc/clientesMultiplesConPlanesDisponibles.php") ?>
 		                
 		                <?php endif; ?>
                   <?php

@@ -339,7 +339,7 @@ var_dump($res);
   dni=document.getElementById("dni").value;
   nombre=document.getElementById("nombre").value;
 
-  idCon = document.getElementById("idCon").value;
+  idContacto = document.getElementById("idCon").value;
   nombreAcreedor=document.getElementById("nombreAcreedor").value;
   idPlan=document.getElementById("idPlan").value;
   total=document.getElementById("total").value;
@@ -356,7 +356,7 @@ var_dump($res);
       }else{
         alert(total);
           $.ajax({
-                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idCon="+idCon+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta,
+                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta,
                 url:'enviarDatosAcuerdoYActualizarActividadApi.php',
                 type:'get',
                 success:function(response){         
@@ -365,7 +365,33 @@ var_dump($res);
                   $("#paso-2").attr('src','imagenes/quiero_pagar/paso-inactive-2.png');
                   $("#paso-3").attr('src','imagenes/quiero_pagar/paso-3.png');
                   $("#form-msj").hide();
-                  $("#formulario_acuerdo").html(response);
+                  $("#formulario_acuerdo").html( '<div class="tilde"><img src="imagenes/quiero_pagar/tilde.png" class="center-block"><h3>¡ACUERDO ENVIADO!</h3></div>');
+
+                 console.log(response);
+
+
+
+                    $.ajax({
+                        data:"email="+ email+"&telefono="+telefono+"&idPlan="+idPlan+"&idConsulta="+idConsulta,
+                        url:'confirmarPlan.php',
+                        type:'get',
+                        success:function(response){         
+                          console.log(response);
+                          //console.log("Plan confirmado");
+
+
+
+
+
+
+
+                          
+                        }
+                        });
+
+
+
+
                 }
                 });
     }
