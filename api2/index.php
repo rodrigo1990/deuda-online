@@ -73,13 +73,13 @@
 			<?php $api = new Api(); ?>
 
 			 
-					
-
-			<?php $_SESSION['idPlan'] =  $api->nuevoPlanYRetornarIdPLan($response->idContacto,$response->queryId,"20181213",$documento); ?>
+				
 			<?php 
-			echo $response->queryId;
+			$_SESSION['documento']= $documento;
 			echo "<br>";
-			echo $_SESSION['idPlan'];
+			echo $response->idContacto;
+			echo "<br>"
+			//echo $_SESSION['idPlan'];
 
 
 			 ?>

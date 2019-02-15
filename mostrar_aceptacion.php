@@ -7,10 +7,10 @@ require_once("Clases/Api.php");
 <?php
 $idContacto=$_POST['idContacto'];
 $nombreAcreedor=$_POST['nombreAcreedor'];
-$idPlan=$_POST['idPlan'];
 $total=$_POST['total'];
 $cantCuotas = $_POST['cant_cuotas'] ;
 $idConsulta=$_POST['idConsulta'];
+$documento = $_POST['documento'];
 
 $api = new Api();
 
@@ -22,11 +22,13 @@ $partes=explode(" ", $_POST['pauta']);
 $monto_a_pagar=$partes[4]*1;
 
 
+$idPlan =  $api->nuevoPlanYRetornarIdPLan($idContacto,$idConsulta,"20181213",$documento);
+
 
 $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantCuotas,$nombreAcreedor,$total);
 
 
-var_dump($res);
+var_dump($res); 
 
 
 ?>
@@ -69,7 +71,7 @@ var_dump($res);
     
         
         </div><!-- fin col 6 forma de pago-->
-        <div class="col-sm-6">
+        <div class="col-sm-6" id="preloader-cont">
         	<p><strong id='form-msj'>Complete los siguientes datos para recibir por </strong> <form id="formulario_acuerdo"> 
           
           
@@ -104,6 +106,7 @@ var_dump($res);
             
             <div  class="btn btn-primary" onClick="enviarDatosAcuerdo()">Enviar Datos de Acuerdo</div>
           </form>
+          
         </div>
         <div class="clear"></div><br />
         <div class="clear"></div><br />
@@ -346,6 +349,9 @@ var_dump($res);
   cantCuotas=document.getElementById("cantCuotas").value;
   idConsulta=document.getElementById("idConsulta").value;
 
+
+  $("#preloader-cont").append('<div id="preloader"><div class="spinner-sm spinner-sm-1" id="status"> </div></div>');
+
   
       if(email.length==0 || email.search(emailValido)){
           $("#tel-error").fadeOut();
@@ -354,13 +360,12 @@ var_dump($res);
       $("#email-error").fadeOut();
       $("#tel-error").fadeIn();
       }else{
-        alert(total);
           $.ajax({
                 data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta,
                 url:'enviarDatosAcuerdoYActualizarActividadApi.php',
                 type:'get',
                 success:function(response){         
-                  
+                  $("#preloader").hide();
                   $('#myModal').modal('show');
                   $("#paso-2").attr('src','imagenes/quiero_pagar/paso-inactive-2.png');
                   $("#paso-3").attr('src','imagenes/quiero_pagar/paso-3.png');

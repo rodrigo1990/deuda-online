@@ -52,7 +52,7 @@ class Api{
 
 		//$respuesta=$simplexml->Resultado->idplan;
 	
-		return $simplexml->Resultado->idplan;;
+		return $simplexml->Resultado->idplan;
 	}
 
 
@@ -69,12 +69,12 @@ class Api{
 		$fields['user']=$this->user;
 		$fields['pwd']=$this->pass;
 				
-		$fields_string = http_build_query ($fields);
+		$fields_string = preg_replace('/%5B(\d+?)%5D/', '',http_build_query ($fields));
 		
 		$contextData = array ( 
 			'method' => 'POST',
 			'header' => "Content-type: application/x-www-form-urlencoded\r\n" . "Connection: close\r\n".
-			"Content-Length: ".strlen($fields_string)."\r\n",
+			"Content-Length:".strlen($fields_string)."\r\n",
 			'content'=> $fields_string );
 
 		$context = stream_context_create (array ( 'http' => $contextData ));
@@ -94,9 +94,9 @@ class Api{
 		$loadXML = @$dom->loadXML($datos);
 		$simplexml 	= simplexml_import_dom($dom);
 
-		//$respuesta=$simplexml->Resultado->idplan;
+		
 	
-		return $simplexml;;
+		return $simplexml;
 	}
 
 

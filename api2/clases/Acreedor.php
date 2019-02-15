@@ -97,10 +97,10 @@ class Acreedor{
 						<td><input type="radio" name="pauta" '.$checked.' value="'.$opcion.'"  /></td>
 						<input type="hidden" name="cant_cuotas" value="'.$pauta->pctas.'">
 						<input type="hidden" name="total" value="'.$total.'">
-						<input type="hidden" name="idPlan" value="'.$_SESSION['idPlan'] .'">
 						<input type="hidden" name="nombreAcreedor" value="'.$acreedor .'">
 						<input type="hidden" name="idContacto" value="'.$this->response->idContacto .'">
 						<input type="hidden" name="idConsulta" value="'.$this->response->queryId .'">
+						<input type="hidden" name="documento" value="'.$_SESSION['documento'].'">
 						
 						
 

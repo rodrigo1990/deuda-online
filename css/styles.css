@@ -837,17 +837,18 @@ select.cuotas-input{
 /* Preloader */
 
 #preloader {
-       position: fixed;
+       position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #d6d6d6;
+       background-color: white;
     z-index: 10043;
-    height: 100vh;
-    opacity: 0.96;
+    height: auto;
+    opacity:1;
     color:#1a9cd6;
     text-align:center;
+
 }
 
 #preloader .confirm-container{
@@ -890,11 +891,11 @@ select.cuotas-input{
 }
 
 .spinner-sm {
-   border: 5px solid grey;
-    border-top: 5px solid rgb(26, 156, 214);
+      border: 3px solid grey;
+    border-top: 3px solid rgb(26, 156, 214);
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     animation: spin 1s linear infinite;
 }
 
