@@ -5,12 +5,37 @@ require_once("Clases/Api.php");
 
   ?>
 <?php
+
+$partes=explode(" ", $_POST['pauta']);
+$monto_a_pagar=$partes[5];
+
+
+
+
+
 $idContacto=$_POST['idContacto'];
 $nombreAcreedor=$_POST['nombreAcreedor'];
-$total=$_POST['total'];
-$cantCuotas = $_POST['cant_cuotas'] ;
+$total=$total=str_replace(",", ".", $partes[7]);
+$cantCuotas = $partes[6];
 $idConsulta=$_POST['idConsulta'];
 $documento = $_POST['documento'];
+
+
+
+if($cantCuotas==1){
+    $cuotaText="cuota";
+}else{
+    $cuotaText="cuotas";
+}
+
+$pautaText = " ".$cantCuotas." ".$cuotaText." de $".$monto_a_pagar." ";
+
+
+
+
+
+
+
 
 $api = new Api();
 
@@ -18,8 +43,7 @@ $response=unserialize($_POST['response']);
 $acreedor=new Acreedor($response);
 //echo $_POST['dni'].'<br>';
 $acreedor->mostrarAcreedor($_POST['posicion']);
-$partes=explode(" ", $_POST['pauta']);
-$monto_a_pagar=$partes[4]*1;
+
 
 
 $idPlan =  $api->nuevoPlanYRetornarIdPLan($idContacto,$idConsulta,"20181213",$documento);
@@ -29,6 +53,13 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
 
 
 var_dump($res); 
+
+echo "<br>";
+echo $total;
+echo "<br>";
+echo $cantCuotas;
+echo "<br>";
+echo $pautaText;
 
 
 ?>
@@ -65,7 +96,7 @@ var_dump($res);
        </div>
 
 
-      <h2><strong>Seleccionó el acuerdo: <br/><?php echo $_POST['pauta']?></strong></h2>
+      <h2><strong>Seleccionó el acuerdo: <br/><?php echo  $pautaText ?></strong></h2>
 
         
     
@@ -87,12 +118,29 @@ var_dump($res);
                 
               <label for="telefono">Teléfono</label>
               <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Teléfono" >
-              
               <div id="tel-error" class="form-error">Ingrese un numero de telefono valido sin guiones ni espacios</div>
+
+               
+
+              <?php if($nombreAcreedor=="SANTANDER"){?>
+                  <div class="radio">
+                    <label><input type="radio" name="medio-pago" value="medio-efectivo" checked ><b>Pago en efectivo (Deposito/Pago facil)</b></label>
+                  </div>
+                  <div class="radio">
+                    <label><input type="radio" name="medio-pago" value="medio-electronico"><b>Pagos electronicos (Transferencias / Pago mis cuentas)</b></label>
+                  </div>
+              <?php } ?>
+                  
+
+
+
+
+               
+
               
               
               <input type="hidden" name="acree" id="acree" value="<?php echo $acreedor->mostrarAcreedor($_POST['posicion']); ?>" />
-              <input type="hidden" id="pauta" name="pauta" value="<?php  echo $_POST['pauta']; ?>" />
+              <input type="hidden" id="pauta" name="pauta" value="<?php  echo $pautaText; ?>" />
               <input type="hidden" name="dni" id="dni" value="<?php echo $acreedor->response->documento; ?>" />
               <input type="hidden" name="nombre" id="nombre" value="<?php echo $acreedor->response->nombre; ?>" />
 
@@ -334,6 +382,8 @@ var_dump($res);
   	var emailValido=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   	var soloNumeros=/^[0-9]*$/;
 
+    var radioValue = 
+
   
   email=document.getElementById("email").value;
   telefono=document.getElementById("telefono").value;
@@ -348,6 +398,8 @@ var_dump($res);
   total=document.getElementById("total").value;
   cantCuotas=document.getElementById("cantCuotas").value;
   idConsulta=document.getElementById("idConsulta").value;
+  medioPago  = $("input[name='medio-pago']:checked").val();
+
 
 
   $("#preloader-cont").append('<div id="preloader"><div class="spinner-sm spinner-sm-1" id="status"> </div></div>');
@@ -361,7 +413,7 @@ var_dump($res);
       $("#tel-error").fadeIn();
       }else{
           $.ajax({
-                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta,
+                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta+"&medioPago="+medioPago,
                 url:'enviarDatosAcuerdoYActualizarActividadApi.php',
                 type:'get',
                 success:function(response){         
