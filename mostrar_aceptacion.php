@@ -44,9 +44,13 @@ $acreedor=new Acreedor($response);
 //echo $_POST['dni'].'<br>';
 $acreedor->mostrarAcreedor($_POST['posicion']);
 
+$hoy = getdate();
+$fecha =  $hoy["year"]."".$hoy['mon']."".$hoy['mday'];
 
 
-$idPlan =  $api->nuevoPlanYRetornarIdPLan($idContacto,$idConsulta,"20181213",$documento);
+
+
+$idPlan =  $api->nuevoPlanYRetornarIdPLan($idContacto,$idConsulta,$fecha,$documento);
 
 
 $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantCuotas,$nombreAcreedor,$total);
