@@ -1,22 +1,7 @@
 <?php  
-  require_once("../../Clases/Api.php");
 	require("../../class.phpmailer.php");
 
 
-  
-$api = new Api();
-
-$response=unserialize($_POST['response']);
-$acreedor=new Acreedor($response);
-//echo $_POST['dni'].'<br>';
-$acreedor->mostrarAcreedor($_POST['posicion']);
-
-
-
-$idPlan =  $api->nuevoPlanYRetornarIdPLan($idContacto,$idConsulta,"20181213",$documento);
-
-
-$res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantCuotas,$nombreAcreedor,$total);
 
 
 

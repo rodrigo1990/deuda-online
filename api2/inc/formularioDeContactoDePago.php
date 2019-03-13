@@ -25,7 +25,7 @@
 				<option value="16:00  a 20:00 HS">16:00  a 20:00 HS</option>
 			</select>
 			<div class="form-error" id="franja-horaria-error">Ingrese una franja horaria</div>
-
+			
 			<input type="hidden" value="<?php echo $documento ?>" name="documento" id="documento">
 			<input type="hidden" value="<?php echo $response->nombre ?>" name="nombre" id="nombre">
 			<input type="hidden" value="<?php echo $acreedor->mostrarAcreedor($i)?>" name="banco" id="banco">
