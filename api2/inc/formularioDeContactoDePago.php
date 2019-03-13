@@ -28,11 +28,12 @@
 
 			<input type="hidden" value="<?php echo $documento ?>" name="documento" id="documento">
 			<input type="hidden" value="<?php echo $response->nombre ?>" name="nombre" id="nombre">
-			<input type="hidden" value="<?php echo $acreedor->mostrarAcreedor(0)?>" name="banco" id="banco">
-			<input type="hidden" name="nombreAcreedor" value=<?php echo $acreedor-> ?>>
-			<input type="hidden" name="idContacto" value="'.$this->response->idContacto .'">
-			<input type="hidden" name="idConsulta" value="'.$this->response->queryId .'">
-			<input type="hidden" name="documento" value="'.$_SESSION['documento'].'">
+			<input type="hidden" value="<?php echo $acreedor->mostrarAcreedor($i)?>" name="banco" id="banco">
+			
+
+			<input type="hidden" name="idContacto" id="idContacto" value="<?php echo $response->idContacto ?>">
+			
+			<input type="hidden" name="queryId" id="queryId" value="<?php echo $response->queryId ?>">
 			<br>
 
 			<a  class="contactorapido_btn" onClick="enviarMailCuotas()" >ENVIAR</a>
