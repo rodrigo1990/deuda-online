@@ -59,7 +59,7 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
 
                     </tr>";
 
-                if($medioPago=="medio-efectivo"){
+                if($medioPago=="medio-electronico"){
 
                    $cuerpo .= "
                   <tr>
@@ -93,7 +93,7 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
 
                   ";
 
-                }else//PAGO MIS CUENTAS
+                }else if($medioPago=="medio-efectivo")//PAGO MIS CUENTAS
                 {
 
 
@@ -102,9 +102,12 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   <td style='text-align: center;'>
                     <h3>Abone por ventanilla con instruccion de pago SICE</h3>
                     <br>
-                    <a href=''>Descargar instrucciones de pago SICE</a>
+                    <form action='test.legioncreativa.com/deuda_online/archivos_emails/santander-pago-electronico.php' method='POST'>
+                    <input type='hidden' name='total' value='".$total."'>
+                    <input type='hidden' name='nombre' value='".$nombre."'>
+                    <input type='hidden' name='documento' value='".$dni."'>
+                    <button>Descargar instrucciones de pago SICE</button>
 
-                    <h1>".$total."</h1>
                     ";
 
                   $cuerpo .= "

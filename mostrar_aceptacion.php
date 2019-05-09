@@ -15,7 +15,8 @@ $monto_a_pagar=$partes[5];
 
 $idContacto=$_POST['idContacto'];
 $nombreAcreedor=$_POST['nombreAcreedor'];
-$total=$total=str_replace(",", ".", $partes[7]);
+$total=str_replace(".", "", $partes[7]);
+$total=str_replace(",", ".", $total);
 $cantCuotas = $partes[6];
 $idConsulta=$_POST['idConsulta'];
 $documento = $_POST['documento'];
