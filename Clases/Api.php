@@ -8,7 +8,7 @@ class Api{
 
 	function __construct(){
 
-		$this->url="http://190.111.231.172:8106";
+		$this->url="http://190.12.119.212:8099";
 		$this->user	= 'lcreativa';
 		$this->pass	= 'p4lm3r0_2016';
 	}

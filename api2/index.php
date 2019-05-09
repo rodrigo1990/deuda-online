@@ -3,7 +3,7 @@
 	include("clases/Acreedor.php");
 	require_once("../Clases/Api.php");
 	include 'inc_consultar_datos.php';
-	$url	= 'http://190.111.231.172:8106';//puerto 8106 -> API TEST
+	$url	= 'http://190.12.119.212:8099';//puerto 8106 -> API TEST
 	$user	= 'lcreativa';
 	$pwd	= 'p4lm3r0_2016';
 	
