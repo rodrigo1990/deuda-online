@@ -15,6 +15,12 @@ $cantCuotas = $_GET['cantCuotas'];
 $idConsulta = $_GET['idConsulta'];
 $medioPago = $_GET['medioPago'];
 
+$partes=explode(" ", $_GET['pauta']);
+$totalCuota=str_replace("$", "", $partes[6]);
+$totalCuota=str_replace(".", "", $partes[6]);
+$totalCuota=str_replace(",", ".", $total);
+$totalCuota = $partes[6];
+
 $api = new Api();
 
 $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$idConsulta,$cantCuotas,$nombreAcreedor,$total,$telefono,$email);
@@ -102,11 +108,9 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   <td style='text-align: center;'>
                     <h3>Abone por ventanilla con instruccion de pago SICE</h3>
                     <br>
-                    <form action='test.legioncreativa.com/deuda_online/archivos_emails/santander-pago-electronico.php' method='POST'>
-                    <input type='hidden' name='total' value='".$total."'>
-                    <input type='hidden' name='nombre' value='".$nombre."'>
-                    <input type='hidden' name='documento' value='".$dni."'>
-                    <button>Descargar instrucciones de pago SICE</button>
+                    <a href='test.legioncreativa.com/deuda_online/archivos_emails/santander-pago-electronico.php?total=".$totalCuota."&nombre=".$nombre."&dni=".$dni."'>
+                    Descargar instrucciones de pago SICE
+                    </a>
 
                     ";
 

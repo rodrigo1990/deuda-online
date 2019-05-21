@@ -1,8 +1,8 @@
 <?php 
 
-$total = $_POST['total'];
-$nombre = $_POST['nombre'];
-$documento = $_POST['documento'];
+$total = $_GET['total'];
+$nombre = $_GET['nombre'];
+$documento = $_GET['dni'];
 
 $operacion2 = $total - ($total/1.1210);
 

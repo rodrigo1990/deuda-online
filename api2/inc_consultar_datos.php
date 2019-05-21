@@ -110,6 +110,9 @@
 		$response->queryId = isset($simplexml->query_id) ? trim(strval($simplexml->query_id)) : ''; 
 	
 		$response->nombre 		= isset($simplexml->Resultado->nombre) ? trim(strval($simplexml->Resultado->nombre)) : '';
+
+		$response->cuil 		= isset($simplexml->Resultado->cuil) ? trim(strval($simplexml->Resultado->cuil)) : $documento;
+
 		$response->cantProd		= isset($simplexml->Resultado->cant_prod) ? trim(strval($simplexml->Resultado->cant_prod)) : '';
 		$response->saldoTotal 	= isset($simplexml->Resultado->SaldoTotal) ? trim(strval($simplexml->Resultado->SaldoTotal)) : '';
 		$response->cancelaTotal 	= isset($simplexml->Resultado->CancelaTotal) ? trim(strval($simplexml->Resultado->CancelaTotal)) : '';

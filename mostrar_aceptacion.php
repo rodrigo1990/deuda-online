@@ -65,7 +65,8 @@ echo "<br>";
 echo $cantCuotas;
 echo "<br>";
 echo $pautaText;
-
+echo "<br>";
+echo $partes[5];
 
 ?>
 
@@ -146,7 +147,8 @@ echo $pautaText;
               
               <input type="hidden" name="acree" id="acree" value="<?php echo $acreedor->mostrarAcreedor($_POST['posicion']); ?>" />
               <input type="hidden" id="pauta" name="pauta" value="<?php  echo $pautaText; ?>" />
-              <input type="hidden" name="dni" id="dni" value="<?php echo $acreedor->response->documento; ?>" />
+              <!-- TOMA CUIL -->
+              <input type="hidden" name="dni" id="dni" value="<?php echo $acreedor->response->cuil; ?>" />
               <input type="hidden" name="nombre" id="nombre" value="<?php echo $acreedor->response->nombre; ?>" />
 
               <input type="hidden" name="idCon" id="idCon" value="<?php echo $idContacto; ?>" />
