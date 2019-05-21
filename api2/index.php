@@ -88,7 +88,11 @@
 				if(count($response->acreedores)==1){
 					$i=0;
 				?>
-				
+				<?php 
+					var_dump($response);
+
+
+			 ?>
 				<?php if($acreedor->mostrarAcreedor(0)=="GALICIA"): ?>
 
 					<?php include("inc/clientesGalicia.php") ?>

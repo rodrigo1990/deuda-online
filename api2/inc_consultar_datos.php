@@ -102,16 +102,20 @@
 		$simplexml 	= simplexml_import_dom($dom);
 		//var_dump($simplexml);
 		$response->queryStart 	= isset($simplexml->QueryStart) ? trim(strval($simplexml->QueryStart)) : '';
+
 		$response->queryType 	= isset($simplexml->QueryType) ? trim(strval($simplexml->QueryType)) : '';
+		
 		$response->queryEnd 	= isset($simplexml->QueryEnd) ? trim(strval($simplexml->QueryEnd)) : '';
-		$response->documento 	=$documento;
+		
+		$response->documento 	= $documento;
+		
 		$response->idContacto = isset($simplexml->Resultado->idcontacto) ? trim(strval($simplexml->Resultado->idcontacto)) : '';
 
 		$response->queryId = isset($simplexml->query_id) ? trim(strval($simplexml->query_id)) : ''; 
 	
 		$response->nombre 		= isset($simplexml->Resultado->nombre) ? trim(strval($simplexml->Resultado->nombre)) : '';
 
-		$response->cuil 		= isset($simplexml->Resultado->cuil) ? trim(strval($simplexml->Resultado->cuil)) : $documento;
+		$response->cuil 		= isset($simplexml->Resultado->Cuil) ? trim(strval($simplexml->Resultado->Cuil)) : "sin cuil";
 
 		$response->cantProd		= isset($simplexml->Resultado->cant_prod) ? trim(strval($simplexml->Resultado->cant_prod)) : '';
 		$response->saldoTotal 	= isset($simplexml->Resultado->SaldoTotal) ? trim(strval($simplexml->Resultado->SaldoTotal)) : '';
