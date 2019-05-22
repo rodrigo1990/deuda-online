@@ -6,7 +6,7 @@ $acree=$_GET['acree'];
 $pauta=$_GET['pauta'];
 $dni=$_GET['dni'];
 $nombre=$_GET['nombre'];
-
+$cuil = $_GET['cuil'];
 $idContacto = $_GET['idContacto'];
 $nombreAcreedor = $_GET['nombreAcreedor'];
 $IdPlan = $_GET['idPlan'];
@@ -16,10 +16,9 @@ $idConsulta = $_GET['idConsulta'];
 $medioPago = $_GET['medioPago'];
 
 $partes=explode(" ", $_GET['pauta']);
-$totalCuota=str_replace("$", "", $partes[6]);
-$totalCuota=str_replace(".", "", $partes[6]);
-$totalCuota=str_replace(",", ".", $total);
-$totalCuota = $partes[6];
+$totalCuota=str_replace("$", "", $partes[4]);
+$totalCuota=str_replace(".", "", $totalCuota);
+$totalCuota=str_replace(",", ".", $totalCuota);
 
 $api = new Api();
 
@@ -87,11 +86,11 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   $cuerpo.="
                   <tr>
                     <td style='text-align:center'>
-                      <h3 style='margin: 0;margin-top: 31px;'><u>Transferencia bancaria UNICAMENTE (NO deposito)</u></h3>
-                        <br><b>Banco Santander Rio</b><br>
-                        Cuenta CC en Pesos 000-036082/3<br>
-                        CBU 072000072000003608236 <br>
-                        Alias SANTANDER.EPBA.CYMPA
+                      <h3 style='margin: 0;margin-top: 31px;color:black;'><u>Transferencia bancaria UNICAMENTE (NO deposito)</u></h3>
+                        <br><b style='color:black;'>Banco Santander Rio</b><br>
+                        CBU  0720000720000003710322<br>
+                        Alias EPB.SANTANDER<br>
+                        CUIT EPB 33-68716473-9<br>
 
                         <b>Coloca el importe elegido y tu DNI.</b>
                     <td>
@@ -99,7 +98,7 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
 
                   ";
 
-                }else if($medioPago=="medio-efectivo")//PAGO MIS CUENTAS
+                }else if($medioPago=="medio-efectivo")
                 {
 
 
@@ -108,7 +107,7 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   <td style='text-align: center;'>
                     <h3>Abone por ventanilla con instruccion de pago SICE</h3>
                     <br>
-                    <a href='test.legioncreativa.com/deuda_online/archivos_emails/santander-pago-electronico.php?total=".$totalCuota."&nombre=".$nombre."&dni=".$dni."'>
+                    <a href='test.legioncreativa.com/deuda_online/archivos_emails/santander-pago-electronico.php?total=".$totalCuota."&nombre=".$nombre."&dni=".$dni."&cuil=".$cuil."'>
                     Descargar instrucciones de pago SICE
                     </a>
 
@@ -118,6 +117,32 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   </td>
                   </tr>";
 
+                  $cuerpo  .= "
+                  <tr>
+                  <td style='text-align: center;'>
+                  ";
+
+                  $cuerpo .="
+                  <br>
+                  <hr style='margin-left:auto;margin-right:auto;display:block;width:50px;height:3px;background-color:grey;'>
+                  <br>
+                  <a><img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/1.png' alt='' style='margin-left: auto;margin-right: auto;display: block;color:black;' /></a>
+                  <p style=' text-align: center;color:black;'class='leyenda_ts'>Debe dirigirse a cualquier PAGO FACIL.<br />
+                  Indicar pago abierto sin factura a nombre de <strong>Estudio Jurídico Palmero.</strong>
+                   <br/>
+                   <br>
+                  <strong>Entidad:0420</strong>
+                  <br/>
+                 <b> Nro de referencia de pago: ".$dni."</b>
+                  ";
+
+
+                   $cuerpo .= "
+                  </td>
+                  </tr>";
+
+
+                   
 
                 }
 
@@ -134,11 +159,11 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   <br>
                   <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;margin:0'>Estos son tus <b>datos personales</b> <br> </h2>
                   <br>
-                  <b>Nombre y Apellido:</b> " . $nombre . "<br>
-                  <b>DNI:</b> " . $dni . "<br>
-                  <b>Telefono:</b> " . $telefono . "<br>
-                  <b>Email:</b> " . $email . "<br>
-                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
+                  <b style='color:black;'>Nombre y Apellido:</b> " . $nombre . "<br>
+                  <b style='color:black;'>DNI:</b> " . $dni . "<br>
+                  <b style='color:black;'>Telefono:</b> " . $telefono . "<br>
+                  <b style='color:black;'>Email:</b> " . $email . "<br>
+                  <b style='color:black;'>Acuerdo de pago:</b> " . $pauta . "<br><br />
                   ";
 
                  

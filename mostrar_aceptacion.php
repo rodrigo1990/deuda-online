@@ -147,8 +147,8 @@ echo $partes[5];
               
               <input type="hidden" name="acree" id="acree" value="<?php echo $acreedor->mostrarAcreedor($_POST['posicion']); ?>" />
               <input type="hidden" id="pauta" name="pauta" value="<?php  echo $pautaText; ?>" />
-              <!-- TOMA CUIL -->
-              <input type="hidden" name="dni" id="dni" value="<?php echo $acreedor->response->cuil; ?>" />
+              <input type="hidden" name="dni" id="dni" value="<?php echo $acreedor->response->documento; ?>" />
+              <input type="hidden" name="cuil" id="cuil" value="<?php echo $acreedor->response->cuil; ?>" />
               <input type="hidden" name="nombre" id="nombre" value="<?php echo $acreedor->response->nombre; ?>" />
 
               <input type="hidden" name="idCon" id="idCon" value="<?php echo $idContacto; ?>" />
@@ -397,6 +397,10 @@ echo $partes[5];
   acree=document.getElementById("acree").value;
   pauta=document.getElementById("pauta").value;
   dni=document.getElementById("dni").value;
+  cuil=document.getElementById("cuil").value;
+
+
+
   nombre=document.getElementById("nombre").value;
 
   idContacto = document.getElementById("idCon").value;
@@ -420,7 +424,7 @@ echo $partes[5];
       $("#tel-error").fadeIn();
       }else{
           $.ajax({
-                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta+"&medioPago="+medioPago,
+                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta+"&medioPago="+medioPago+"&cuil="+cuil,
                 url:'enviarDatosAcuerdoYActualizarActividadApi.php',
                 type:'get',
                 success:function(response){         

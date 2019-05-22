@@ -3,6 +3,7 @@
 $total = $_GET['total'];
 $nombre = $_GET['nombre'];
 $documento = $_GET['dni'];
+$cuil = $_GET['cuil'];
 
 $operacion2 = $total - ($total/1.1210);
 
@@ -79,7 +80,7 @@ $operacion1 = $total/1.1210;
 							<br>
 							Número de acuerdo (acorde a la moneda de la deuda), pesos:03 y dolares:04
 							<br>
-							Número de CUIT cliente: <?php echo $documento ?>
+							Número de CUIT cliente: <?php echo $cuil ?>
 						</p>
 					</div>
 					<div class="col-sm-6 col-lg-6 col-md-6 col-xs-6 bk">
@@ -93,7 +94,7 @@ $operacion1 = $total/1.1210;
 						<br>
 						Número de acuerdo (acorde a la moneda de la deuda),pesos:03 y dolares:04
 						<br>
-						Número de CUIT cliente: <?php echo $documento ?></p>
+						Número de CUIT cliente: <?php echo $cuil ?></p>
 					</div>
 				</div>
 			</div>

@@ -115,7 +115,7 @@
 	
 		$response->nombre 		= isset($simplexml->Resultado->nombre) ? trim(strval($simplexml->Resultado->nombre)) : '';
 
-		$response->cuil 		= isset($simplexml->Resultado->Cuil) ? trim(strval($simplexml->Resultado->Cuil)) : "sin cuil";
+		$response->cuil 		= isset($simplexml->Resultado->cuil) ? trim(strval($simplexml->Resultado->cuil)) : $documento;
 
 		$response->cantProd		= isset($simplexml->Resultado->cant_prod) ? trim(strval($simplexml->Resultado->cant_prod)) : '';
 		$response->saldoTotal 	= isset($simplexml->Resultado->SaldoTotal) ? trim(strval($simplexml->Resultado->SaldoTotal)) : '';

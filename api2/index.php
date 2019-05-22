@@ -3,7 +3,7 @@
 	include("clases/Acreedor.php");
 	require_once("../Clases/Api.php");
 	include 'inc_consultar_datos.php';
-	$url	= 'http://190.12.119.212:8099';//puerto 8106 -> API TEST
+	$url	= 'http://190.12.119.212:8106';//puerto 8106 -> API TEST
 	$user	= 'lcreativa';
 	$pwd	= 'p4lm3r0_2016';
 	
@@ -89,10 +89,10 @@
 					$i=0;
 				?>
 				<?php 
-					var_dump($response);
+					//var_dump($response);
 
 
-			 ?>
+			 	?>
 				<?php if($acreedor->mostrarAcreedor(0)=="GALICIA"): ?>
 
 					<?php include("inc/clientesGalicia.php") ?>
