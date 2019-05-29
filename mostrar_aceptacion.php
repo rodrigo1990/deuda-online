@@ -58,7 +58,7 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
 
 
 var_dump($res); 
-
+/*
 echo "<br>";
 echo $total;
 echo "<br>";
@@ -67,7 +67,7 @@ echo "<br>";
 echo $pautaText;
 echo "<br>";
 echo $partes[5];
-
+*/
 ?>
 
 <div class="main">

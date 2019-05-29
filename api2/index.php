@@ -77,7 +77,7 @@
 			<?php 
 			$_SESSION['documento']= $documento;
 			echo "<br>";
-			echo $response->idContacto;
+			//echo $response->idContacto;
 			echo "<br>"
 			//echo $_SESSION['idPlan'];
 

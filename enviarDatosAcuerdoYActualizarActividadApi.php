@@ -448,7 +448,9 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
       $mail->FromName = "Deuda Online";
       $mail->Subject = "Confirmacion de acuerdo de deuda";
       $mail->AddAddress($email,"Deuda Online");
-    $mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
+      /*$mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+      $mail->AddAddress("calidad@epb.com.ar","Deuda Online");*/
+   // $mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
    // $mail->AddAddress("rodrigo@legioncreativa.com","Deuda Online");
 
       $mail->Body = $cuerpo;
