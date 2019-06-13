@@ -89,7 +89,7 @@
 					$i=0;
 				?>
 				<?php 
-					//var_dump($response);
+					var_dump($response);
 
 
 			 	?>

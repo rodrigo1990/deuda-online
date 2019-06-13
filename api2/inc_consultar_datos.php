@@ -100,7 +100,7 @@
 
 
 		$simplexml 	= simplexml_import_dom($dom);
-		//var_dump($simplexml);
+		var_dump($simplexml);
 		$response->queryStart 	= isset($simplexml->QueryStart) ? trim(strval($simplexml->QueryStart)) : '';
 
 		$response->queryType 	= isset($simplexml->QueryType) ? trim(strval($simplexml->QueryType)) : '';
@@ -124,6 +124,11 @@
 			
 		$response->MonTotCtas2 	= isset($simplexml->Resultado->MonTotCtas2) ? trim(strval($simplexml->Resultado->MonTotCtas2)) : '';
 		$response->MonTotCtas3 	= isset($simplexml->Resultado->MonTotCtas3) ? trim(strval($simplexml->Resultado->MonTotCtas3)) : '';
+
+		$response->cartera = isset($simplexml->Resultado->Acreedor->attributes()->cartera) ? trim(strval($simplexml->Resultado->Acreedor->attributes()->cartera)) : ''; 
+
+
+
 		
 		
 		
@@ -151,7 +156,9 @@
 			$pauta->pdesc = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->pdesc) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->pdesc)) : '';
 			$pauta->ptitulo = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->ptitulo) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->ptitulo)) : '';
 			$pauta->phono = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->phono) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->phono)) : '';
+			
 			$acreedor->pautas[$i] = $pauta;
+	
 
 
 			/*echo "<br>";

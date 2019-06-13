@@ -115,6 +115,7 @@ class Acreedor{
 			echo '<input type="hidden" name="nombreAcreedor" value="'.$acreedor .'">
 						<input type="hidden" name="idContacto" value="'.$this->response->idContacto .'">
 						<input type="hidden" name="idConsulta" value="'.$this->response->queryId .'">
+						<input type="hidden" name="cartera" value="'.$this->response->cartera .'">
 						<input type="hidden" name="documento" value="'.$_SESSION['documento'].'">';
 			
 			

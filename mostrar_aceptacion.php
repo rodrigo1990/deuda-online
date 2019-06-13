@@ -20,6 +20,7 @@ $total=str_replace(",", ".", $total);
 $cantCuotas = $partes[6];
 $idConsulta=$_POST['idConsulta'];
 $documento = $_POST['documento'];
+$cartera = $_POST['cartera'];
 
 
 
@@ -49,10 +50,18 @@ $hoy = getdate();
 $fecha =  $hoy["year"]."".$hoy['mon']."".$hoy['mday'];
 
 
-
-
+echo $documento;
+echo "<br>";
+echo $fecha;
+echo "<br>";
+echo $idConsulta;
+echo "<br>";
+echo $idContacto;
+echo "<br>";
 $idPlan =  $api->nuevoPlanYRetornarIdPLan($idContacto,$idConsulta,$fecha,$documento);
 
+echo $idPlan;
+echo "<br>";
 
 $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantCuotas,$nombreAcreedor,$total);
 
@@ -156,7 +165,8 @@ echo $partes[5];
               <input type="hidden" name="idPlan" id="idPlan" value="<?php echo $idPlan; ?>" />
               <input type="hidden" name="total" id="total" value="<?php echo $total; ?>" />
               <input type="hidden" name="cantCuotas" id="cantCuotas" value="<?php echo $cantCuotas; ?>" />
-              <input type="hidden" name="idConsulta" id="idConsulta" value="<?php echo $idConsulta; ?>" />  
+              <input type="hidden" name="idConsulta" id="idConsulta" value="<?php echo $idConsulta; ?>" />
+              <input type="hidden" name="cartera" id="cartera" value="<?php echo $cartera; ?>" />  
              </div>         
             
             <div  class="btn btn-primary" onClick="enviarDatosAcuerdo()">Enviar Datos de Acuerdo</div>
@@ -411,6 +421,8 @@ echo $partes[5];
   idConsulta=document.getElementById("idConsulta").value;
   medioPago  = $("input[name='medio-pago']:checked").val();
 
+  cartera = $('#cartera').val();
+
 
 
   $("#preloader-cont").append('<div id="preloader"><div class="spinner-sm spinner-sm-1" id="status"> </div></div>');
@@ -424,7 +436,7 @@ echo $partes[5];
       $("#tel-error").fadeIn();
       }else{
           $.ajax({
-                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta+"&medioPago="+medioPago+"&cuil="+cuil,
+                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta+"&medioPago="+medioPago+"&cuil="+cuil+"&cartera="+cartera,
                 url:'enviarDatosAcuerdoYActualizarActividadApi.php',
                 type:'get',
                 success:function(response){         
