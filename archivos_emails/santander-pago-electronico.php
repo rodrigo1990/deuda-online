@@ -4,10 +4,16 @@ $total = $_GET['total'];
 $nombre = $_GET['nombre'];
 $documento = $_GET['dni'];
 $cuil = $_GET['cuil'];
+$cartera = $_GET['cartera'];
 
-$operacion2 = $total - ($total/1.1210);
+if($cartera != 'campaña'){
 
-$operacion1 = $total/1.1210; 
+		$operacion2 = $total - ($total/1.1210);
+		$operacion1 = $total/1.1210;
+} else{
+
+	$operacion1 = $total;
+}
 
 
 
@@ -60,10 +66,13 @@ $operacion1 = $total/1.1210;
 						<h2>OPERACIÓN 1</h2>
 						<h2 class="center-block"><?php echo "$".number_format($operacion1, 2, ',', '.') ?></h2>
 					</div>
-					<div class="col-sm-6 col-lg-6 col-md-6 col-xs-6 bk">
-						<h2>OPERACIÓN 2</h2>
-						<h2 class="center-block"><?php echo "$".number_format($operacion2, 2, ',', '.') ?></h2>
-					</div>
+
+					<?php if(isset($operacion2)): ?>
+							<div class="col-sm-6 col-lg-6 col-md-6 col-xs-6 bk">
+								<h2>OPERACIÓN 2</h2>
+								<h2 class="center-block"><?php echo "$".number_format($operacion2, 2, ',', '.') ?></h2>
+							</div>
+					<?php endif; ?>
 				</div>
 			</div>
 
