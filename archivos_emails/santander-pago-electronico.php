@@ -6,7 +6,9 @@ $documento = $_GET['dni'];
 $cuil = $_GET['cuil'];
 $cartera = $_GET['cartera'];
 
-if($cartera != 'campaña'){
+//if($cartera != 'Campaña' && $cartera != 'CampaÃ±a'){
+
+if($cartera != 'Campania'){
 
 		$operacion2 = $total - ($total/1.1210);
 		$operacion1 = $total/1.1210;
@@ -62,11 +64,17 @@ if($cartera != 'campaña'){
 			
 			<div class="row text-center operaciones">
 				<div class="container">
+				    <?php if(!isset($operacion2)): ?>
+					<div class="col-sm-12 col-lg-12 col-md-12 col-xs-12 bk">
+						<h2>OPERACIÓN 1</h2>
+						<h2 class="center-block"><?php echo "$".number_format($operacion1, 2, ',', '.') ?></h2>
+					</div>
+					<?php else: ?>
 					<div class="col-sm-6 col-lg-6 col-md-6 col-xs-6 bk">
 						<h2>OPERACIÓN 1</h2>
 						<h2 class="center-block"><?php echo "$".number_format($operacion1, 2, ',', '.') ?></h2>
 					</div>
-
+                    <?php endif; ?>
 					<?php if(isset($operacion2)): ?>
 							<div class="col-sm-6 col-lg-6 col-md-6 col-xs-6 bk">
 								<h2>OPERACIÓN 2</h2>
@@ -79,6 +87,21 @@ if($cartera != 'campaña'){
 
 			<div class="row text-center descrip-operaciones">
 				<div class="container">
+				    <?php if(!isset($operacion2)): ?>
+					<div class="col-sm-12 col-lg-12 col-md-12 col-xs-12 bk">
+						<p>
+							Sellstation - Piryp
+							<br>
+							Consulta y cobro de recaudacion SICE NUP 831615 Est. Palmero de Belizan 
+							<br>
+							CUIT DEL BANCO 305000084540
+							<br>
+							Número de acuerdo (acorde a la moneda de la deuda), pesos:03 y dolares:04
+							<br>
+							Número de CUIT cliente: <?php echo $cuil ?>
+						</p>
+					</div>
+					<?php else: ?>
 					<div class="col-sm-6 col-lg-6 col-md-6 col-xs-6 bk">
 						<p>
 							Sellstation - Piryp
@@ -92,6 +115,8 @@ if($cartera != 'campaña'){
 							Número de CUIT cliente: <?php echo $cuil ?>
 						</p>
 					</div>
+					<?php endif; ?>
+				<?php if(isset($operacion2)): ?>
 					<div class="col-sm-6 col-lg-6 col-md-6 col-xs-6 bk">
 						<p>Sellstation - Piryp
 							<br>
@@ -105,6 +130,7 @@ if($cartera != 'campaña'){
 						<br>
 						Número de CUIT cliente: <?php echo $cuil ?></p>
 					</div>
+				<?php endif; ?>
 				</div>
 			</div>
 		</section>

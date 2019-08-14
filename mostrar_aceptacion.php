@@ -137,7 +137,7 @@ echo $partes[5];
 
                
 
-              <?php if($nombreAcreedor=="SANTANDER"){?>
+              <?php if($nombreAcreedor=="SANTANDER" OR $nombreAcreedor=="GALICIA"){?>
                   <div class="radio">
                     <label><input type="radio" name="medio-pago" value="medio-efectivo" checked ><b>Pago en efectivo (Deposito/Pago facil)</b></label>
                   </div>

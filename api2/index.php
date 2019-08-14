@@ -93,11 +93,11 @@
 
 
 			 	?>
-				<?php if($acreedor->mostrarAcreedor(0)=="GALICIA"): ?>
+				<?php// if($acreedor->mostrarAcreedor(0)=="GALICIA"): ?>
 
-					<?php include("inc/clientesGalicia.php") ?>
+					<?php //include("inc/clientesGalicia.php") ?>
 
-				<?php elseif($acreedor->mostrarAcreedor(0)=="SUPERVIELLE"): ?>
+				<?php if($acreedor->mostrarAcreedor(0)=="SUPERVIELLE"): ?>
 					
 					<?php include("inc/clientesSupervielle.php") ?>
 					
@@ -146,11 +146,11 @@
                    <?php
 				   $i=0;
 				    foreach($response->acreedores as $acree){  ?>
-				    	<?php if($acreedor->mostrarAcreedor($i)=="GALICIA"): ?>
+				    	<?php //if($acreedor->mostrarAcreedor($i)=="GALICIA"): ?>
 		                   
-							<?php include("inc/clientesMultiplesGalicia.php") ?>
+							<?php// include("inc/clientesMultiplesGalicia.php") ?>
 
-						<?php elseif($acreedor->mostrarAcreedor($i)=="SUPERVIELLE"): ?>
+						<?php if($acreedor->mostrarAcreedor($i)=="SUPERVIELLE"): ?>
 							
 								<?php include("inc/clientesMultiplesSupervielle.php") ?>
 
