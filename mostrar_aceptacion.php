@@ -66,7 +66,7 @@ echo "<br>";
 $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantCuotas,$nombreAcreedor,$total);
 
 
-var_dump($res); 
+//var_dump($res); 
 /*
 echo "<br>";
 echo $total;

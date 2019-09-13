@@ -89,13 +89,12 @@
 					$i=0;
 				?>
 				<?php 
-					var_dump($response);
+					echo '<pre>' , var_dump($response) , '</pre>';
+
 
 
 			 	?>
-				<?php// if($acreedor->mostrarAcreedor(0)=="GALICIA"): ?>
 
-					<?php //include("inc/clientesGalicia.php") ?>
 
 				<?php if($acreedor->mostrarAcreedor(0)=="SUPERVIELLE"): ?>
 					
@@ -146,9 +145,7 @@
                    <?php
 				   $i=0;
 				    foreach($response->acreedores as $acree){  ?>
-				    	<?php //if($acreedor->mostrarAcreedor($i)=="GALICIA"): ?>
 		                   
-							<?php// include("inc/clientesMultiplesGalicia.php") ?>
 
 						<?php if($acreedor->mostrarAcreedor($i)=="SUPERVIELLE"): ?>
 							

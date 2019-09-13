@@ -100,7 +100,7 @@
 
 
 		$simplexml 	= simplexml_import_dom($dom);
-		print_r($simplexml);
+		//print_r($simplexml);
 		$response->queryStart 	= isset($simplexml->QueryStart) ? trim(strval($simplexml->QueryStart)) : '';
 
 		$response->queryType 	= isset($simplexml->QueryType) ? trim(strval($simplexml->QueryType)) : '';
@@ -153,6 +153,8 @@
 			$pauta->pdesc = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->pdesc) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->pdesc)) : '';
 			$pauta->ptitulo = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->ptitulo) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->ptitulo)) : '';
 			$pauta->phono = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->phono) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->phono)) : '';
+			$pauta->tasa = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->tasa) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->tasa)) : '';
+			$pauta->tipo_tasa = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->tipo_tasa) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->tipo_tasa)) : '';
 			$acreedor->pautas[$i] = $pauta;
 
 
