@@ -14,7 +14,7 @@
 		$_SESSION['documento']=$documento;
 		$telefono 	= isset($_POST['telefono']) ? htmlentities(trim(strval($_POST['telefono']))) : '';
 		$mail 		= isset($_POST['mail']) ? htmlentities(trim(strval($_POST['mail']))) : '';
-		$culture 	= isset($_POST['culture']) ? htmlentities(trim(strval($_POST['culture']))) : '';
+		$culture 	= isset($_POST['culture']) ? htmlentities(trimv(strval($_POST['culture']))) : '';
 		if($documento) {
 			$response 	= httpConsultarDocumento($url, $user, $pwd, $documento, $telefono, $mail, $culture);
 			$acreedor=new Acreedor($response);
@@ -89,14 +89,16 @@
 					$i=0;
 				?>
 				<?php 
-					echo '<pre>' , var_dump($response) , '</pre>';
+					//echo '<pre>' , var_dump($response) , '</pre>';
 
 
 
 			 	?>
+				<?php if($acreedor->mostrarAcreedor(0)=="GALICIA" && strpos($response->cartera,'1ra') !== false): ?>
 
+								<?php include("inc/clientesGalicia.php") ?>
 
-				<?php if($acreedor->mostrarAcreedor(0)=="SUPERVIELLE"): ?>
+				<?php elseif($acreedor->mostrarAcreedor(0)=="SUPERVIELLE"): ?>
 					
 					<?php include("inc/clientesSupervielle.php") ?>
 					
@@ -146,8 +148,11 @@
 				   $i=0;
 				    foreach($response->acreedores as $acree){  ?>
 		                   
+						<?php if($acreedor->mostrarAcreedor(0)=="GALICIA" && strpos($response->cartera,'1ra') !== false): ?>
 
-						<?php if($acreedor->mostrarAcreedor($i)=="SUPERVIELLE"): ?>
+								<?php include("inc/clientesMultiplesGalicia.php") ?>
+
+						<?php elseif($acreedor->mostrarAcreedor($i)=="SUPERVIELLE"): ?>
 							
 								<?php include("inc/clientesMultiplesSupervielle.php") ?>
 

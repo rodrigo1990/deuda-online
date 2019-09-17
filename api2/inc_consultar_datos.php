@@ -6,7 +6,7 @@
 
 	function httpConsultarDocumento($url, $user, $pwd, $documento = '', $telefono = '', $mail = '', $culture = '') {
 		$debug  	= true;
-		$useCurl	= false;
+		$useCurl	= true;
 	
 		if($debug) {
 			error_reporting(0);
@@ -155,6 +155,7 @@
 			$pauta->phono = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->phono) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->phono)) : '';
 			$pauta->tasa = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->tasa) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->tasa)) : '';
 			$pauta->tipo_tasa = isset($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->tipo_tasa) ? trim(strval($simplexml->Resultado->Acreedor[$j]->pautas->p[$i]->tipo_tasa)) : '';
+			
 			$acreedor->pautas[$i] = $pauta;
 
 

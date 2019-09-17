@@ -10,7 +10,7 @@ class Acreedor{
 	
 	function mostrarPautas($posicion){
 		
-		
+		$cartera = $this->response->cartera;
 		
 		if($this->response->acreedores[$posicion]->saldo!=0 ||  $this->response->acreedores[$posicion]->cancela!=0){
 			$acree=$this->response->acreedores[$posicion];
@@ -83,15 +83,44 @@ class Acreedor{
 
 				}
 
+				
 
-				
-						
-				
-						$opcion.=$pauta->pctas.$cta." de $ ".number_format(((($monto - ($monto*($pauta->pdesc)/100))*$honorario)-$anticipo)/$pauta->pctas, 2, ',', '.');
+				if($this->mostrarAcreedor($posicion)=='GALICIA' ){
+				    
+				    
+                    //instancio las variables de la primer cuota (sin incremento de tasa de interes)
+                    $monto = $monto * $pauta->phono;
+                    
+                    $total = number_format(($monto-($monto*($pauta->pdesc)/100))*$honorario, 2, ',', '.');
+
+					$opcion=$pauta->pctas.$cta." de $ ".number_format(((($monto - ($monto*($pauta->pdesc)/100))*$honorario)-$anticipo)/$pauta->pctas, 2, ',', '.');
+                    
+                    //ejecuto el incremento de la tasa de interes
+                    if($pauta->tasa != 0 && strpos($cartera,'_10K') !== false){
+                        
+                        $opcion = '';
+                        
+    					$subtotal  = ($monto) + ($monto * (($pauta->tasa * $pauta->pctas) / 100)); 
+    					
+    
+    					$total  =  number_format($subtotal, 2, ',', '.');
+    
+    					$opcion.=$pauta->pctas.$cta." de $ ".number_format($subtotal/$pauta->pctas, 2, ',', '.');
+                    }
+		
+				}else{
+
+					$total = number_format(($monto-($monto*($pauta->pdesc)/100))*$honorario, 2, ',', '.');
+
+					$opcion.=$pauta->pctas.$cta." de $ ".number_format(((($monto - ($monto*($pauta->pdesc)/100))*$honorario)-$anticipo)/$pauta->pctas, 2, ',', '.');
+				}
+
+
+
+
 						echo '<tr>';
 						echo '<td>'.$opcion.'</td>';
 						echo '<td>'.$pauta->pdesc.'%</td>';
-						$total = number_format(($monto-($monto*($pauta->pdesc)/100))*$honorario, 2, ',', '.');
 						echo '
 						<td><strong>$'.$total.'</strong></td>
 						<td><input type="radio" name="pauta" '.$checked.' value="'.$opcion.' '.$pauta->pctas.' '.$total.'" /></td>
@@ -103,6 +132,9 @@ class Acreedor{
 
 						</tr>';
 
+
+						
+
 		
 
 			
@@ -110,6 +142,8 @@ class Acreedor{
 			$i++;
 			
 			}//fin del for
+
+
 
 
 			echo '<input type="hidden" name="nombreAcreedor" value="'.$acreedor .'">
@@ -139,7 +173,7 @@ class Acreedor{
 		
 		}//fin del if hay monto
 		
-		
+			$this->contarPautaSinTasa($posicion);
 		
 	}
 	
@@ -193,7 +227,9 @@ class Acreedor{
 		}//fin del for
 
 	}//function
-	
+
+
+
 	
 	
 	

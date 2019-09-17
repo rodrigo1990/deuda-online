@@ -88,7 +88,7 @@
 								
 								<?php else: ?>
 
-										<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->saldo*$honorario),2); ?></th>
+										<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->saldo*$honorario),2); ?> </th>
 
 								<?php endif; ?>
 							
