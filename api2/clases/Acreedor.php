@@ -88,10 +88,11 @@ class Acreedor{
 				if($this->mostrarAcreedor($posicion)=='GALICIA' ){
 				    
 				    
-                    //instancio las variables de la primer cuota (sin incremento de tasa de interes)
-                    $monto = $monto * $pauta->phono;
-                    
+                    //total para mostrar en primer cuota
                     $total = number_format(($monto-($monto*($pauta->pdesc)/100))*$honorario, 2, ',', '.');
+
+                    //total para sumar incrementos
+                    $total2 = ($monto-($monto*($pauta->pdesc)/100))*$honorario;
 
 					$opcion=$pauta->pctas.$cta." de $ ".number_format(((($monto - ($monto*($pauta->pdesc)/100))*$honorario)-$anticipo)/$pauta->pctas, 2, ',', '.');
                     
@@ -100,7 +101,7 @@ class Acreedor{
                         
                         $opcion = '';
                         
-    					$subtotal  = ($monto) + ($monto * (($pauta->tasa * $pauta->pctas) / 100)); 
+    					$subtotal  = ($total2) + ($total2 * (($pauta->tasa * $pauta->pctas) / 100)); 
     					
     
     					$total  =  number_format($subtotal, 2, ',', '.');
@@ -173,7 +174,6 @@ class Acreedor{
 		
 		}//fin del if hay monto
 		
-			$this->contarPautaSinTasa($posicion);
 		
 	}
 	

@@ -196,40 +196,32 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   break;
              case 'GALICIA':
 
-                $cuerpo.="
-                <tr>
-                      <td>
+                $cuerpo .= "
                   
-                        <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
-                  
-                      </td>
-
-                </tr>";
-
-                $cuerpo.="
-
-                <tr>
+                   <tr>
                       <td>
-
-                          <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>
-                            ACTIVASTE TU ACUERDO DE PAGO CON <b>BANCO GALICIA</b> <br> ".strtoupper($pauta)."
-                          </h2>
-
+                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
                       </td>
-
-                    </tr>";
-
-                if($medioPago=="medio-electronico"){
-
-                   $cuerpo .= "
-                  <tr>
-                  <td style='text-align: center;'>
-                    
-                    <a class='fancybox'>
-                      <img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/pmc.png' style='margin-left: auto;margin-right: auto;display: block;width:130px'/>
-                    </a>
-
-
+                    </tr>
+                    <tr>
+                      <td>
+                          <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>ACTIVASTE TU ACUERDO DE PAGO CON <b>BANCO GALICIA</b> <br> ".strtoupper($pauta)."</h2>
+                      </td>
+                    </tr>
+                  
+                  
+                  
+                  <a class='fancybox'><img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/1.png' style='margin-left: auto;margin-right: auto;display: block;'/></a>
+                    Indicar al cajero <span><b>PAGO ABIERTO SIN FACTURA</b></span> <br> a nombre del <span><b>ESTUDIO JURIDICO PALMERO</b></span>
+                    <br><br>
+                    Rubro: <b>GESTION DE DEUDA</b>
+                    <br>
+                    Entidad: <b>0420</b>
+                    <br>
+                    Nro de referencia de pago:<b>".$dni."</b>
+                     <br>
+                    <br>
+                    <a class='fancybox'><img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/pmc.png' style='margin-left: auto;margin-right: auto;display: block;width:130px'/></a>
                         Buscar por nombre:<br><b>ESTUDIO PALMERO</b><br>
                         <b>Coloca el importe elegido y tu DNI.</b>
                     ";
@@ -238,89 +230,25 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   </td>
                   </tr>";
 
-                  $cuerpo.="
-                  <tr>
-                    <td style='text-align:center'>
-                      <h3 style='margin: 0;margin-top: 31px;color:black;'><u>Transferencia bancaria UNICAMENTE (NO deposito)</u></h3>
-                        <br><b style='color:black;'>Banco Galicia</b><br>
-                        CBU  0720000720000003710322<br>
-                        Alias EPB.SANTANDER<br>
-                        CUIT EPB 33-68716473-9<br>
-
-                        <b>Coloca el importe elegido y tu DNI.</b>
-                    <td>
-                  </tr>
-
-                  ";
-
-                }else if($medioPago=="medio-efectivo")
-                {
-
-
-                   $cuerpo .= "
-                  <tr>
-                  <td style='text-align: center;'>
-                    <h3>Abone por ventanilla con instruccion de pago SICE</h3>
-                    <br>
-                    <a href='test.legioncreativa.com/deuda_online/archivos_emails/santander-pago-electronico.php?total=".$totalCuota."&nombre=".$nombre."&dni=".$dni."&cuil=".$cuil."&cartera=".$cartera."'>
-                    Descargar instrucciones de pago SICE
-                    </a>
-
-                    ";
-
-                  $cuerpo .= "
-                  </td>
-                  </tr>";
-
                   $cuerpo  .= "
                   <tr>
                   <td style='text-align: center;'>
                   ";
 
                   $cuerpo .="
-                  <br>
-                  <hr style='margin-left:auto;margin-right:auto;display:block;width:50px;height:3px;background-color:grey;'>
-                  <br>
-                  <a><img src='https://www.deudaonline.com.ar/imagenes/quiero_pagar/1.png' alt='' style='margin-left: auto;margin-right: auto;display: block;color:black;' /></a>
-                  <p style=' text-align: center;color:black;'class='leyenda_ts'>Debe dirigirse a cualquier PAGO FACIL.<br />
-                  Indicar pago abierto sin factura a nombre de <strong>Estudio Jurídico Palmero.</strong>
-                   <br/>
                    <br>
-                  <strong>Entidad:0420</strong>
-                  <br/>
-                 <b> Nro de referencia de pago: ".$dni."</b>
-                  ";
-
-
-                   $cuerpo .= "
-                  </td>
-                  </tr>";
-
-
-                   
-
-                }
-
-
-
-                  $cuerpo  .= "
-                  <tr>
-                  <td style='text-align: center;'>
-                  ";
-
-                  $cuerpo .="
-                  <br>
                   <hr style='margin-left:auto;margin-right:auto;display:block;width:50px;height:3px;background-color:grey;'>
                   <br>
                   <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;margin:0'>Estos son tus <b>datos personales</b> <br> </h2>
                   <br>
-                  <b style='color:black;'>Nombre y Apellido:</b> " . $nombre . "<br>
-                  <b style='color:black;'>DNI:</b> " . $dni . "<br>
-                  <b style='color:black;'>Telefono:</b> " . $telefono . "<br>
-                  <b style='color:black;'>Email:</b> " . $email . "<br>
-                  <b style='color:black;'>Acuerdo de pago:</b> " . $pauta . "<br><br />
+                  <b>Nombre y Apellido:</b> " . $nombre . "<br>
+                  <b>DNI:</b> " . $dni . "<br>
+                  <b>Telefono:</b> " . $telefono . "<br>
+                  <b>Email:</b> " . $email . "<br>
+                  <b>Acuerdo de pago:</b> " . $pauta . "<br><br />
                   ";
 
+            
                  
                  
                   $cuerpo .= "
@@ -332,7 +260,7 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                     <td>
                       <div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
                       text-align: center;font-family:verdana'>
-                      EL PAGO DEBE REALIZARSE DENTRO DE LAS  PROXIMAS 72 HS <br> PARA DARLE VIGENCIA A LA OPCION  ELEGIDA
+                      LO DEBES ABONAR EN LOS PROXIMOS 4 DIAS, SINO DEBEMOS ACTUALIZAR TU SALDO A PAGAR.
                     </div>
                     </td>
                   </tr>
