@@ -36,12 +36,13 @@
   </div>
 
 </div>
+<?php include('footer.php'); ?>
 
-<script type="text/javascript">
-  $(function()
-  {
+<script>
+
 
     $("#pr1").click(function() {
+        console.log('holaa 1');
       $("#pr2_content").fadeOut();
       $("#pr1_content").delay(340).fadeIn();
 
@@ -52,6 +53,7 @@
     })
 
     $("#pr2").click(function() {
+        console.log('holaa 2');
       $("#pr1_content").fadeOut();
       $("#pr2_content").delay(340).fadeIn();
 
@@ -60,8 +62,6 @@
       $("#pr1").css('background','#ffffff');
       $("#pr1").css('color','#1a9cd6');
     })
-    
-  });
+
 </script>
 
-<?php include('footer.php'); ?>
