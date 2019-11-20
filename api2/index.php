@@ -10,15 +10,51 @@
 
 	$response = null;
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$documento 	= isset($_POST['documento']) ? htmlentities(trim(strval($_POST['documento']))) : '';
-		$_SESSION['documento']=$documento;
-		$telefono 	= isset($_POST['telefono']) ? htmlentities(trim(strval($_POST['telefono']))) : '';
-		$mail 		= isset($_POST['mail']) ? htmlentities(trim(strval($_POST['mail']))) : '';
-		$culture 	= isset($_POST['culture']) ? htmlentities(trimv(strval($_POST['culture']))) : '';
-		if($documento) {
-			$response 	= httpConsultarDocumento($url, $user, $pwd, $documento, $telefono, $mail, $culture);
-			$acreedor=new Acreedor($response);
+
+
+
+		$curlx = curl_init();
+
+
+		curl_setopt($curlx, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+		curl_setopt($curlx, CURLOPT_HEADER, 0);
+		curl_setopt($curlx, CURLOPT_RETURNTRANSFER, 1); 
+		curl_setopt($curlx, CURLOPT_POST, 1);
+
+		$post_data = 
+		[
+		    'secret' => '6Lf9wsMUAAAAAKVLnP1yA06iJqqRfJHzPOFotinY', //<--- your reCaptcha secret key
+		    'response' => $_POST['g-recaptcha-response']
+		];
+
+		curl_setopt($curlx, CURLOPT_POSTFIELDS, $post_data);
+
+		$resp = json_decode(curl_exec($curlx));
+
+		curl_close($curlx);
+
+		if ($resp->success) 
+		{
+		   $documento 	= isset($_POST['documento']) ? htmlentities(trim(strval($_POST['documento']))) : '';
+			$_SESSION['documento']=$documento;
+			$telefono 	= isset($_POST['telefono']) ? htmlentities(trim(strval($_POST['telefono']))) : '';
+			$mail 		= isset($_POST['mail']) ? htmlentities(trim(strval($_POST['mail']))) : '';
+			$culture 	= isset($_POST['culture']) ? htmlentities(trimv(strval($_POST['culture']))) : '';
+			if($documento) {
+				$response 	= httpConsultarDocumento($url, $user, $pwd, $documento, $telefono, $mail, $culture);
+				$acreedor=new Acreedor($response);
+			}
+		} else 
+		{
+		    // failed
+		    echo "error";
+		    exit;
 		}
+
+
+
+
+		
 	}
 
 	
@@ -42,24 +78,72 @@
 	    <link rel="stylesheet" href="../css/queries.css">
 	    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 	</head>
 	<body style="text-align:center;">
 		<?php
 		if($_SERVER['REQUEST_METHOD'] != 'POST') { ?>
 
 		<div class="col-sm-12 text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>Ingrese su número de DNI<br />para conocer el saldo de su deuda</b></div>
-		<form action="index.php" method="post">
+		<form action="index.php" method="post" id="api-form">
+
 			<input type="text" name="documento" required style="border: 0px; border-bottom: 3px solid #1a9cd6; width: 100%; max-width: 480px;" /><br />
-			<!-- <input type="text" name="telefono" placeholder="Telefono" value="" /> -->
-			<!-- <input type="text" name="mail" placeholder="Email" value="" /> -->
-			<!-- <input type="text" name="culture" placeholder="Culture" value=""  /> -->
-			<input type="submit" name="submit" value="ACEPTAR" class="contactorapido_btn" />
+			<p class="form-error" id="documento-error">
+				Ingrese un documento
+			</p>
+		
+
+			<div class="center-block" style="width: 300px; margin-top: 29px; margin-bottom: 29px;"> 
+			  <div class="g-recaptcha" data-sitekey="6Lf9wsMUAAAAADvKF0-q1V0AXGcJiMGRYSGtaYnI"></div>
+			</div>
+			<p class="form-error" id="captcha-error">
+				Presione sobre el recaptcha.
+			</p>
+			<br>
+
+			<a  onClick="validarLogin()" class="contactorapido_btn" />
+			ACEPTAR
+			</a>
+		
+			
+		
+
+
 		</form>
 
 
 
       
+		<script>
+			function validarLogin(){
+				var doc = $("input[name=documento]").val();
+				var response = grecaptcha.getResponse();
 
+				  if(response.length == 0) 
+				  { 
+				    //reCaptcha not verified
+				   $("#captcha-error").fadeIn();
+				    evt.preventDefault();
+				    return false;
+				  }else{
+				  	$("#captcha-error").fadeOut();
+				  	if(doc.length == 0){
+
+				  		$("#documento-error").fadeIn();
+
+				  	}else{
+
+				  		$("#documento-error").fadeOut();
+
+				  		$("#api-form").submit();
+				  	}
+
+
+				  }
+			}
+				
+		</script>
 		<?php } ?>
 		
 		<?php
@@ -189,9 +273,16 @@
 
 		
 
-         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+     	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 		<script src="js/bootstrap.js"></script>
-				<script type="text/javascript" src="js/mailCantidadCuotas.js"></script>
+		<script type="text/javascript" src="js/mailCantidadCuotas.js"></script>
+	
+		<script type="text/javascript">
+		  var onloadCallback = function() {
+		    //alert("grecaptcha is ready!");
+		  };
+		</script>
+		
 
 		 
 	</body>
