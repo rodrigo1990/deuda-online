@@ -4,7 +4,7 @@
     <header>
       <div class="container">
         <div class="col-sm-4 text_center_mobile">
-          <a href="index.php"><img src="imagenes/logo.png" alt="Deuda Online" id="logo" /></a>
+          <a href="index.php" class="logo"><img src="imagenes/logo.png" alt="Deuda Online" id="logo" /></a>
         </div>
         <div class="col-sm-8">
           <div id="cssmenu" style="position: relative; z-index:999;">
