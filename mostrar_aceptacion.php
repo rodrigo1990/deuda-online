@@ -114,22 +114,48 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
               <label for="telefono">Teléfono</label>
               <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Teléfono" >
               <div id="tel-error" class="form-error">Ingrese un numero de telefono valido sin guiones ni espacios</div>
-
+            
+            </div>
                
 
               <?php if($nombreAcreedor=="SANTANDER"){?>
+              
                   <div class="radio">
+              
                     <label><input type="radio" name="medio-pago" value="medio-efectivo" checked ><b>Pago en efectivo (Deposito/Pago facil)</b></label>
+              
                   </div>
                   <div class="radio">
+              
                     <label><input type="radio" name="medio-pago" value="medio-electronico"><b>Pagos electronicos (Transferencias / Pago mis cuentas)</b></label>
+              
                   </div>
+              
+              <?php }else if($nombreAcreedor=="WAYNI MOVIL"){ ?>
+                   
+                   <div class="form-group"> 
+                      <label for="FECHA">Fecha de pago <span style="color:red"><b>*</span>(únicamente para los próximos 7 días)</label> <input type="date" class="form-control" name="fecha" id="fecha" placeholder="Fecha de pago" >
+                      <div id="fecha-error" class="form-error">Ingrese una fecha de pago valida</div>
+
+                  </div>
+
+
+
+                    <div class="radio">
+              
+                      <label>
+                        <input type="radio" name="medio-pago" value="RAPIPAGO" checked ><b>RAPIPAGO</b>
+                      </label>
+
+                       <label>
+                          <input type="radio" name="medio-pago" value="PAGO FACIL"><b>PAGO FACÍL</b>
+                        </label>
+              
+                    </div>
+                    <br>
+
+
               <?php } ?>
-                  
-
-
-
-
                
 
               
@@ -147,9 +173,13 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
               <input type="hidden" name="cantCuotas" id="cantCuotas" value="<?php echo $cantCuotas; ?>" />
               <input type="hidden" name="idConsulta" id="idConsulta" value="<?php echo $idConsulta; ?>" />
               <input type="hidden" name="cartera" id="cartera" value="<?php echo $cartera; ?>" />  
+
+
+
+              <div  class="btn btn-primary" onClick="enviarDatosAcuerdo()">Enviar Datos de Acuerdo</div>
+
              </div>         
             
-            <div  class="btn btn-primary" onClick="enviarDatosAcuerdo()">Enviar Datos de Acuerdo</div>
           </form>
           
         </div>
@@ -172,6 +202,7 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
         </div>
         <div class="modal-body">
           <p>El e-mail con el acuerdo de pago se envio correctamente.<br />Ingrese a su cuenta de email para confirmar el acuerdo</p>
+          <p>(recordá revisar tu casilla de correo no deseado)</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">¡ENTENDIDO!</button>
@@ -370,10 +401,63 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
 <script type="text/javascript" src="js/jquery.fancybox.js?v=2.1.5"></script>
 <link rel="stylesheet" type="text/css" href="css/fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
 
+
+
+
+
+<script>
+  function getValidDate(fecha){
+    console.log(fecha);
+      var today = new Date();
+      var nextWeekDate = new Date(fecha);
+
+      const diffTime = Math.abs(nextWeekDate - today);
+
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+
+      console.log(diffDays);
+
+      return diffDays;
+  }
+</script>
+<script>
+  function getMinDateMaxDate(){
+      var today = new Date().toISOString().split('T')[0];
+      var nextWeekDate = new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+      console.log(today);
+      console.log(nextWeekDate);
+      document.getElementsByName("fecha")[0].setAttribute('min', today);
+      document.getElementsByName("fecha")[0].setAttribute('max', nextWeekDate)
+
+      console.log(today);
+      console.log(nextWeekDate);
+  }
+</script>
+<script>
+   window.nombreAcreedor ="<?php echo $nombreAcreedor ?>";
+   console.log(nombreAcreedor);
+  if(nombreAcreedor == 'WAYNI MOVIL'){
+      this.getMinDateMaxDate();
+      console.log("asdoi");
+    }
+
+</script>
+
 <script type="text/javascript">
+  
+
   $(document).ready(function() {
+    
     $('.fancybox').fancybox();
+
+
+
+
   });
+
+
+ 
  function enviarDatosAcuerdo(){
      
   	var emailValido=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -388,9 +472,6 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
   pauta=document.getElementById("pauta").value;
   dni=document.getElementById("dni").value;
   cuil=document.getElementById("cuil").value;
-
-
-
   nombre=document.getElementById("nombre").value;
 
   idContacto = document.getElementById("idCon").value;
@@ -400,6 +481,7 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
   cantCuotas=document.getElementById("cantCuotas").value;
   idConsulta=document.getElementById("idConsulta").value;
   medioPago  = $("input[name='medio-pago']:checked").val();
+  fecha  = document.getElementById('fecha').value;
 
   cartera = $('#cartera').val();
 
@@ -408,16 +490,35 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
 
   
       if(email.length==0 || email.search(emailValido)){
+
           $("#tel-error").fadeOut();
-      $("#email-error").fadeIn();
+      
+          $("#email-error").fadeIn();
+      
       }else if(telefono.length>13 || telefono.length==0 || telefono.search(soloNumeros)){
-      $("#email-error").fadeOut();
-      $("#tel-error").fadeIn();
+      
+          $("#email-error").fadeOut();
+          
+          $("#tel-error").fadeIn();
+      
+      }else if((nombreAcreedor == 'WAYNI MOVIL' && (getValidDate(fecha)>=7 || getValidDate(fecha)<=0 || fecha.length == 0))){  
+
+
+
+            $("#email-error").fadeOut();
+
+            $('#tel-error').fadeOut();
+
+            $('#fecha-error').fadeIn();
+
+
+
       }else{
           
   $("#preloader-cont").append('<div id="preloader"><div class="spinner-sm spinner-sm-1" id="status"> </div></div>');
+          
           $.ajax({
-                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta+"&medioPago="+medioPago+"&cuil="+cuil+"&cartera="+cartera,
+                data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta+"&medioPago="+medioPago+"&cuil="+cuil+"&cartera="+cartera+"&fechaDePago="+fecha,
                 url:'enviarDatosAcuerdoYActualizarActividadApi.php',
                 type:'get',
                 success:function(response){         
@@ -438,19 +539,9 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
                         type:'get',
                         success:function(response){         
                           console.log(response);
-                          //console.log("Plan confirmado");
-
-
-
-
-
-
-
                           
                         }
                         });
-
-
 
 
                 }
@@ -459,6 +550,7 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
 
  }
 </script>
+
 
 <script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_american.js"></script>
 <script language="JavaScript" type="text/javascript" src="<?php echo $base_url ?>formularios/tarjeta_master.js"></script>

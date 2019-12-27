@@ -55,12 +55,7 @@
 		
 	}
 
-	
-	
-	/*
-	$documentoUsuario 	= '10061484';
-	
-	print_r($response);*/
+
 ?>
 <html>
 	<head>

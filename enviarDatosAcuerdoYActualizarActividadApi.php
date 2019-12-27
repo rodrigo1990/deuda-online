@@ -15,6 +15,7 @@ $cantCuotas = $_GET['cantCuotas'];
 $idConsulta = $_GET['idConsulta'];
 $medioPago = $_GET['medioPago'];
 $cartera = $_GET['cartera'];
+$fechaDePago = $_GET['fechaDePago'];
 
 $partes=explode(" ", $_GET['pauta']);
 $totalCuota=str_replace("$", "", $partes[4]);
@@ -512,6 +513,83 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   </table>";
 
                   break;
+
+
+                   case 'WAYNI MOVIL':
+                  $cuerpo .= "
+                  
+                   <tr>
+                      <td>
+                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>ACTIVASTE TU ACUERDO DE PAGO CON <b>WAYNI MOVIL</b> <br> ".strtoupper($pauta)."</h2>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                          <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'><b>En breve recibira en su casilla de mail y por Whatsapp el cupón de pago</b></h2>
+                      </td>
+                    </tr>
+                  
+                  
+                    ";
+
+                  $cuerpo .= "
+                  </td>
+                  </tr>";
+
+                  $cuerpo  .= "
+                  <tr>
+                  <td style='text-align: center;'>
+                  ";
+
+                  $cuerpo .="
+                   <br>
+                  <hr style='margin-left:auto;margin-right:auto;display:block;width:50px;height:3px;background-color:grey;'>
+                  <br>
+                  <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;margin:0'>Estos son tus <b>datos personales</b> <br> </h2>
+                  <br>
+                  <b>Nombre y Apellido:</b> " . $nombre . "<br>
+                  <b>DNI:</b> " . $dni . "<br>
+                  <b>Telefono:</b> " . $telefono . "<br>
+                  <b>Email:</b> " . $email . "<br>
+                  <b>Acuerdo de pago:</b> " . $pauta . "<br>
+                  <b>Fecha de pago:</b> " . $fechaDePago . "<br>
+                  <b>MedioPago:</b> " . $medioPago . "<br><br />
+                  ";
+
+            
+                 
+                 
+                  $cuerpo .= "
+                  </td>
+                  </tr>";
+
+                  $cuerpo .="
+                  <tr>
+                    <td>
+                      <div class='pago_10dias text-center center-block' style='width:100%;color: grey;font-size: 20px;
+                      text-align: center;font-family:verdana'>
+                      EL PAGO DEBE REALIZARSE EN LA FECHA SELECCIONADA
+                    </div>
+                    </td>
+                  </tr>
+
+                  ";
+
+                
+
+                  
+
+
+                  $cuerpo .="
+                  </table>";
+
+                  break;
             
             
       }
@@ -530,10 +608,10 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
       $mail->FromName = "Deuda Online";
       $mail->Subject = "Confirmacion de acuerdo de deuda";
       $mail->AddAddress($email,"Deuda Online");
-      $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
-      $mail->AddAddress("calidad@epb.com.ar","Deuda Online");
-   // $mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
-   // $mail->AddAddress("rodrigo@legioncreativa.com","Deuda Online");
+   //   $mail->AddAddress("elimperio@epb.com.ar","Deuda Online");
+     // $mail->AddAddress("calidad@epb.com.ar","Deuda Online");
+    $mail->AddAddress("mcd77.1990@gmail.com","Deuda Online");
+    $mail->AddAddress("rodrigo@legioncreativa.com","Deuda Online");
 
       $mail->Body = $cuerpo;
       $mail->AltBody = "";
