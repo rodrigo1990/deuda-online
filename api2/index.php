@@ -5,15 +5,14 @@
 	include 'inc_consultar_datos.php';
 	$url	= 'http://190.12.119.212:8099';//puerto 8106 -> API TEST
 	$user	= 'lcreativa';
-	$pwd	= 'p4lm3r0_2016';
+	$pwd	= '(_**101y>>|p4lm*r0';
 	
 
 	$response = null;
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-
-
-		$curlx = curl_init();
+	    
+	    
+	$curlx = curl_init();
 
 
 		curl_setopt($curlx, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
@@ -50,10 +49,9 @@
 		    echo "error";
 		    exit;
 		}
-
-
-
-
+		
+		
+		
 		
 	}
 
@@ -78,8 +76,7 @@
 	    <link rel="stylesheet" href="../css/queries.css">
 	    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+	     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	</head>
 	<body style="text-align:center;">
 		<?php
@@ -87,7 +84,8 @@
 
 		<div class="col-sm-12 text-center" style="font-size: 16px; color:#404041; margin-bottom: 20px;"><b>Ingrese su número de DNI<br />para conocer el saldo de su deuda</b></div>
 		<form action="index.php" method="post" id="api-form">
-
+			
+			
 			<input type="text" name="documento" required style="border: 0px; border-bottom: 3px solid #1a9cd6; width: 100%; max-width: 480px;" /><br />
 			<p class="form-error" id="documento-error">
 				Ingrese un documento
@@ -106,16 +104,13 @@
 			ACEPTAR
 			</a>
 		
-			
 		
-
-
+		
+		
 		</form>
 
 
-
-      
-		<script>
+        <script>
 			function validarLogin(){
 				var doc = $("input[name=documento]").val();
 				var response = grecaptcha.getResponse();
@@ -144,6 +139,8 @@
 			}
 				
 		</script>
+      
+
 		<?php } ?>
 		
 		<?php
@@ -273,16 +270,9 @@
 
 		
 
-     	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 		<script src="js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/mailCantidadCuotas.js"></script>
-	
-		<script type="text/javascript">
-		  var onloadCallback = function() {
-		    //alert("grecaptcha is ready!");
-		  };
-		</script>
-		
+				<script type="text/javascript" src="js/mailCantidadCuotas.js"></script>
 
 		 
 	</body>

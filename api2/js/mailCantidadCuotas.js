@@ -8,9 +8,7 @@
 	var email = $("#email").val();
 	var franjaHoraria = $("#franja-horaria").val();
 	var emailValido=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	  var soloNumeros=/^[0-9]*$/;
-	var idContacto = $("#idContacto").val();
-	var queryId = $("#queryId").val();
+  	var soloNumeros=/^[0-9]*$/;
 	
 	
 	if(email.length==0 || email.search(emailValido)){
@@ -46,75 +44,8 @@
     
     			success:function(response){
     
-					//alert(response);
-					
-					console.log("almacenando actividad...");
-
-
-					
-					$.ajax({
-						data:{documento:documento,idContacto:idContacto,queryId:queryId,banco:banco,telefono:telefono,email:email},
-			
-						url:'ajax/crearPlanYModificarActividad.php',
-			
-						type:'POST',
-			
-						success:function(idPlan){
-	
-							console.log(idPlan);
-
-
-							$.ajax({
-								data:{documento:documento,idContacto:idContacto,queryId:queryId,banco:banco,telefono:telefono,email:email,idPlan:idPlan},
-					
-								url:'ajax/modificarActividadTelefonoEmail.php',
-					
-								type:'POST',
-					
-								success:function(response){
-									
-									console.log("Esto es la tercer actualizacion");
-									console.log(response);
-
-
-
-
-
-									$.ajax({
-										data:{documento:documento,idContacto:idContacto,queryId:queryId,banco:banco,telefono:telefono,email:email,idPlan:idPlan},
-							
-										url:'ajax/confirmarActividad.php',
-							
-										type:'POST',
-							
-										success:function(response){
-											$("#preloader").html("<div class='exito'><img src='../imagenes/quiero_pagar/tilde.png'><h1>Solicitud enviada</h1><form action='index.php' method='POST'><input type='hidden' name='documento' value='"+documento+"'><button class='contactorapido_btn'>Volver</button></div>");
-											
-											console.log("Esto es la confirmacion del plan");
-											console.log(response);
-					
-										}
-									});
-
-
-
-
-
-
-
-			
-								}
-							});
-			
-						}
-				});
-
-
-
-
-
-
-
+    				$("#preloader").html("<div class='exito'><img src='../imagenes/quiero_pagar/tilde.png'><h1>Solicitud enviada</h1><form action='index.php' method='POST'><input type='hidden' name='documento' value='"+documento+"'><button class='contactorapido_btn'>Volver</button></div>");
+    				//alert(response);
     
     			}
     	});

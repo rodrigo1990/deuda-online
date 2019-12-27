@@ -43,40 +43,20 @@ $api = new Api();
 
 $response=unserialize($_POST['response']);
 $acreedor=new Acreedor($response);
-//echo $_POST['dni'].'<br>';
 $acreedor->mostrarAcreedor($_POST['posicion']);
 
 $hoy = getdate();
 $fecha =  $hoy["year"]."".$hoy['mon']."".$hoy['mday'];
 
 
-echo $documento;
-echo "<br>";
-echo $fecha;
-echo "<br>";
-echo $idConsulta;
-echo "<br>";
-echo $idContacto;
-echo "<br>";
 $idPlan =  $api->nuevoPlanYRetornarIdPLan($idContacto,$idConsulta,$fecha,$documento);
 
-echo $idPlan;
-echo "<br>";
+
 
 $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantCuotas,$nombreAcreedor,$total);
 
 
-var_dump($res); 
-/*
-echo "<br>";
-echo $total;
-echo "<br>";
-echo $cantCuotas;
-echo "<br>";
-echo $pautaText;
-echo "<br>";
-echo $partes[5];
-*/
+
 ?>
 
 <div class="main">
@@ -398,8 +378,8 @@ echo $partes[5];
      
   	var emailValido=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   	var soloNumeros=/^[0-9]*$/;
-
-    var radioValue = 
+    
+  //  var radioValue = 
 
   
   email=document.getElementById("email").value;
@@ -425,7 +405,6 @@ echo $partes[5];
 
 
 
-  $("#preloader-cont").append('<div id="preloader"><div class="spinner-sm spinner-sm-1" id="status"> </div></div>');
 
   
       if(email.length==0 || email.search(emailValido)){
@@ -435,6 +414,8 @@ echo $partes[5];
       $("#email-error").fadeOut();
       $("#tel-error").fadeIn();
       }else{
+          
+  $("#preloader-cont").append('<div id="preloader"><div class="spinner-sm spinner-sm-1" id="status"> </div></div>');
           $.ajax({
                 data:"email="+ email+"&telefono="+telefono+"&acree="+acree+"&pauta="+pauta+"&dni="+dni+"&nombre="+nombre+"&idContacto="+idContacto+"&nombreAcreedor="+nombreAcreedor+"&idPlan="+idPlan+"&total="+total+"&cantCuotas="+cantCuotas+"&idConsulta="+idConsulta+"&medioPago="+medioPago+"&cuil="+cuil+"&cartera="+cartera,
                 url:'enviarDatosAcuerdoYActualizarActividadApi.php',

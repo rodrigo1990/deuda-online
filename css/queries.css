@@ -37,24 +37,19 @@
 	  display:block;
  
 	}
-
-
+	
 	#fondo_home {
-	    padding: 35px 0px 23px 0px;
-	}
+    padding: 35px 0px 23px 0px;
+    }
+    
+    #fondo_home .btn-secondary {
+    font-size: 34px;
+    }
+    
+    .cabecera_160 {
+    padding: 12px 0px;
+}
 
-	#fondo_home .btn-secondary {
-    	font-size: 34px;
-	}
-
-
-	.cabecera_160 {
-    	padding: 12px 0px;
-	}
-
-	.a-footer{
-		display:block !important;
-	}
 }
 
 @media screen and (max-width: 420px) {

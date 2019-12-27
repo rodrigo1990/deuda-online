@@ -7,7 +7,6 @@
   color: #1a9cd6 !important;
   border-bottom: 2px solid #1a9cd6 !important;
 }
-
 /*REMOVE BORDER BOTTOM FROM LOGO*/
 header .logo:hover, header .logo:focus, header .logo:visited, header .logo:active{
      text-decoration: none !important;
