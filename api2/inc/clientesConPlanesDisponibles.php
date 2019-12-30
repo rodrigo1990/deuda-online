@@ -83,12 +83,30 @@
 								<?php $honorario =  str_replace(',','.',$acreedor->obtenerPauta($i))  ?>
 
 								<?php if($acreedor->obtenerPmonto($i)=="s_cancelacion" && $producto->cancela != 0.00): ?>
-								
-									<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->cancela*$honorario),2); ?></th>
+									
+									<?php if($acreedor->mostrarAcreedor($i) == "WAYNI MOVIL"): ?>
+										
+										<th style="text-align:center;">$<?php echo round(str_replace(',','.',$response->cancelaTotal),2); ?></th>
+									
+									<?php else: ?>
+
+
+										<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->cancela*$honorario),2); ?></th>
+
+									
+									<?php endif; ?>
 								
 								<?php else: ?>
 
+									<?php if($acreedor->mostrarAcreedor($i) == "WAYNI MOVIL"): ?>
+										
+										<th style="text-align:center;">$<?php echo round(str_replace(',','.',$response->cancelaTotal),2); ?></th>
+									
+									<?php else: ?>
+
 										<th style="text-align:center;">$<?php echo round(str_replace(',','.',$producto->saldo*$honorario),2); ?> </th>
+
+									<?php endif; ?>
 
 								<?php endif; ?>
 							
@@ -116,11 +134,34 @@
 
                         	<?php if($acreedor->obtenerPmonto(0)=="s_cancelacion" && $producto->cancela != 0.00): ?>
 								
-                        		<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->cancela*$honorario!=0){ echo number_format($acree->cancela*$honorario*1, 2, ',', '.');} ?></td>
+								<?php if($acreedor->mostrarAcreedor(0) == "WAYNI MOVIL"): ?>
+										
+										<th style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php echo number_format($response->cancelaTotal, 2, ',', '.'); ?></th>
+									
+									<?php else: ?>
+
+
+										<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->cancela*$honorario!=0){ echo number_format($acree->cancela*$honorario*1, 2, ',', '.');} ?></td>
+									
+									<?php endif; ?>
+
+
+
+
+
+
+                        		
 								
 							<?php else: ?>
 
+								<?php if($acreedor->mostrarAcreedor(0) == "WAYNI MOVIL"): ?>
+										
+										<th style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php echo number_format($response->cancelaTotal*1, 2, ',', '.');  ?></th>
+									<?php else: ?>
+
                     			<td style="text-align:center; font-weight:bold;font-size: 13px; height: 30px; color:#1a9cd6">$<?php if($acree->saldo*$honorario!=0){ echo number_format($acree->saldo*$honorario*1, 2, ',', '.');} ?></td>
+
+                    				<?php endif; ?>
 
 							<?php endif; ?>
 

@@ -10,16 +10,33 @@
 
 									<?php if($acreedor->obtenerPmonto($i)=="s_cancelacion" && $acree->cancela!=0.00): ?>
 										
-		                    			$<?php 
-		                    			 echo number_format($acree->cancela*$honorario, 2, ',', '.');
-		                    			?>
+										<?php if($acreedor->mostrarAcreedor($i) == "WAYNI MOVIL"): ?>
+										
+											$<?php echo round(str_replace(',','.',$response->cancelaTotal),2); ?>
 									
+										<?php else: ?>
+
+			                    			$<?php 
+			                    			 echo number_format($acree->cancela*$honorario, 2, ',', '.');
+			                    			?>
+									
+										<?php endif; ?>									
 									
 									<?php else: ?>
-										$<?php 
 
-										 echo number_format($acree->saldo*$honorario, 2, ',', '.');
-										 ?>	
+										<?php if($acreedor->mostrarAcreedor($i) == "WAYNI MOVIL"): ?>
+										
+											$<?php echo round(str_replace(',','.',$response->cancelaTotal),2); ?>
+									
+										<?php else: ?>
+
+											$<?php 
+
+											 echo number_format($acree->saldo*$honorario, 2, ',', '.');
+											 ?>	
+
+
+											 <?php endif; ?>	
 
 
 									<?php endif; ?>
