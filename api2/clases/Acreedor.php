@@ -120,7 +120,11 @@ class Acreedor{
 
 
 						echo '<tr>';
-						echo '<td>'.$opcion.'</td>';
+						if($this->mostrarAcreedor($posicion)=='WAYNI MOVIL' && $pauta->pindex==0 ){
+							echo '<td>'.$opcion.' con el '.$pauta->ptitulo.'</td>';	
+						}else{
+							echo '<td>'.$opcion.'</td>';
+						}
 						echo '<td>'.$pauta->pdesc.'%</td>';
 						echo '
 						<td><strong>$'.$total.'</strong></td>
