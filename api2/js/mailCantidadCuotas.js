@@ -44,7 +44,7 @@
     
     			success:function(response){
     
-    				$("#preloader").html("<div class='exito'><img src='../imagenes/quiero_pagar/tilde.png'><h1>Solicitud enviada</h1><form action='index.php' method='POST'><input type='hidden' name='documento' value='"+documento+"'><button class='contactorapido_btn'>Volver</button></div>");
+    				$("#preloader").html("<div class='exito'><img src='../imagenes/quiero_pagar/tilde.png'><h1>Solicitud enviada</h1><form action='/api2/index.php' method='POST'><input type='hidden' name='documento' value='"+documento+"'><input type='hidden' name='section' value='quiero_mas_cuotas'><button class='contactorapido_btn'>Volver</button></div>");
     				//alert(response);
     
     			}

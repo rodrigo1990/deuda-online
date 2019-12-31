@@ -45,9 +45,20 @@
 			}
 		} else 
 		{
-		    // failed
+		    if(isset($_POST['section']) && $_POST['section'] == 'quiero_mas_cuotas' )
+		    {
+		        
+		        $response 	= httpConsultarDocumento($url, $user, $pwd, $_POST['documento'], $telefono, $mail, $culture);
+				$acreedor=new Acreedor($response);
+				
+				
+		    }else{
+		    
+		    
 		    echo "error";
 		    exit;
+		    
+		    }
 		}
 		
 		
@@ -55,11 +66,16 @@
 		
 	}
 
-
+	
+	
+	/*
+	$documentoUsuario 	= '10061484';
+	
+	print_r($response);*/
 ?>
 <html>
-	<head>
-		<meta charset="utf-8">
+	<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <title>Deuda Online</title>
