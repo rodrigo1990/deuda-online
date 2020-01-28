@@ -198,6 +198,8 @@ class Acreedor{
 				$acreedor="SUPERVIELLE";
 			}else if($this->response->acreedores[$posicion]->nombre=="WAYNI MOVIL"){
 				$acreedor="WAYNI MOVIL";
+			}else if($this->response->acreedores[$posicion]->nombre=="CENCOSUD SA"){
+				$acreedor="CENCOSUD";
 			}
 			else{
 			$acreedor="OTROS";	

@@ -69,9 +69,9 @@
 	
 	
 	/*
-	$documentoUsuario 	= '10061484';
+	$documentoUsuario 	= '10061484';*/
 	
-	print_r($response);*/
+	print_r($response);
 ?>
 <html>
 	<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">

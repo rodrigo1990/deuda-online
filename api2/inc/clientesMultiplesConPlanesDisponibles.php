@@ -30,11 +30,13 @@
 									
 										<?php else: ?>
 
-											$<?php 
+											<?php if($acreedor->mostrarAcreedor($i) == "CENCOSUD"): ?>
+										
+												$<?php echo round(str_replace(',','.',$response->saldoTotal),2); ?>
+											
+											<?php else: ?>
 
-											 echo number_format($acree->saldo*$honorario, 2, ',', '.');
-											 ?>	
-
+												$<?php echo number_format($acree->saldo*$honorario, 2, ',', '.'); ?>
 
 											 <?php endif; ?>	
 
