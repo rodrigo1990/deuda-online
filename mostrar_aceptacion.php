@@ -481,7 +481,13 @@ $res = $api->modificarPlanYRetornarIdPLan($idPlan,$idContacto,$idConsulta,$cantC
   cantCuotas=document.getElementById("cantCuotas").value;
   idConsulta=document.getElementById("idConsulta").value;
   medioPago  = $("input[name='medio-pago']:checked").val();
-  fecha  = document.getElementById('fecha').value;
+
+  if(document.getElementById('fecha')){
+    fecha  = document.getElementById('fecha').value;
+  }
+  else{
+    fecha = null;
+  }
 
   cartera = $('#cartera').val();
 

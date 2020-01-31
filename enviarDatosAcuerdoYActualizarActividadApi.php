@@ -46,9 +46,7 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                 $cuerpo.="
                 <tr>
                       <td>
-                  
-                        <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
-                  
+                        <img src='http://www.deudaonline.com.ar/imagenes/logo.png' width='300px' style='margin-left:auto;margin-right:auto;display:block'>
                       </td>
 
                 </tr>";
@@ -200,8 +198,8 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                 $cuerpo .= "
                   
                    <tr>
-                      <td>
-                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
+                       <td>
+                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' width='300px' style='margin-left:auto;margin-right:auto;display:block'>
                       </td>
                     </tr>
                     <tr>
@@ -282,9 +280,8 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   $cuerpo .= '
                   
                    <tr>
-                      <td>
-                      <img src="http://www.deudaonline.com.ar/imagenes/logo.png" style="width:300px;margin-left:auto;margin-right:auto;display:block">
-                      
+                       <td>
+                      <img src="http://www.deudaonline.com.ar/imagenes/logo.png" width="300px" style="margin-left:auto;margin-right:auto;display:block">
                       </td>
                     </tr>
                     <tr>
@@ -355,8 +352,8 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   
                   
                   <tr>
-                      <td>
-                      <img src="http://www.deudaonline.com.ar/imagenes/logo.png" style="width:300px;margin-left:auto;margin-right:auto;display:block">
+                       <td>
+                      <img src="http://www.deudaonline.com.ar/imagenes/logo.png" width="300px" style="margin-left:auto;margin-right:auto;display:block">
                       </td>
                     </tr>
                     <tr>
@@ -436,8 +433,8 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   $cuerpo .= "
                   
                    <tr>
-                      <td>
-                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
+                       <td>
+                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' width='300px' style='margin-left:auto;margin-right:auto;display:block'>
                       </td>
                     </tr>
                     <tr>
@@ -519,8 +516,8 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   $cuerpo .= "
                   
                    <tr>
-                      <td>
-                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' style='width:300px;margin-left:auto;margin-right:auto;display:block'>
+                       <td>
+                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' width='300px' style='margin-left:auto;margin-right:auto;display:block'>
                       </td>
                     </tr>
                     <tr>
@@ -580,6 +577,83 @@ $resp2 = $api->modificarPlanTelefonoEmailYRetornarIdPLan($IdPlan,$idContacto,$id
                   </tr>
 
                   ";
+
+                
+
+                  
+
+
+                  $cuerpo .="
+                  </table>";
+
+                  break;
+            
+
+
+
+                   case 'CENCOSUD':
+                  $cuerpo .= "
+                  
+                   <tr>
+                      <td>
+                      <img src='http://www.deudaonline.com.ar/imagenes/logo.png' width='300px' style='margin-left:auto;margin-right:auto;display:block'>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                      <img width='200px' src='http://www.deudaonline.com.ar/imagenes/quiero_pagar/cencosud_logo.png' style='margin-left:auto;margin-right:auto;display:block;margin-top:20px;margin-bottom:19'>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'>ACTIVASTE TU ACUERDO DE PAGO CON <b>CENCOSUD</b> <br> ".strtoupper($pauta)."</h2>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                          <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;'><b>Debe dirigirse, con su numero de tarjeta, por linea de caja en una sucursal de EASY, DISCO, JUMBO O VEA, indicando el monto que quiere abonar.</b></h2>
+                      </td>
+                    </tr>
+
+
+                     <tr>
+                      <td>
+                          <h2 style='text-align:center;font-family:verdana;color:#545454;font-weight: 100;'><b>DEBE REALIZAR EL PAGO EN LAS PROXIMAS 72HS</b></h2>
+                      </td>
+                    </tr>
+                  
+                  
+                    ";
+
+                  $cuerpo .= "
+                  </td>
+                  </tr>";
+
+                  $cuerpo  .= "
+                  <tr>
+                  <td style='text-align: center;'>
+                  ";
+
+                  $cuerpo .="
+                   <br>
+                  <hr style='margin-left:auto;margin-right:auto;display:block;width:50px;height:3px;background-color:grey;'>
+                  <br>
+                  <h2 style='text-align:center;font-family:verdana;color:grey;font-weight: 100;margin:0'>Estos son tus <b>datos personales</b> <br> </h2>
+                  <br>
+                  <b>Nombre y Apellido:</b> " . $nombre . "<br>
+                  <b>DNI:</b> " . $dni . "<br>
+                  <b>Telefono:</b> " . $telefono . "<br>
+                  <b>Email:</b> " . $email . "<br>
+                  <b>Acuerdo de pago:</b> " . $pauta . "<br>
+                  ";
+
+            
+                 
+                 
+                  $cuerpo .= "
+                  </td>
+                  </tr>";
 
                 
 
